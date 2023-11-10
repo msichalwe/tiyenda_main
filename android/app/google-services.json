@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "172945682634",
+    "firebase_url": "https://tiyenda-3c24c.firebaseio.com",
+    "project_id": "tiyenda-3c24c",
+    "storage_bucket": "tiyenda-3c24c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172945682634:android:57e0257b2b0eeb2370c433",
+        "android_client_info": {
+          "package_name": "com.chalotech.tiyedaAdmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172945682634-t0mkn6kjb2k1fm5l509jgrbjp9kr4jmf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chalotech.tiyedaAdmin",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "172945682634-o4ela181hsbrk4utmq6v7fmskvgedema.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7GE86R9XGX-lAaNUVQu9dHs6J-QEvVK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172945682634-d22vubmajmd5kuidlkl8stq4thvk1jmr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172945682634-0oitfs3iasajrcqbram2h22sr8fbi3nc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chalotech.tiyendaAdmin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
