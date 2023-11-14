@@ -1192,26 +1192,6 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: const AlignmentDirectional(0.00, 1.07),
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            150.0, 0.0, 0.0, 0.0),
-                        child: Container(
-                          width: 478.0,
-                          height: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).info,
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
-                              topLeft: Radius.circular(100.0),
-                              topRight: Radius.circular(0.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 if (responsiveVisibility(

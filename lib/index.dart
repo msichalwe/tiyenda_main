@@ -16,3 +16,6 @@ export '/application/dashboard/dashboard/dashboard_widget.dart'
     show DashboardWidget;
 export '/application/search/search/search_widget.dart' show SearchWidget;
 export '/application/profile/profile/profile_widget.dart' show ProfileWidget;
+export '/application/events/single_event/eventsingle/eventsingle_widget.dart'
+    show EventsingleWidget;
+export '/application/tickets/tickets/tickets_widget.dart' show TicketsWidget;

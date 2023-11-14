@@ -6,8 +6,6 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/backend/push_notifications/push_notifications_handler.dart'
-    show PushNotificationsHandler;
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -144,6 +142,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? const NavBarPage(initialPage: 'profile')
                   : const ProfileWidget(),
+            ),
+            FFRoute(
+              name: 'eventsingle',
+              path: 'eventsingle',
+              builder: (context, params) => const EventsingleWidget(),
+            ),
+            FFRoute(
+              name: 'tickets',
+              path: 'tickets',
+              builder: (context, params) => params.isEmpty
+                  ? const NavBarPage(initialPage: 'tickets')
+                  : const TicketsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -335,7 +345,7 @@ class FFRoute {
                     ),
                   ),
                 )
-              : PushNotificationsHandler(child: page);
+              : page;
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

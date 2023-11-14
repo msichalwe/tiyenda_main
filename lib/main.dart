@@ -6,7 +6,6 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'auth/firebase_auth/firebase_user_provider.dart';
 import 'auth/firebase_auth/auth_util.dart';
 
-import 'backend/push_notifications/push_notifications_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -60,7 +59,6 @@ class _MyAppState extends State<MyApp> {
   late GoRouter _router;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
-  final fcmTokenSub = fcmTokenUserStream.listen((_) {});
 
   @override
   void initState() {
@@ -80,7 +78,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void dispose() {
     authUserSub.cancel();
-    fcmTokenSub.cancel();
+
     super.dispose();
   }
 
@@ -152,6 +150,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'dashboard': const DashboardWidget(),
       'search': const SearchWidget(),
+      'tickets': const TicketsWidget(),
       'profile': const ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -175,8 +174,8 @@ class _NavBarPageState extends State<NavBarPage> {
           activeColor: FlutterFlowTheme.of(context).primary,
           tabBackgroundColor: const Color(0x00000000),
           tabBorderRadius: 100.0,
-          tabMargin: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+          tabMargin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 23.0),
           gap: 5.0,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           duration: const Duration(milliseconds: 500),
@@ -192,8 +191,13 @@ class _NavBarPageState extends State<NavBarPage> {
               text: 'Search',
               iconSize: 24.0,
             ),
+            const GButton(
+              icon: FontAwesomeIcons.ticketAlt,
+              text: 'Tickets',
+              iconSize: 24.0,
+            ),
             GButton(
-              icon: currentIndex == 2 ? Icons.person : Icons.person_rounded,
+              icon: currentIndex == 3 ? Icons.person : Icons.person_rounded,
               text: 'Profile',
               iconSize: 24.0,
             )

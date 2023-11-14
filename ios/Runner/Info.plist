@@ -52,8 +52,6 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-	<false/>
 
 
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -62,11 +60,6 @@
     <string>Enable notifications to stay in the loop! Tiyenda will send you alerts for event updates, reminders for your saved events, and announcements for new happenings tailored to your interests.</string>
 	<key>NSCalendarsUsageDescription</key>
     <string>Tiyenda requests access to your calendar to add events directly and remind you of upcoming activities you're interested in. Keep track of event dates easily with automatic calendar updates.</string>
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>fetch</string>
-        <string>remote-notification</string>
-    </array>
 
 
 	<key>UILaunchStoryboardName</key>

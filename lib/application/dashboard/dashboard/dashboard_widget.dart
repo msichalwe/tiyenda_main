@@ -304,24 +304,22 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                     ),
                                                   ),
                                                 ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Clash Display',
-                                                          color:
-                                                              const Color(0xFF95A1AC),
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Nunito Sans',
+                                                      color: const Color(0xFF95A1AC),
+                                                      fontSize: 14.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      useGoogleFonts: GoogleFonts
+                                                              .asMap()
+                                                          .containsKey(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily),
+                                                    ),
                                                 validator: _model
                                                     .textControllerValidator
                                                     .asValidator(context),
@@ -412,15 +410,29 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                    Container(
-                                      width: 353.0,
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              1.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0x810D121D),
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'DASHBOARD_PAGE_Container_7v2bl709_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+
+                                        context.pushNamed('eventsingle');
+                                      },
+                                      child: Container(
+                                        width: 353.0,
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                1.0,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0x810D121D),
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                        ),
                                       ),
                                     ),
                                     Column(
