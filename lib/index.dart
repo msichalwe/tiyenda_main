@@ -19,3 +19,4 @@ export '/application/profile/profile/profile_widget.dart' show ProfileWidget;
 export '/application/events/single_event/eventsingle/eventsingle_widget.dart'
     show EventsingleWidget;
 export '/application/tickets/tickets/tickets_widget.dart' show TicketsWidget;
+export '/application/settings/web_page/web_page_widget.dart' show WebPageWidget;

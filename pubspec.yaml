@@ -30,7 +30,12 @@ dependencies:
   cloud_firestore: 4.8.0
   cloud_firestore_platform_interface: 5.15.0
   cloud_firestore_web: 3.6.0
+  cloud_functions: 4.3.2
+  cloud_functions_platform_interface: 5.4.2
+  cloud_functions_web: 4.5.2
   easy_debounce: 2.0.1
+  equatable: 2.0.5
+  file_picker: 5.2.6
   firebase_analytics: 10.4.2
   firebase_analytics_platform_interface: 3.6.2
   firebase_analytics_web: 0.5.4+2
@@ -50,6 +55,7 @@ dependencies:
   flutter_animate: 4.1.1+1
   flutter_cache_manager: 3.3.0
   flutter_native_splash: 2.3.1
+  flutter_plugin_android_lifecycle: 2.0.9
   flutter_spinkit: 5.1.0
   flutter_staggered_grid_view: 0.6.2
   font_awesome_flutter: 10.1.0
@@ -64,6 +70,7 @@ dependencies:
   google_sign_in_web: 0.11.0+2
   intl: 0.18.1
   json_path: 0.6.2
+  mime_type: 1.0.0
   page_transition: 2.0.4
   path_provider: 2.0.14
   path_provider_android: 2.0.25
@@ -90,6 +97,11 @@ dependencies:
   url_launcher_android: 6.0.27
   url_launcher_ios: 6.1.4
   url_launcher_platform_interface: 2.1.2
+  webview_flutter: 4.0.5
+  webview_flutter_android: 3.3.1
+  webview_flutter_platform_interface: 2.0.2
+  webview_flutter_wkwebview: 3.1.1
+  webviewx_plus: 0.3.3
   xml: 6.3.0
 
 

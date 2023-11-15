@@ -154,6 +154,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? const NavBarPage(initialPage: 'tickets')
                   : const TicketsWidget(),
+            ),
+            FFRoute(
+              name: 'webPage',
+              path: 'webPage',
+              builder: (context, params) => WebPageWidget(
+                title: params.getParam('title', ParamType.String),
+                url: params.getParam('url', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
