@@ -16,20 +16,20 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
 
   /// Query cache managers for this widget.
 
-  final _getAllEventsManager = FutureRequestManager<ApiCallResponse>();
-  Future<ApiCallResponse> getAllEvents({
+  final _getEventsManager = FutureRequestManager<ApiCallResponse>();
+  Future<ApiCallResponse> getEvents({
     String? uniqueQueryKey,
     bool? overrideCache,
     required Future<ApiCallResponse> Function() requestFn,
   }) =>
-      _getAllEventsManager.performRequest(
+      _getEventsManager.performRequest(
         uniqueQueryKey: uniqueQueryKey,
         overrideCache: overrideCache,
         requestFn: requestFn,
       );
-  void clearGetAllEventsCache() => _getAllEventsManager.clear();
-  void clearGetAllEventsCacheKey(String? uniqueKey) =>
-      _getAllEventsManager.clearRequest(uniqueKey);
+  void clearGetEventsCache() => _getEventsManager.clear();
+  void clearGetEventsCacheKey(String? uniqueKey) =>
+      _getEventsManager.clearRequest(uniqueKey);
 
   /// Initialization and disposal methods.
 
@@ -44,7 +44,7 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
 
     /// Dispose query cache managers for this widget.
 
-    clearGetAllEventsCache();
+    clearGetEventsCache();
   }
 
   /// Action blocks are added here.

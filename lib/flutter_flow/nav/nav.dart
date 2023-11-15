@@ -162,6 +162,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 title: params.getParam('title', ParamType.String),
                 url: params.getParam('url', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'dashboard_loading',
+              path: 'dashboardLoading',
+              builder: (context, params) => const DashboardLoadingWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

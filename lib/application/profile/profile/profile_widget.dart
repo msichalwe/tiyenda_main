@@ -201,21 +201,32 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           2.0, 2.0, 2.0, 2.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: CachedNetworkImage(
-                                                      fadeInDuration: const Duration(
-                                                          milliseconds: 500),
-                                                      fadeOutDuration: const Duration(
-                                                          milliseconds: 500),
-                                                      imageUrl: getCORSProxyUrl(
-                                                        'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fHVzZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+                                                  child: AuthUserStreamWidget(
+                                                    builder: (context) =>
+                                                        ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: CachedNetworkImage(
+                                                        fadeInDuration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    500),
+                                                        fadeOutDuration:
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    500),
+                                                        imageUrl:
+                                                            getCORSProxyUrl(
+                                                          currentUserPhoto !=
+                                                                      ''
+                                                              ? currentUserPhoto
+                                                              : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw0g5jwtX55qSzEWrxn00qHU&ust=1700129764476000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJj-vI7jxYIDFQAAAAAdAAAAABAE',
+                                                        ),
+                                                        width: 44.0,
+                                                        height: 44.0,
+                                                        fit: BoxFit.cover,
                                                       ),
-                                                      width: 44.0,
-                                                      height: 44.0,
-                                                      fit: BoxFit.cover,
                                                     ),
                                                   ),
                                                 ),
