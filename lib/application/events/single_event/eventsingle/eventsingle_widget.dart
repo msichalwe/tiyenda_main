@@ -11,7 +11,12 @@ import 'eventsingle_model.dart';
 export 'eventsingle_model.dart';
 
 class EventsingleWidget extends StatefulWidget {
-  const EventsingleWidget({super.key});
+  const EventsingleWidget({
+    super.key,
+    required this.eventID,
+  });
+
+  final String? eventID;
 
   @override
   _EventsingleWidgetState createState() => _EventsingleWidgetState();
@@ -90,11 +95,24 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           15.0, 0.0, 0.0, 0.0),
-                                      child: Icon(
-                                        Icons.arrow_back_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 26.0,
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'EVENTSINGLE_PAGE_Icon_lc5hycmo_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Icon_navigate_back');
+                                          context.safePop();
+                                        },
+                                        child: Icon(
+                                          Icons.arrow_back_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 26.0,
+                                        ),
                                       ),
                                     ),
                                   ),

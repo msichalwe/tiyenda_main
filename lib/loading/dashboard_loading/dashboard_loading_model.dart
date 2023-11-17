@@ -1,6 +1,5 @@
-import '/components/dashboard_featured_shimmer_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/loading/shimmer_events_dashboard_trending/shimmer_events_dashboard_trending_widget.dart';
+import '/loading/dashboard_top_container_loading/dashboard_top_container_loading_widget.dart';
 import 'dashboard_loading_widget.dart' show DashboardLoadingWidget;
 import 'package:flutter/material.dart';
 
@@ -12,19 +11,15 @@ class DashboardLoadingModel extends FlutterFlowModel<DashboardLoadingWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Model for dashboardFeaturedShimmer component.
-  late DashboardFeaturedShimmerModel dashboardFeaturedShimmerModel;
-  // Model for shimmerEventsDashboardTrending component.
-  late ShimmerEventsDashboardTrendingModel shimmerEventsDashboardTrendingModel;
+  // Model for dashboardTopContainerLoading component.
+  late DashboardTopContainerLoadingModel dashboardTopContainerLoadingModel;
 
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
-    dashboardFeaturedShimmerModel =
-        createModel(context, () => DashboardFeaturedShimmerModel());
-    shimmerEventsDashboardTrendingModel =
-        createModel(context, () => ShimmerEventsDashboardTrendingModel());
+    dashboardTopContainerLoadingModel =
+        createModel(context, () => DashboardTopContainerLoadingModel());
   }
 
   @override
@@ -33,8 +28,7 @@ class DashboardLoadingModel extends FlutterFlowModel<DashboardLoadingWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
-    dashboardFeaturedShimmerModel.dispose();
-    shimmerEventsDashboardTrendingModel.dispose();
+    dashboardTopContainerLoadingModel.dispose();
   }
 
   /// Action blocks are added here.

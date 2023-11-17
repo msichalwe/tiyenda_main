@@ -71,6 +71,7 @@ class _DashboardFeaturedShimmerWidgetState
 
     return Row(
       mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
@@ -85,53 +86,40 @@ class _DashboardFeaturedShimmerWidgetState
               children: [
                 Align(
                   alignment: const AlignmentDirectional(0.00, 0.00),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent(
-                          'DASHBOARD_FEATURED_SHIMMER_Container_7pe');
-                      logFirebaseEvent('Container_navigate_to');
-
-                      context.pushNamed('eventsingle');
-                    },
+                  child: Container(
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF364672),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    alignment: const AlignmentDirectional(0.00, 0.00),
                     child: Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
                       height: MediaQuery.sizeOf(context).height * 1.0,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF364672),
+                        color: const Color(0xFF334D86),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      alignment: const AlignmentDirectional(0.00, 0.00),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF334D86),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: ClipRect(
-                          child: ImageFiltered(
-                            imageFilter: ImageFilter.blur(
-                              sigmaX: 6.0,
-                              sigmaY: 6.0,
-                            ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.00, 0.00),
-                              child: Transform.rotate(
-                                angle: 1.9199,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/dark-blue-textile-texture.jpg',
-                                    width: 300.0,
-                                    height: 200.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ).animateOnPageLoad(
-                                    animationsMap['imageOnPageLoadAnimation']!),
-                              ),
+                      child: ClipRect(
+                        child: ImageFiltered(
+                          imageFilter: ImageFilter.blur(
+                            sigmaX: 6.0,
+                            sigmaY: 6.0,
+                          ),
+                          child: Align(
+                            alignment: const AlignmentDirectional(0.00, 0.00),
+                            child: Transform.rotate(
+                              angle: 1.5882,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/dark-blue-textile-texture.jpg',
+                                  width: 300.0,
+                                  height: 200.0,
+                                  fit: BoxFit.cover,
+                                ),
+                              ).animateOnPageLoad(
+                                  animationsMap['imageOnPageLoadAnimation']!),
                             ),
                           ),
                         ),

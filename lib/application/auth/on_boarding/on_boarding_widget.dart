@@ -270,9 +270,12 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                           decoration: const BoxDecoration(
                             color: Color(0xFF0D121D),
                           ),
-                          child: MasonryGridView.count(
+                          child: MasonryGridView.builder(
                             physics: const NeverScrollableScrollPhysics(),
-                            crossAxisCount: 3,
+                            gridDelegate:
+                                const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                            ),
                             crossAxisSpacing: 10.0,
                             mainAxisSpacing: 10.0,
                             itemCount: 11,

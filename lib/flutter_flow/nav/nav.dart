@@ -146,7 +146,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'eventsingle',
               path: 'eventsingle',
-              builder: (context, params) => const EventsingleWidget(),
+              builder: (context, params) => EventsingleWidget(
+                eventID: params.getParam('eventID', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'tickets',
@@ -167,6 +169,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'dashboard_loading',
               path: 'dashboardLoading',
               builder: (context, params) => const DashboardLoadingWidget(),
+            ),
+            FFRoute(
+              name: 'singleEventsComponent',
+              path: 'singleEventsComponent',
+              builder: (context, params) => const SingleEventsComponentWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

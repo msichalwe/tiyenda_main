@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -185,52 +184,6 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Container(
-                                                width: 72.0,
-                                                height: 72.0,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
-                                                  border: Border.all(
-                                                    color: const Color(0xFF191F37),
-                                                    width: 2.0,
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          2.0, 2.0, 2.0, 2.0),
-                                                  child: AuthUserStreamWidget(
-                                                    builder: (context) =>
-                                                        ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: CachedNetworkImage(
-                                                        fadeInDuration:
-                                                            const Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                        fadeOutDuration:
-                                                            const Duration(
-                                                                milliseconds:
-                                                                    500),
-                                                        imageUrl:
-                                                            getCORSProxyUrl(
-                                                          currentUserPhoto !=
-                                                                      ''
-                                                              ? currentUserPhoto
-                                                              : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pulsecarshalton.co.uk%2Fhome-v1%2Fimage-placeholder%2F&psig=AOvVaw0g5jwtX55qSzEWrxn00qHU&ust=1700129764476000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCJj-vI7jxYIDFQAAAAAdAAAAABAE',
-                                                        ),
-                                                        width: 44.0,
-                                                        height: 44.0,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
                                               Expanded(
                                                 child: Padding(
                                                   padding: const EdgeInsetsDirectional
@@ -249,7 +202,18 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                           currentUserDisplayName,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .headlineSmall,
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmallFamily,
+                                                                fontSize: 22.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .headlineSmallFamily),
+                                                              ),
                                                         ),
                                                       ),
                                                       Padding(
@@ -264,7 +228,18 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                           currentUserEmail,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
-                                                              .labelMedium,
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 18.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
                                                         ),
                                                       ),
                                                     ],

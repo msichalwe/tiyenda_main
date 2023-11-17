@@ -22,3 +22,5 @@ export '/application/tickets/tickets/tickets_widget.dart' show TicketsWidget;
 export '/application/settings/web_page/web_page_widget.dart' show WebPageWidget;
 export '/loading/dashboard_loading/dashboard_loading_widget.dart'
     show DashboardLoadingWidget;
+export '/single_events_component/single_events_component_widget.dart'
+    show SingleEventsComponentWidget;
