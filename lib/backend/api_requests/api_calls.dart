@@ -15,6 +15,7 @@ class EventsGroup {
     'Content-type': 'application/json',
   };
   static GetAllEventsCall getAllEventsCall = GetAllEventsCall();
+  static GetSingleEventsCall getSingleEventsCall = GetSingleEventsCall();
 }
 
 class GetAllEventsCall {
@@ -25,7 +26,7 @@ class GetAllEventsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getAllEvents',
-      apiUrl: '${EventsGroup.baseUrl}/events',
+      apiUrl: '${EventsGroup.baseUrl}events',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
@@ -34,7 +35,7 @@ class GetAllEventsCall {
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
-      cache: false,
+      cache: true,
     );
   }
 
@@ -148,6 +149,29 @@ class GetAllEventsCall {
         r'''$[:].organizer.description''',
         true,
       );
+}
+
+class GetSingleEventsCall {
+  Future<ApiCallResponse> call({
+    String? eventId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getSingleEvents',
+      apiUrl: '${EventsGroup.baseUrl}/events/$eventId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
 }
 
 /// End Events Group Code

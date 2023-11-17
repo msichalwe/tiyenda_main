@@ -1,3 +1,4 @@
+import '/components/single_events_shimmer_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'single_events_component_widget.dart' show SingleEventsComponentWidget;
 import 'package:flutter/material.dart';
@@ -7,15 +8,21 @@ class SingleEventsComponentModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Model for singleEventsShimmer component.
+  late SingleEventsShimmerModel singleEventsShimmerModel;
 
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    singleEventsShimmerModel =
+        createModel(context, () => SingleEventsShimmerModel());
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
+    singleEventsShimmerModel.dispose();
   }
 
   /// Action blocks are added here.
