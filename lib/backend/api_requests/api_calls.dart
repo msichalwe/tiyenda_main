@@ -16,6 +16,7 @@ class EventsGroup {
   };
   static GetAllEventsCall getAllEventsCall = GetAllEventsCall();
   static GetSingleEventsCall getSingleEventsCall = GetSingleEventsCall();
+  static GetEventTicketsCall getEventTicketsCall = GetEventTicketsCall();
 }
 
 class GetAllEventsCall {
@@ -169,7 +170,30 @@ class GetSingleEventsCall {
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
-      cache: false,
+      cache: true,
+    );
+  }
+}
+
+class GetEventTicketsCall {
+  Future<ApiCallResponse> call({
+    String? eventId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getEventTickets',
+      apiUrl: '${EventsGroup.baseUrl}/tickets/$eventId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: true,
     );
   }
 }
