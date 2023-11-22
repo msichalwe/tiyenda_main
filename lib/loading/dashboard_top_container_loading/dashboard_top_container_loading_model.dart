@@ -1,3 +1,4 @@
+import '/components/categories_loading_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/loading/dashboard_featured_shimmer/dashboard_featured_shimmer_widget.dart';
 import 'dashboard_top_container_loading_widget.dart'
@@ -14,6 +15,8 @@ class DashboardTopContainerLoadingModel
   String? Function(BuildContext, String?)? textControllerValidator;
   // Model for dashboardFeaturedShimmer component.
   late DashboardFeaturedShimmerModel dashboardFeaturedShimmerModel;
+  // Model for categoriesLoading component.
+  late CategoriesLoadingModel categoriesLoadingModel;
 
   /// Initialization and disposal methods.
 
@@ -21,6 +24,8 @@ class DashboardTopContainerLoadingModel
   void initState(BuildContext context) {
     dashboardFeaturedShimmerModel =
         createModel(context, () => DashboardFeaturedShimmerModel());
+    categoriesLoadingModel =
+        createModel(context, () => CategoriesLoadingModel());
   }
 
   @override
@@ -29,6 +34,7 @@ class DashboardTopContainerLoadingModel
     textController?.dispose();
 
     dashboardFeaturedShimmerModel.dispose();
+    categoriesLoadingModel.dispose();
   }
 
   /// Action blocks are added here.

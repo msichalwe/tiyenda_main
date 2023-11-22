@@ -70,6 +70,11 @@ class UsersRecord extends FirestoreRecord {
   String get backendAuthToken => _backendAuthToken ?? '';
   bool hasBackendAuthToken() => _backendAuthToken != null;
 
+  // "backendUserId" field.
+  String? _backendUserId;
+  String get backendUserId => _backendUserId ?? '';
+  bool hasBackendUserId() => _backendUserId != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -82,6 +87,7 @@ class UsersRecord extends FirestoreRecord {
     _city = snapshotData['city'] as String?;
     _type = snapshotData['type'] as String?;
     _backendAuthToken = snapshotData['backendAuthToken'] as String?;
+    _backendUserId = snapshotData['backendUserId'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -129,6 +135,7 @@ Map<String, dynamic> createUsersRecordData({
   String? city,
   String? type,
   String? backendAuthToken,
+  String? backendUserId,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -143,6 +150,7 @@ Map<String, dynamic> createUsersRecordData({
       'city': city,
       'type': type,
       'backendAuthToken': backendAuthToken,
+      'backendUserId': backendUserId,
     }.withoutNulls,
   );
 
@@ -164,7 +172,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.bio == e2?.bio &&
         e1?.city == e2?.city &&
         e1?.type == e2?.type &&
-        e1?.backendAuthToken == e2?.backendAuthToken;
+        e1?.backendAuthToken == e2?.backendAuthToken &&
+        e1?.backendUserId == e2?.backendUserId;
   }
 
   @override
@@ -179,7 +188,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.bio,
         e?.city,
         e?.type,
-        e?.backendAuthToken
+        e?.backendAuthToken,
+        e?.backendUserId
       ]);
 
   @override

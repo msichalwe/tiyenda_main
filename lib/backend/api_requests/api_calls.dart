@@ -17,6 +17,14 @@ class EventsGroup {
   static GetAllEventsCall getAllEventsCall = GetAllEventsCall();
   static GetSingleEventsCall getSingleEventsCall = GetSingleEventsCall();
   static GetEventTicketsCall getEventTicketsCall = GetEventTicketsCall();
+  static FollowOrganizerCall followOrganizerCall = FollowOrganizerCall();
+  static UnfollowOrganizerCall unfollowOrganizerCall = UnfollowOrganizerCall();
+  static GetAllCategoriesCall getAllCategoriesCall = GetAllCategoriesCall();
+  static GetCategoryEventsCall getCategoryEventsCall = GetCategoryEventsCall();
+  static CreateUserMongoCall createUserMongoCall = CreateUserMongoCall();
+  static GetMongoUserCall getMongoUserCall = GetMongoUserCall();
+  static GetAllOrganizersCall getAllOrganizersCall = GetAllOrganizersCall();
+  static GetOneOrganizerCall getOneOrganizerCall = GetOneOrganizerCall();
 }
 
 class GetAllEventsCall {
@@ -194,6 +202,262 @@ class GetEventTicketsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: true,
+    );
+  }
+}
+
+class FollowOrganizerCall {
+  Future<ApiCallResponse> call({
+    String? organizerId = '',
+    String? userId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+    final ffApiRequestBody = '''
+{
+  "userId": "$userId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'followOrganizer',
+      apiUrl: '${EventsGroup.baseUrl}/follow/$organizerId',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class UnfollowOrganizerCall {
+  Future<ApiCallResponse> call({
+    String? organizerId = '',
+    String? userId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'unfollowOrganizer',
+      apiUrl: '${EventsGroup.baseUrl}/follow/$organizerId',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetAllCategoriesCall {
+  Future<ApiCallResponse> call({
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAllCategories',
+      apiUrl: '${EventsGroup.baseUrl}/categories',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      );
+  dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$[:].name''',
+        true,
+      );
+  dynamic description(dynamic response) => getJsonField(
+        response,
+        r'''$[:].description''',
+        true,
+      );
+  dynamic imageUrl(dynamic response) => getJsonField(
+        response,
+        r'''$[:].imageUrl''',
+        true,
+      );
+  dynamic createdAt(dynamic response) => getJsonField(
+        response,
+        r'''$[:].createdAt''',
+        true,
+      );
+  dynamic updatedAt(dynamic response) => getJsonField(
+        response,
+        r'''$[:].updatedAt''',
+        true,
+      );
+}
+
+class GetCategoryEventsCall {
+  Future<ApiCallResponse> call({
+    String? categoryId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getCategoryEvents',
+      apiUrl: '${EventsGroup.baseUrl}/events/category/$categoryId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CreateUserMongoCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    String? name = '',
+    String? userId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+    final ffApiRequestBody = '''
+{
+  "email": "$email",
+  "name": "$name",
+  "fireBaseId": "<fireBaseId>"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'createUserMongo',
+      apiUrl: '${EventsGroup.baseUrl}user',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.TEXT,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic mongoID(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+}
+
+class GetMongoUserCall {
+  Future<ApiCallResponse> call({
+    String? firebaseId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getMongoUser',
+      apiUrl: '${EventsGroup.baseUrl}/user/$firebaseId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetAllOrganizersCall {
+  Future<ApiCallResponse> call({
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAllOrganizers',
+      apiUrl: '${EventsGroup.baseUrl}/organizer',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic events(dynamic response) => getJsonField(
+        response,
+        r'''$[:].events''',
+        true,
+      );
+  dynamic createdAt(dynamic response) => getJsonField(
+        response,
+        r'''$[:].createdAt''',
+      );
+  dynamic description(dynamic response) => getJsonField(
+        response,
+        r'''$[:].description''',
+      );
+  dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$[:].name''',
+      );
+  dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$[:].id''',
+      );
+}
+
+class GetOneOrganizerCall {
+  Future<ApiCallResponse> call({
+    String? organizerId = '',
+    dynamic eventsJson,
+  }) async {
+    final events = _serializeJson(eventsJson, true);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getOneOrganizer',
+      apiUrl: '${EventsGroup.baseUrl}/organizer/$organizerId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
     );
   }
 }
