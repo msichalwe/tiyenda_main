@@ -356,7 +356,7 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).primary,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                   child: Center(
                     child: Image.asset(
                       'assets/images/rounded_logo.png',

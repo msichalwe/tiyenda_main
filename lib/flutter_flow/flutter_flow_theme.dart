@@ -66,6 +66,16 @@ abstract class FlutterFlowTheme {
   late Color primaryBtnText;
   late Color lineColor;
   late Color white70;
+  late Color rose;
+  late Color fandango;
+  late Color grape;
+  late Color chryslerBlue;
+  late Color darkBlue;
+  late Color zaffre;
+  late Color palatinateBlue;
+  late Color neonBlue;
+  late Color chefchaouenBlue;
+  late Color vividSkyBlue;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -173,6 +183,16 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color primaryBtnText = const Color(0xFFFFFFFF);
   late Color lineColor = const Color(0xFFE0E3E7);
   late Color white70 = const Color(0xB3FFFFFF);
+  late Color rose = const Color(0xFFF72585);
+  late Color fandango = const Color(0xFFB5179E);
+  late Color grape = const Color(0xFF7209B7);
+  late Color chryslerBlue = const Color(0xFF560BAD);
+  late Color darkBlue = const Color(0xFF480CA8);
+  late Color zaffre = const Color(0xFF3A0CA3);
+  late Color palatinateBlue = const Color(0xFF3F37C9);
+  late Color neonBlue = const Color(0xFF4361EE);
+  late Color chefchaouenBlue = const Color(0xFF4895EF);
+  late Color vividSkyBlue = const Color(0xFF4CC9F0);
 }
 
 abstract class Typography {
@@ -572,6 +592,16 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color primaryBtnText = const Color(0xFFFFFFFF);
   late Color lineColor = const Color(0xFF212C36);
   late Color white70 = const Color(0xB3FFFFFF);
+  late Color rose = const Color(0xFFF72585);
+  late Color fandango = const Color(0xFFB5179E);
+  late Color grape = const Color(0xFF7209B7);
+  late Color chryslerBlue = const Color(0xFF560BAD);
+  late Color darkBlue = const Color(0xFF480CA8);
+  late Color zaffre = const Color(0xFF3A0CA3);
+  late Color palatinateBlue = const Color(0xFF3F37C9);
+  late Color neonBlue = const Color(0xFF4361EE);
+  late Color chefchaouenBlue = const Color(0xFF4895EF);
+  late Color vividSkyBlue = const Color(0xFF4CC9F0);
 }
 
 extension TextStyleHelper on TextStyle {

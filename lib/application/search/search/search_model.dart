@@ -1,5 +1,4 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import 'search_widget.dart' show SearchWidget;
 import 'package:flutter/material.dart';
 
@@ -8,12 +7,11 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for TextField widget.
+  final textFieldKey = GlobalKey();
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
+  String? textFieldSelectedOption;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // State field(s) for ChoiceChips widget.
-  String? choiceChipsValue;
-  FormFieldController<List<String>>? choiceChipsValueController;
 
   /// Initialization and disposal methods.
 
@@ -24,7 +22,6 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
-    textController?.dispose();
   }
 
   /// Action blocks are added here.
