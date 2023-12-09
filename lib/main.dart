@@ -110,16 +110,7 @@ class _MyAppState extends State<MyApp> {
         scrollbarTheme: ScrollbarThemeData(
           thumbVisibility: MaterialStateProperty.all(false),
           trackVisibility: MaterialStateProperty.all(true),
-          interactive: true,
-          thumbColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.dragged)) {
-              return const Color(0xffe14613);
-            }
-            if (states.contains(MaterialState.hovered)) {
-              return const Color(0xffe14613);
-            }
-            return const Color(0xffe14613);
-          }),
+          interactive: false,
         ),
       ),
       darkTheme: ThemeData(
@@ -127,16 +118,7 @@ class _MyAppState extends State<MyApp> {
         scrollbarTheme: ScrollbarThemeData(
           thumbVisibility: MaterialStateProperty.all(false),
           trackVisibility: MaterialStateProperty.all(true),
-          interactive: true,
-          thumbColor: MaterialStateProperty.resolveWith((states) {
-            if (states.contains(MaterialState.dragged)) {
-              return const Color(0xffcb440c);
-            }
-            if (states.contains(MaterialState.hovered)) {
-              return const Color(0xffcb440c);
-            }
-            return const Color(0xffcb440c);
-          }),
+          interactive: false,
         ),
       ),
       themeMode: _themeMode,

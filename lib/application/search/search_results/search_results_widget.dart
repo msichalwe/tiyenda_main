@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -176,24 +176,22 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                                               logFirebaseEvent(
                                                   'SEARCH_RESULTS_PAGE_search_list_ON_TAP');
                                               logFirebaseEvent(
-                                                  'search_list_backend_call');
-
-                                              await SearchedEventsRecord
-                                                  .collection
-                                                  .doc()
-                                                  .set(
-                                                      createSearchedEventsRecordData(
-                                                    eventId: getJsonField(
-                                                      searchResultsItem,
-                                                      r'''$.id''',
-                                                    ).toString(),
-                                                    eventName: getJsonField(
-                                                      searchResultsItem,
-                                                      r'''$.name''',
-                                                    ).toString(),
-                                                    searchedDate:
-                                                        getCurrentTimestamp,
-                                                  ));
+                                                  'search_list_update_app_state');
+                                              setState(() {
+                                                FFAppState().addToSearchHistory(
+                                                    SearchHistoryStruct(
+                                                  eventId: getJsonField(
+                                                    searchResultsItem,
+                                                    r'''$.id''',
+                                                  ).toString(),
+                                                  eventName: getJsonField(
+                                                    searchResultsItem,
+                                                    r'''$.name''',
+                                                  ).toString(),
+                                                  searchDate:
+                                                      getCurrentTimestamp,
+                                                ));
+                                              });
                                               logFirebaseEvent(
                                                   'search_list_navigate_to');
 

@@ -1,5 +1,4 @@
-import '/components/search_page_empty_list_widget.dart';
-import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
+import '/components/recent_search_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +27,7 @@ class _SearchWidgetState extends State<SearchWidget> {
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'search'});
     _model.eventSearchController ??= TextEditingController();
+    _model.eventSearchFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -93,140 +93,160 @@ class _SearchWidgetState extends State<SearchWidget> {
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 25.0, 16.0, 8.0),
-                        child: Autocomplete<String>(
-                          initialValue: const TextEditingValue(),
-                          optionsBuilder: (textEditingValue) {
-                            if (textEditingValue.text == '') {
-                              return const Iterable<String>.empty();
-                            }
-                            return ['Option 1'].where((option) {
-                              final lowercaseOption = option.toLowerCase();
-                              return lowercaseOption.contains(
-                                  textEditingValue.text.toLowerCase());
-                            });
-                          },
-                          optionsViewBuilder: (context, onSelected, options) {
-                            return AutocompleteOptionsList(
-                              textFieldKey: _model.eventSearchKey,
-                              textController: _model.eventSearchController!,
-                              options: options.toList(),
-                              onSelected: onSelected,
-                              textStyle:
-                                  FlutterFlowTheme.of(context).bodyMedium,
-                              textHighlightStyle: const TextStyle(),
-                              elevation: 4.0,
-                              optionBackgroundColor:
-                                  FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                              optionHighlightColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              maxHeight: 200.0,
+                        child: TextFormField(
+                          controller: _model.eventSearchController,
+                          focusNode: _model.eventSearchFocusNode,
+                          onFieldSubmitted: (_) async {
+                            logFirebaseEvent(
+                                'SEARCH_eventSearch_ON_TEXTFIELD_SUBMIT');
+                            logFirebaseEvent('eventSearch_navigate_to');
+
+                            context.pushNamed(
+                              'searchResults',
+                              queryParameters: {
+                                'searchterm': serializeParam(
+                                  _model.eventSearchController.text,
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
                             );
                           },
-                          onSelected: (String selection) {
-                            setState(() =>
-                                _model.eventSearchSelectedOption = selection);
-                            FocusScope.of(context).unfocus();
-                          },
-                          fieldViewBuilder: (
-                            context,
-                            textEditingController,
-                            focusNode,
-                            onEditingComplete,
-                          ) {
-                            _model.eventSearchFocusNode = focusNode;
-
-                            _model.eventSearchController =
-                                textEditingController;
-                            return TextFormField(
-                              key: _model.eventSearchKey,
-                              controller: textEditingController,
-                              focusNode: focusNode,
-                              onEditingComplete: onEditingComplete,
-                              onFieldSubmitted: (_) async {
-                                logFirebaseEvent(
-                                    'SEARCH_eventSearch_ON_TEXTFIELD_SUBMIT');
-                                logFirebaseEvent('eventSearch_navigate_to');
-
-                                context.pushNamed(
-                                  'searchResults',
-                                  queryParameters: {
-                                    'searchterm': serializeParam(
-                                      _model.eventSearchSelectedOption,
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              textInputAction: TextInputAction.search,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelText: 'Search for an event..',
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .labelMediumFamily,
-                                      fontSize: 16.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMediumFamily),
-                                    ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.0),
+                          textInputAction: TextInputAction.search,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Search for an event..',
+                            labelStyle:
+                                FlutterFlowTheme.of(context).labelMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  fontSize: 16.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
                                 ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
-                                filled: true,
-                                fillColor: const Color(0x792A284E),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 0.0, 0.0),
-                                suffixIcon: Icon(
-                                  Icons.search_rounded,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0x00000000),
+                                width: 2.0,
                               ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                              cursorColor: FlutterFlowTheme.of(context).primary,
-                              validator: _model.eventSearchControllerValidator
-                                  .asValidator(context),
-                            );
-                          },
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            filled: true,
+                            fillColor: const Color(0x792A284E),
+                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 0.0, 0.0, 0.0),
+                            suffixIcon: Icon(
+                              Icons.search_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                            ),
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          cursorColor: FlutterFlowTheme.of(context).primary,
+                          validator: _model.eventSearchControllerValidator
+                              .asValidator(context),
                         ),
                       ),
-                      Align(
-                        alignment: const AlignmentDirectional(0.00, 0.00),
-                        child: wrapWithModel(
-                          model: _model.searchPageEmptyListModel,
-                          updateCallback: () => setState(() {}),
-                          child: const SearchPageEmptyListWidget(),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        child: Container(
+                          height: MediaQuery.sizeOf(context).height * 1.0,
+                          decoration: const BoxDecoration(
+                            color: Color(0xFF141A2A),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 10.0, 10.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        'Recent',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              fontSize: 18.0,
+                                              fontWeight: FontWeight.w800,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 10.0, 0.0),
+                                      child: Text(
+                                        'See all',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              fontSize: 15.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: wrapWithModel(
+                                  model: _model.recentSearchListModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: const RecentSearchListWidget(),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

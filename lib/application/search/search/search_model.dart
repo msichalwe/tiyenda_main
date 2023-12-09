@@ -1,4 +1,4 @@
-import '/components/search_page_empty_list_widget.dart';
+import '/components/recent_search_list_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'search_widget.dart' show SearchWidget;
 import 'package:flutter/material.dart';
@@ -8,28 +8,26 @@ class SearchModel extends FlutterFlowModel<SearchWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for eventSearch widget.
-  final eventSearchKey = GlobalKey();
   FocusNode? eventSearchFocusNode;
   TextEditingController? eventSearchController;
-  String? eventSearchSelectedOption;
   String? Function(BuildContext, String?)? eventSearchControllerValidator;
-  // Model for searchPageEmptyList component.
-  late SearchPageEmptyListModel searchPageEmptyListModel;
+  // Model for recentSearchList component.
+  late RecentSearchListModel recentSearchListModel;
 
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
-    searchPageEmptyListModel =
-        createModel(context, () => SearchPageEmptyListModel());
+    recentSearchListModel = createModel(context, () => RecentSearchListModel());
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     eventSearchFocusNode?.dispose();
+    eventSearchController?.dispose();
 
-    searchPageEmptyListModel.dispose();
+    recentSearchListModel.dispose();
   }
 
   /// Action blocks are added here.
