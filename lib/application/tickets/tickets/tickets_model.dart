@@ -1,3 +1,4 @@
+import '/components/up_coming_event_orders_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'tickets_widget.dart' show TicketsWidget;
 import 'package:flutter/material.dart';
@@ -11,15 +12,22 @@ class TicketsModel extends FlutterFlowModel<TicketsWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
+  // Model for upComingEventOrders component.
+  late UpComingEventOrdersModel upComingEventOrdersModel;
+
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    upComingEventOrdersModel =
+        createModel(context, () => UpComingEventOrdersModel());
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();
+    upComingEventOrdersModel.dispose();
   }
 
   /// Action blocks are added here.

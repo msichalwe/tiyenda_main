@@ -181,18 +181,21 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                                                   'SEARCH_RESULTS_PAGE_search_list_ON_TAP');
                                               logFirebaseEvent(
                                                   'search_list_update_app_state');
-                                              FFAppState().addToSearchHistory(
-                                                  SearchHistoryStruct(
-                                                eventId: getJsonField(
-                                                  searchResultsItem,
-                                                  r'''$.id''',
-                                                ).toString(),
-                                                eventName: getJsonField(
-                                                  searchResultsItem,
-                                                  r'''$.name''',
-                                                ).toString(),
-                                                searchDate: getCurrentTimestamp,
-                                              ));
+                                              FFAppState().update(() {
+                                                FFAppState().addToSearchHistory(
+                                                    SearchHistoryStruct(
+                                                  eventId: getJsonField(
+                                                    searchResultsItem,
+                                                    r'''$.id''',
+                                                  ).toString(),
+                                                  eventName: getJsonField(
+                                                    searchResultsItem,
+                                                    r'''$.name''',
+                                                  ).toString(),
+                                                  searchDate:
+                                                      getCurrentTimestamp,
+                                                ));
+                                              });
                                               logFirebaseEvent(
                                                   'search_list_navigate_to');
 

@@ -95,628 +95,566 @@ class _CartPageWidgetState extends State<CartPageWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 24.0),
-                    child: Wrap(
-                      spacing: 16.0,
-                      runSpacing: 16.0,
-                      alignment: WrapAlignment.start,
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      direction: Axis.horizontal,
-                      runAlignment: WrapAlignment.start,
-                      verticalDirection: VerticalDirection.down,
-                      clipBehavior: Clip.none,
-                      children: [
-                        Container(
-                          constraints: const BoxConstraints(
-                            maxWidth: 750.0,
+                  Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: 750.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: const [
+                        BoxShadow(
+                          blurRadius: 4.0,
+                          color: Color(0x33000000),
+                          offset: Offset(0.0, 2.0),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          16.0, 16.0, 16.0, 16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Check out',
+                            style: FlutterFlowTheme.of(context).titleLarge,
                           ),
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            boxShadow: const [
-                              BoxShadow(
-                                blurRadius: 4.0,
-                                color: Color(0x33000000),
-                                offset: Offset(0.0, 2.0),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
+                          Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 16.0, 16.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Check out',
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 4.0, 0.0, 12.0),
-                                  child: Text(
-                                    'Below is the list of tickets you have selected to purchase.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                  ),
-                                ),
-                                Builder(
-                                  builder: (context) {
-                                    final myTicketsSelected =
-                                        FFAppState().cartItems.toList();
-                                    return ListView.builder(
-                                      padding: EdgeInsets.zero,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: myTicketsSelected.length,
-                                      itemBuilder:
-                                          (context, myTicketsSelectedIndex) {
-                                        final myTicketsSelectedItem =
-                                            myTicketsSelected[
-                                                myTicketsSelectedIndex];
-                                        return Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 12.0),
-                                          child: Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                1.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  blurRadius: 0.0,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                  offset: const Offset(0.0, 1.0),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            child: Column(
+                                0.0, 4.0, 0.0, 12.0),
+                            child: Text(
+                              'Below is the list of tickets you have selected to purchase.',
+                              style: FlutterFlowTheme.of(context).labelMedium,
+                            ),
+                          ),
+                          Builder(
+                            builder: (context) {
+                              final myTicketsSelected =
+                                  FFAppState().cartItems.toList();
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: myTicketsSelected.length,
+                                itemBuilder: (context, myTicketsSelectedIndex) {
+                                  final myTicketsSelectedItem =
+                                      myTicketsSelected[myTicketsSelectedIndex];
+                                  return Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 12.0),
+                                    child: Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 0.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
+                                            offset: const Offset(0.0, 1.0),
+                                          )
+                                        ],
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 4.0, 0.0, 12.0),
+                                            child: Row(
                                               mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 4.0, 0.0, 12.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Expanded(
-                                                        flex: 3,
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                myTicketsSelectedItem
-                                                                    .name,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleLarge,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'K${myTicketsSelectedItem.price.toString()}',
-                                                          textAlign:
-                                                              TextAlign.end,
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                4.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          myTicketsSelectedItem
+                                                              .name,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleLarge,
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                                 Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 0.0, 0.0, 10.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      logFirebaseEvent(
-                                                          'CART_PAGE_PAGE_Container_v52dzdwu_ON_TAP');
-                                                      logFirebaseEvent(
-                                                          'Container_update_app_state');
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .removeAtIndexFromCartItems(
-                                                                myTicketsSelectedIndex);
-                                                      });
-                                                      logFirebaseEvent(
-                                                          'Container_update_app_state');
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .cartPriceTotal = FFAppState()
-                                                                .cartPriceTotal +
-                                                            functions.stringToNegativeInteger(
-                                                                myTicketsSelectedItem
-                                                                    .price
-                                                                    .toString())!;
-                                                      });
-                                                    },
-                                                    child: Container(
-                                                      width: 100.0,
-                                                      decoration:
-                                                          const BoxDecoration(),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Icon(
-                                                              Icons
-                                                                  .delete_outline,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              size: 24.0,
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          12.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Remove',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
+                                                          8.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'K${myTicketsSelectedItem.price.toString()}',
+                                                    textAlign: TextAlign.end,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .titleLarge,
                                                   ),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          constraints: const BoxConstraints(
-                            maxWidth: 430.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            boxShadow: const [
-                              BoxShadow(
-                                blurRadius: 4.0,
-                                color: Color(0x33000000),
-                                offset: Offset(0.0, 2.0),
-                              )
-                            ],
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 16.0, 24.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Order Summary',
-                                  style:
-                                      FlutterFlowTheme.of(context).titleLarge,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 4.0, 0.0, 12.0),
-                                  child: Text(
-                                    'Below is a list of your items.',
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelMedium,
-                                  ),
-                                ),
-                                Divider(
-                                  height: 32.0,
-                                  thickness: 2.0,
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 24.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 12.0),
-                                        child: Text(
-                                          'Price Breakdown',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Total Tickets Price',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Outfit',
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'CART_PAGE_PAGE_Container_v52dzdwu_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'Container_update_app_state');
+                                                setState(() {
+                                                  FFAppState()
+                                                      .removeAtIndexFromCartItems(
+                                                          myTicketsSelectedIndex);
+                                                });
+                                                logFirebaseEvent(
+                                                    'Container_update_app_state');
+                                                setState(() {
+                                                  FFAppState()
+                                                      .cartPriceTotal = FFAppState()
+                                                          .cartPriceTotal +
+                                                      functions
+                                                          .stringToNegativeInteger(
+                                                              myTicketsSelectedItem
+                                                                  .price
+                                                                  .toString())!;
+                                                });
+                                              },
+                                              child: Container(
+                                                width: 100.0,
+                                                decoration: const BoxDecoration(),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.delete_outline,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryText,
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmallFamily),
+                                                                .error,
+                                                        size: 24.0,
                                                       ),
-                                            ),
-                                            Text(
-                                              'K${FFAppState().cartPriceTotal.toString()}',
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Service Charge',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          'Remove',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmallFamily),
-                                                      ),
-                                            ),
-                                            Text(
-                                              functions
-                                                  .calculateServiceCharge(
-                                                      FFAppState()
-                                                          .cartPriceTotal,
-                                                      FFAppConstants
-                                                          .serviceCharge)
-                                                  .toString(),
-                                              textAlign: TextAlign.end,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Text(
-                                                  'Total',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 20.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .titleMediumFamily),
+                                                                    .error,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                        ),
                                                       ),
+                                                    ],
+                                                  ),
                                                 ),
-                                                FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 30.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 36.0,
-                                                  icon: Icon(
-                                                    Icons.info_outlined,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                    child: Container(
+                      width: double.infinity,
+                      constraints: const BoxConstraints(
+                        maxWidth: 430.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(0.0, 2.0),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 16.0, 16.0, 24.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Order Summary',
+                              style: FlutterFlowTheme.of(context).titleLarge,
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 4.0, 0.0, 12.0),
+                              child: Text(
+                                'Below is a list of your items.',
+                                style: FlutterFlowTheme.of(context).labelMedium,
+                              ),
+                            ),
+                            Divider(
+                              height: 32.0,
+                              thickness: 2.0,
+                              color: FlutterFlowTheme.of(context).alternate,
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 24.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 12.0),
+                                    child: Text(
+                                      'Price Breakdown',
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Total Tickets Price',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Outfit',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.normal,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmallFamily),
+                                              ),
+                                        ),
+                                        Text(
+                                          'K${FFAppState().cartPriceTotal.toString()}',
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          'Service Charge',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodySmall
+                                              .override(
+                                                fontFamily: 'Outfit',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.normal,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodySmallFamily),
+                                              ),
+                                        ),
+                                        Text(
+                                          functions
+                                              .calculateServiceCharge(
+                                                  FFAppState().cartPriceTotal,
+                                                  FFAppConstants.serviceCharge)
+                                              .toString(),
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyLarge,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 0.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'Total',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    fontFamily: 'Outfit',
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryText,
-                                                    size: 18.0,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    useGoogleFonts: GoogleFonts
+                                                            .asMap()
+                                                        .containsKey(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMediumFamily),
                                                   ),
-                                                  onPressed: () {
-                                                    print(
-                                                        'IconButton pressed ...');
-                                                  },
-                                                ),
-                                              ],
                                             ),
-                                            Text(
-                                              'K${functions.newCustomFunction(FFAppState().cartPriceTotal, functions.calculateServiceCharge(FFAppState().cartPriceTotal, FFAppConstants.serviceCharge)).toString()}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall,
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 36.0,
+                                              icon: Icon(
+                                                Icons.info_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 18.0,
+                                              ),
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
                                             ),
                                           ],
                                         ),
-                                      ),
-                                    ],
+                                        Text(
+                                          'K${functions.newCustomFunction(FFAppState().cartPriceTotal, functions.calculateServiceCharge(FFAppState().cartPriceTotal, FFAppConstants.serviceCharge)).toString()}',
+                                          style: FlutterFlowTheme.of(context)
+                                              .displaySmall,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                FFButtonWidget(
-                                  onPressed: () async {
-                                    logFirebaseEvent(
-                                        'CART_PAY_FOR_TICKETS_BTN_ON_TAP');
-                                    var shouldSetState = false;
-                                    logFirebaseEvent('Button_alert_dialog');
-                                    var confirmDialogResponse =
-                                        await showDialog<bool>(
-                                              context: context,
-                                              builder: (alertDialogContext) {
-                                                return WebViewAware(
-                                                    child: AlertDialog(
-                                                  title: const Text('Ticket Payment'),
-                                                  content: const Text(
-                                                      'You are about to pay for a ticket. A prompt will appear on your mobile device to confirm the order'),
-                                                  actions: [
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              false),
-                                                      child: const Text('Cancel'),
-                                                    ),
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(
-                                                              alertDialogContext,
-                                                              true),
-                                                      child: const Text('Confirm'),
-                                                    ),
-                                                  ],
-                                                ));
-                                              },
-                                            ) ??
-                                            false;
-                                    if (confirmDialogResponse) {
-                                      logFirebaseEvent('Button_backend_call');
-                                      _model.apiResultb3o = await EventsGroup
-                                          .orderTicketsCall
-                                          .call(
-                                        total: functions.newCustomFunction(
-                                            FFAppState().cartPriceTotal,
-                                            functions.calculateServiceCharge(
-                                                FFAppState().cartPriceTotal,
-                                                FFAppConstants.serviceCharge)),
-                                        ticketsJson: functions.selectJsonFields(
-                                            FFAppState()
-                                                .cartItems
-                                                .map((e) => e.toMap())
-                                                .toList()),
-                                        firebaseId: currentUserUid,
-                                        eventId: FFAppState()
-                                            .cartItems
-                                            .first
-                                            .eventId,
-                                      );
-                                      shouldSetState = true;
-                                      if ((_model.apiResultb3o?.succeeded ??
-                                          true)) {
-                                        logFirebaseEvent('Button_navigate_to');
-
-                                        context.goNamed('dashboard');
-
-                                        logFirebaseEvent('Button_alert_dialog');
-                                        await showDialog(
+                                ],
+                              ),
+                            ),
+                            FFButtonWidget(
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'CART_PAY_FOR_TICKETS_BTN_ON_TAP');
+                                var shouldSetState = false;
+                                logFirebaseEvent('Button_alert_dialog');
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
                                           context: context,
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                                 child: AlertDialog(
-                                              title: const Text('Tickets Purchased'),
+                                              title: const Text('Ticket Payment'),
                                               content: const Text(
-                                                  'Congratualtions tickets purchased'),
+                                                  'You are about to pay for a ticket. A prompt will appear on your mobile device to confirm the order'),
                                               actions: [
                                                 TextButton(
                                                   onPressed: () =>
                                                       Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: const Text('Cancel'),
                                                 ),
-                                              ],
-                                            ));
-                                          },
-                                        );
-                                        logFirebaseEvent(
-                                            'Button_update_app_state');
-                                        setState(() {
-                                          FFAppState().deleteCart();
-                                          FFAppState().cart = [];
-                                        });
-                                        logFirebaseEvent(
-                                            'Button_update_app_state');
-                                        setState(() {
-                                          FFAppState().deleteCartPriceTotal();
-                                          FFAppState().cartPriceTotal = 0;
-                                        });
-                                        if (shouldSetState) setState(() {});
-                                        return;
-                                      } else {
-                                        logFirebaseEvent('Button_alert_dialog');
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return WebViewAware(
-                                                child: AlertDialog(
-                                              title: const Text('OOPS'),
-                                              content: Text((_model.apiResultb3o
-                                                          ?.jsonBody ??
-                                                      '')
-                                                  .toString()),
-                                              actions: [
                                                 TextButton(
                                                   onPressed: () =>
                                                       Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: const Text('Confirm'),
                                                 ),
                                               ],
                                             ));
                                           },
-                                        );
-                                        if (shouldSetState) setState(() {});
-                                        return;
-                                      }
-                                    } else {
-                                      if (shouldSetState) setState(() {});
-                                      return;
-                                    }
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  logFirebaseEvent('Button_backend_call');
+                                  _model.apiResultb3o =
+                                      await EventsGroup.orderTicketsCall.call(
+                                    total: functions.newCustomFunction(
+                                        FFAppState().cartPriceTotal,
+                                        functions.calculateServiceCharge(
+                                            FFAppState().cartPriceTotal,
+                                            FFAppConstants.serviceCharge)),
+                                    eventId:
+                                        FFAppState().cartItems.first.eventId,
+                                    fireBaseId: currentUserUid,
+                                    ticketsJson: functions.selectJsonFields(
+                                        FFAppState()
+                                            .cartItems
+                                            .map((e) => e.toMap())
+                                            .toList()),
+                                  );
+                                  shouldSetState = true;
+                                  if ((_model.apiResultb3o?.succeeded ??
+                                      true)) {
+                                    logFirebaseEvent('Button_alert_dialog');
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                            child: AlertDialog(
+                                          title: const Text('Tickets Purchased'),
+                                          content: const Text(
+                                              'Congratualtions tickets purchased'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        ));
+                                      },
+                                    );
+                                    logFirebaseEvent('Button_update_app_state');
+                                    setState(() {
+                                      FFAppState().deleteCart();
+                                      FFAppState().cart = [];
+
+                                      FFAppState().deleteCartItems();
+                                      FFAppState().cartItems = [];
+
+                                      FFAppState().deleteCartPriceTotal();
+                                      FFAppState().cartPriceTotal = 0;
+                                    });
+                                    logFirebaseEvent('Button_navigate_to');
+
+                                    context.goNamed('dashboard');
 
                                     if (shouldSetState) setState(() {});
-                                  },
-                                  text: 'Pay for tickets',
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 50.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    textStyle:
-                                        FlutterFlowTheme.of(context).titleSmall,
-                                    elevation: 2.0,
-                                    borderSide: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(50.0),
-                                  ),
+                                    return;
+                                  } else {
+                                    logFirebaseEvent('Button_alert_dialog');
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                            child: AlertDialog(
+                                          title: const Text('OOPS'),
+                                          content: Text(
+                                              (_model.apiResultb3o?.jsonBody ??
+                                                      '')
+                                                  .toString()),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
+                                        ));
+                                      },
+                                    );
+                                    if (shouldSetState) setState(() {});
+                                    return;
+                                  }
+                                } else {
+                                  if (shouldSetState) setState(() {});
+                                  return;
+                                }
+
+                                if (shouldSetState) setState(() {});
+                              },
+                              text: 'Pay for tickets',
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 50.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle:
+                                    FlutterFlowTheme.of(context).titleSmall,
+                                elevation: 2.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
                                 ),
-                              ],
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ],

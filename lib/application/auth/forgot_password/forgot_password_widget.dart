@@ -145,207 +145,214 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                   elevation: 0.0,
                 )
               : null,
-          body: Align(
-            alignment: const AlignmentDirectional(0.00, 0.00),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: 600.0,
-                  constraints: const BoxConstraints(
-                    maxWidth: 570.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        if (responsiveVisibility(
-                          context: context,
-                          phone: false,
-                          tablet: false,
-                        ))
+          body: SafeArea(
+            top: true,
+            child: Align(
+              alignment: const AlignmentDirectional(0.00, 0.00),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: 600.0,
+                    constraints: const BoxConstraints(
+                      maxWidth: 570.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                          ))
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 44.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 12.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor: Colors.transparent,
+                                      borderRadius: 30.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 44.0,
+                                      icon: Icon(
+                                        Icons.arrow_back_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        logFirebaseEvent(
+                                            'FORGOT_PASSWORD_arrow_back_rounded_ICN_O');
+                                        logFirebaseEvent(
+                                            'IconButton_navigate_back');
+                                        context.pop();
+                                      },
+                                    ),
+                                  ),
+                                  Text(
+                                    'Forgot Password',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 8.0, 16.0, 0.0),
+                                  child: Text(
+                                    'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodySmall,
+                                  ).animateOnPageLoad(animationsMap[
+                                      'textOnPageLoadAnimation']!),
+                                ),
+                              ),
+                            ],
+                          ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 44.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 12.0, 0.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 44.0,
-                                    icon: Icon(
-                                      Icons.arrow_back_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () async {
-                                      logFirebaseEvent(
-                                          'FORGOT_PASSWORD_arrow_back_rounded_ICN_O');
-                                      logFirebaseEvent(
-                                          'IconButton_navigate_back');
-                                      context.pop();
-                                    },
+                                16.0, 20.0, 16.0, 0.0),
+                            child: TextFormField(
+                              controller: _model.emailAddressController,
+                              focusNode: _model.emailAddressFocusNode,
+                              autofocus: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Your email',
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).bodySmall,
+                                hintText:
+                                    'Enter your email to recieve a linke...',
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).bodySmall,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    width: 2.0,
                                   ),
+                                  borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                Text(
-                                  'Forgot Password',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall,
-                                ),
-                              ],
-                            ),
-                          ),
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 8.0, 16.0, 0.0),
-                                child: Text(
-                                  'We will send you an email with a link to reset your password, please enter the email associated with your account below.',
-                                  style: FlutterFlowTheme.of(context).bodySmall,
-                                ).animateOnPageLoad(
-                                    animationsMap['textOnPageLoadAnimation']!),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 20.0, 16.0, 0.0),
-                          child: TextFormField(
-                            controller: _model.emailAddressController,
-                            focusNode: _model.emailAddressFocusNode,
-                            autofocus: true,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: 'Your email',
-                              labelStyle:
-                                  FlutterFlowTheme.of(context).bodySmall,
-                              hintText:
-                                  'Enter your email to recieve a linke...',
-                              hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: Color(0x00000000),
-                                  width: 2.0,
-                                ),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              filled: true,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 24.0, 20.0, 24.0),
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBtnText,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                            keyboardType: TextInputType.emailAddress,
-                            validator: _model.emailAddressControllerValidator
-                                .asValidator(context),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 24.0, 0.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'FORGOT_PASSWORD_PAGE_Button-Login_ON_TAP');
-                              logFirebaseEvent('Button-Login_auth');
-                              if (_model.emailAddressController.text.isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text(
-                                      'Email required!',
-                                    ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2.0,
                                   ),
-                                );
-                                return;
-                              }
-                              await authManager.resetPassword(
-                                email: _model.emailAddressController.text,
-                                context: context,
-                              );
-                            },
-                            text: 'Send Reset Link',
-                            options: FFButtonOptions(
-                              width: 230.0,
-                              height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 2.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                filled: true,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 24.0, 20.0, 24.0),
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color: Colors.white,
+                                        .bodyMediumFamily,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
+                                                .bodyMediumFamily),
                                   ),
-                              elevation: 0.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
+                              keyboardType: TextInputType.emailAddress,
+                              validator: _model.emailAddressControllerValidator
+                                  .asValidator(context),
                             ),
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 24.0, 0.0, 0.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'FORGOT_PASSWORD_PAGE_Button-Login_ON_TAP');
+                                logFirebaseEvent('Button-Login_auth');
+                                if (_model
+                                    .emailAddressController.text.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'Email required!',
+                                      ),
+                                    ),
+                                  );
+                                  return;
+                                }
+                                await authManager.resetPassword(
+                                  email: _model.emailAddressController.text,
+                                  context: context,
+                                );
+                              },
+                              text: 'Send Reset Link',
+                              options: FFButtonOptions(
+                                width: 230.0,
+                                height: 50.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
+                                      color: Colors.white,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily),
+                                    ),
+                                elevation: 0.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));

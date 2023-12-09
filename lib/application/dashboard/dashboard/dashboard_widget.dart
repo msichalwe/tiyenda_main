@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/loading/categories_loading/categories_loading_widget.dart';
 import '/loading/dashboard_featured_shimmer/dashboard_featured_shimmer_widget.dart';
 import '/loading/dashboard_top_container_loading/dashboard_top_container_loading_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -142,22 +143,18 @@ class _DashboardWidgetState extends State<DashboardWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('DASHBOARD_PAGE_dashboard_ON_INIT_STATE');
-      logFirebaseEvent('dashboard_clear_query_cache');
-      FFAppState().clearAllEventsCache();
-      logFirebaseEvent('dashboard_clear_query_cache');
-      FFAppState().clearAllCategoriesCache();
       logFirebaseEvent('dashboard_backend_call');
-      _model.apiResultcyr = await EventsGroup.createBackendUserCall.call(
+      _model.apiResult = await EventsGroup.createBackendUserCall.call(
         email: currentUserEmail,
         name: currentUserDisplayName,
-        userId: currentUserUid,
+        firebaseId: currentUserUid,
       );
-      if ((_model.apiResultcyr?.succeeded ?? true)) {
+      if ((_model.apiResult?.succeeded ?? true)) {
         logFirebaseEvent('dashboard_backend_call');
 
         await currentUserReference!.update(createUsersRecordData(
           backendUserId: getJsonField(
-            (_model.apiResultcyr?.jsonBody ?? ''),
+            (_model.apiResult?.jsonBody ?? ''),
             r'''$.id''',
           ).toString().toString(),
         ));
@@ -1455,10 +1452,14 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              getJsonField(
-                                                                                eventsItem,
-                                                                                r'''$.formattedStartDate''',
-                                                                              ).toString(),
+                                                                              dateTimeFormat(
+                                                                                'MMMEd',
+                                                                                functions.convertToDateTime(getJsonField(
+                                                                                  eventsItem,
+                                                                                  r'''$.startDate''',
+                                                                                ).toString()),
+                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                              ),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     fontSize: 13.0,
@@ -2737,10 +2738,14 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                                 Padding(
                                                                               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                                               child: Text(
-                                                                                getJsonField(
-                                                                                  eventsItem,
-                                                                                  r'''$.formattedStartDate''',
-                                                                                ).toString(),
+                                                                                dateTimeFormat(
+                                                                                  'MMMEd',
+                                                                                  functions.convertToDateTime(getJsonField(
+                                                                                    eventsItem,
+                                                                                    r'''$.startTime''',
+                                                                                  ).toString()),
+                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                ),
                                                                                 style: FlutterFlowTheme.of(context).labelSmall,
                                                                               ),
                                                                             ),

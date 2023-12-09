@@ -30,6 +30,7 @@ class EventsGroup {
   static EventsSearchCall eventsSearchCall = EventsSearchCall();
   static OrderTicketsCall orderTicketsCall = OrderTicketsCall();
   static CreateBackendUserCall createBackendUserCall = CreateBackendUserCall();
+  static GetEventOrdersCall getEventOrdersCall = GetEventOrdersCall();
 }
 
 class GetAllEventsCall {
@@ -592,20 +593,20 @@ class OrderTicketsCall {
   Future<ApiCallResponse> call({
     dynamic ticketsJson,
     int? total,
-    String? firebaseId = '',
+    String? fireBaseId = '',
     String? eventId = '',
   }) async {
     final tickets = _serializeJson(ticketsJson, true);
     final ffApiRequestBody = '''
 {
-    fireBaseId: ""$firebaseId"", 
-    eventId: ""$eventId"", 
-    tickets :$tickets , 
-    total: $total
+  "fireBaseId": "$fireBaseId",
+  "eventId": "$eventId",
+  "tickets": $tickets,
+  "total": $total
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'orderTickets',
-      apiUrl: '${EventsGroup.baseUrl}api/order',
+      apiUrl: '${EventsGroup.baseUrl}order',
       callType: ApiCallType.POST,
       headers: {
         'Content-type': 'application/json',
@@ -625,17 +626,17 @@ class CreateBackendUserCall {
   Future<ApiCallResponse> call({
     String? email = '',
     String? name = '',
-    String? userId = '',
+    String? firebaseId = '',
   }) async {
     final ffApiRequestBody = '''
 {
   "email": "$email",
   "name": "$name",
-  "userId": "$userId"
+  "userId": "$firebaseId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'createBackendUser',
-      apiUrl: '${EventsGroup.baseUrl}api/user',
+      apiUrl: '${EventsGroup.baseUrl}user',
       callType: ApiCallType.POST,
       headers: {
         'Content-type': 'application/json',
@@ -649,6 +650,37 @@ class CreateBackendUserCall {
       cache: false,
     );
   }
+}
+
+class GetEventOrdersCall {
+  Future<ApiCallResponse> call({
+    String? firebaseId = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getEventOrders',
+      apiUrl: '${EventsGroup.baseUrl}user/order/$firebaseId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  dynamic event(dynamic response) => getJsonField(
+        response,
+        r'''$[:].event''',
+        true,
+      );
+  dynamic orderItem(dynamic response) => getJsonField(
+        response,
+        r'''$[:].OrderItem''',
+        true,
+      );
 }
 
 /// End Events Group Code

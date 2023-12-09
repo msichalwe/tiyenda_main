@@ -10,6 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'select_tickets_model.dart';
 export 'select_tickets_model.dart';
 
@@ -131,6 +132,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                       .toList();
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
+                                primary: false,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: ticketList.length,
@@ -381,6 +383,71 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                       onPressed: () async {
                                                         logFirebaseEvent(
                                                             'SELECT_TICKETS_ADD_TO_CART_BTN_ON_TAP');
+                                                        if (widget.eventId ==
+                                                            getJsonField(
+                                                              ticketListItem,
+                                                              r'''$.eventId''',
+                                                            )) {
+                                                          logFirebaseEvent(
+                                                              'Button_hide_snack_bar');
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .hideCurrentSnackBar();
+                                                        } else {
+                                                          logFirebaseEvent(
+                                                              'Button_alert_dialog');
+                                                          var confirmDialogResponse =
+                                                              await showDialog<
+                                                                      bool>(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return WebViewAware(
+                                                                          child:
+                                                                              AlertDialog(
+                                                                        title: const Text(
+                                                                            'Clear Cart'),
+                                                                        content:
+                                                                            const Text('You have tickets from another event, are you sure you want to clear your cart and add tickets from this event.'),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext, false),
+                                                                            child:
+                                                                                const Text('Cancel'),
+                                                                          ),
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext, true),
+                                                                            child:
+                                                                                const Text('Confirm'),
+                                                                          ),
+                                                                        ],
+                                                                      ));
+                                                                    },
+                                                                  ) ??
+                                                                  false;
+                                                          logFirebaseEvent(
+                                                              'Button_update_app_state');
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .deleteCartItems();
+                                                            FFAppState()
+                                                                .cartItems = [];
+
+                                                            FFAppState()
+                                                                .deleteCartPriceTotal();
+                                                            FFAppState()
+                                                                .cartPriceTotal = 0;
+
+                                                            FFAppState()
+                                                                .deleteTotalAfterServiceCharge();
+                                                            FFAppState()
+                                                                .totalAfterServiceCharge = 0;
+                                                          });
+                                                        }
+
                                                         logFirebaseEvent(
                                                             'Button_update_app_state');
                                                         setState(() {

@@ -10,7 +10,7 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (createBackendUser)] action in dashboard widget.
-  ApiCallResponse? apiResultcyr;
+  ApiCallResponse? apiResult;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

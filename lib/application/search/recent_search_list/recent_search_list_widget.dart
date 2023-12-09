@@ -182,7 +182,7 @@ class _RecentSearchListWidgetState extends State<RecentSearchListWidget> {
                               logFirebaseEvent(
                                   'RECENT_SEARCH_LIST_Icon_s29e0l17_ON_TAP');
                               logFirebaseEvent('Icon_update_app_state');
-                              _model.updatePage(() {
+                              FFAppState().update(() {
                                 FFAppState().removeAtIndexFromSearchHistory(
                                     searchhistoryIndex);
                               });
