@@ -1217,8 +1217,43 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 24.0, 0.0, 0.0),
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'PROFILE_PAGE_LOG_OUT_BTN_ON_TAP');
+                                                logFirebaseEvent('Button_auth');
+                                                GoRouter.of(context)
+                                                    .prepareAuthEvent();
+                                                await authManager.signOut();
+                                                GoRouter.of(context)
+                                                    .clearRedirectLocation();
+
+                                                logFirebaseEvent(
+                                                    'Button_update_app_state');
+                                                setState(() {
+                                                  FFAppState()
+                                                      .deleteSearchHistory();
+                                                  FFAppState().searchHistory =
+                                                      [];
+
+                                                  FFAppState()
+                                                      .deleteCartItems();
+                                                  FFAppState().cartItems = [];
+
+                                                  FFAppState()
+                                                      .deleteCartPriceTotal();
+                                                  FFAppState().cartPriceTotal =
+                                                      0;
+
+                                                  FFAppState()
+                                                      .deleteLikedEvents();
+                                                  FFAppState().likedEvents = [];
+
+                                                  FFAppState().like = false;
+                                                });
+
+                                                context.goNamedAuth(
+                                                    'onBoarding',
+                                                    context.mounted);
                                               },
                                               text: 'Log Out',
                                               options: FFButtonOptions(

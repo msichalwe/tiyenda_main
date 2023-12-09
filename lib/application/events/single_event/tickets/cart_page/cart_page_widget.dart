@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'cart_page_model.dart';
 export 'cart_page_model.dart';
 
@@ -561,8 +564,134 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                   ),
                                 ),
                                 FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'CART_PAY_FOR_TICKETS_BTN_ON_TAP');
+                                    var shouldSetState = false;
+                                    logFirebaseEvent('Button_alert_dialog');
+                                    var confirmDialogResponse =
+                                        await showDialog<bool>(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return WebViewAware(
+                                                    child: AlertDialog(
+                                                  title: const Text('Ticket Payment'),
+                                                  content: const Text(
+                                                      'You are about to pay for a ticket. A prompt will appear on your mobile device to confirm the order'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              false),
+                                                      child: const Text('Cancel'),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext,
+                                                              true),
+                                                      child: const Text('Confirm'),
+                                                    ),
+                                                  ],
+                                                ));
+                                              },
+                                            ) ??
+                                            false;
+                                    if (confirmDialogResponse) {
+                                      logFirebaseEvent('Button_backend_call');
+                                      _model.apiResultb3o = await EventsGroup
+                                          .orderTicketsCall
+                                          .call(
+                                        total: functions.newCustomFunction(
+                                            FFAppState().cartPriceTotal,
+                                            functions.calculateServiceCharge(
+                                                FFAppState().cartPriceTotal,
+                                                FFAppConstants.serviceCharge)),
+                                        ticketsJson: functions.selectJsonFields(
+                                            FFAppState()
+                                                .cartItems
+                                                .map((e) => e.toMap())
+                                                .toList()),
+                                        firebaseId: currentUserUid,
+                                        eventId: FFAppState()
+                                            .cartItems
+                                            .first
+                                            .eventId,
+                                      );
+                                      shouldSetState = true;
+                                      if ((_model.apiResultb3o?.succeeded ??
+                                          true)) {
+                                        logFirebaseEvent('Button_navigate_to');
+
+                                        context.goNamed('dashboard');
+
+                                        logFirebaseEvent('Button_alert_dialog');
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                                child: AlertDialog(
+                                              title: const Text('Tickets Purchased'),
+                                              content: const Text(
+                                                  'Congratualtions tickets purchased'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ));
+                                          },
+                                        );
+                                        logFirebaseEvent(
+                                            'Button_update_app_state');
+                                        setState(() {
+                                          FFAppState().deleteCart();
+                                          FFAppState().cart = [];
+                                        });
+                                        logFirebaseEvent(
+                                            'Button_update_app_state');
+                                        setState(() {
+                                          FFAppState().deleteCartPriceTotal();
+                                          FFAppState().cartPriceTotal = 0;
+                                        });
+                                        if (shouldSetState) setState(() {});
+                                        return;
+                                      } else {
+                                        logFirebaseEvent('Button_alert_dialog');
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return WebViewAware(
+                                                child: AlertDialog(
+                                              title: const Text('OOPS'),
+                                              content: Text((_model.apiResultb3o
+                                                          ?.jsonBody ??
+                                                      '')
+                                                  .toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ));
+                                          },
+                                        );
+                                        if (shouldSetState) setState(() {});
+                                        return;
+                                      }
+                                    } else {
+                                      if (shouldSetState) setState(() {});
+                                      return;
+                                    }
+
+                                    if (shouldSetState) setState(() {});
                                   },
                                   text: 'Pay for tickets',
                                   options: FFButtonOptions(

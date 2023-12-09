@@ -81,3 +81,35 @@ int? stringToNegativeInteger(String? stringInput) {
     return null;
   }
 }
+
+List<dynamic>? selectJsonFields(List<dynamic>? tickets) {
+  // Check if the tickets list is null or empty
+  if (tickets == null || tickets.isEmpty) {
+    return [];
+  }
+
+  // Create a map to store the count of each unique id
+  final Map<String, int> idCount = {};
+
+  // Iterate through the tickets list and count the occurrences of each id
+  for (var ticket in tickets) {
+    String? id = ticket['id'];
+    if (id != null) {
+      if (!idCount.containsKey(id)) {
+        idCount[id] = 1;
+      } else {
+        idCount[id] = idCount[id]! + 1;
+      }
+    }
+  }
+
+  // Create a new list to store the result
+  List<Map<String, dynamic>> result = [];
+
+  // Populate the result list with the id and its corresponding quantity
+  idCount.forEach((id, quantity) {
+    result.add({'id': id, 'quantity': quantity});
+  });
+
+  return result;
+}

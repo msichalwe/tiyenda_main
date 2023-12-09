@@ -28,6 +28,8 @@ class EventsGroup {
   static GetAllOrganizersCall getAllOrganizersCall = GetAllOrganizersCall();
   static GetOneOrganizerCall getOneOrganizerCall = GetOneOrganizerCall();
   static EventsSearchCall eventsSearchCall = EventsSearchCall();
+  static OrderTicketsCall orderTicketsCall = OrderTicketsCall();
+  static CreateBackendUserCall createBackendUserCall = CreateBackendUserCall();
 }
 
 class GetAllEventsCall {
@@ -571,6 +573,69 @@ class EventsSearchCall {
     return ApiManager.instance.makeApiCall(
       callName: 'events Search',
       apiUrl: '${EventsGroup.baseUrl}events/search',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class OrderTicketsCall {
+  Future<ApiCallResponse> call({
+    dynamic ticketsJson,
+    int? total,
+    String? firebaseId = '',
+    String? eventId = '',
+  }) async {
+    final tickets = _serializeJson(ticketsJson, true);
+    final ffApiRequestBody = '''
+{
+    fireBaseId: ""$firebaseId"", 
+    eventId: ""$eventId"", 
+    tickets :$tickets , 
+    total: $total
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'orderTickets',
+      apiUrl: '${EventsGroup.baseUrl}api/order',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class CreateBackendUserCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    String? name = '',
+    String? userId = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "email": "$email",
+  "name": "$name",
+  "userId": "$userId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'createBackendUser',
+      apiUrl: '${EventsGroup.baseUrl}api/user',
       callType: ApiCallType.POST,
       headers: {
         'Content-type': 'application/json',
