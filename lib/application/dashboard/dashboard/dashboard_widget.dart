@@ -1238,10 +1238,15 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                             0.00),
                                                                         child:
                                                                             AutoSizeText(
-                                                                          getJsonField(
-                                                                            eventsItem,
-                                                                            r'''$.formattedStartTime''',
-                                                                          ).toString().maybeHandleOverflow(
+                                                                          dateTimeFormat(
+                                                                            'Hm',
+                                                                            functions.convertToDateTime(getJsonField(
+                                                                              eventsItem,
+                                                                              r'''$.startTime''',
+                                                                            ).toString()),
+                                                                            locale:
+                                                                                FFLocalizations.of(context).languageCode,
+                                                                          ).maybeHandleOverflow(
                                                                               maxChars: 10),
                                                                           textAlign:
                                                                               TextAlign.center,

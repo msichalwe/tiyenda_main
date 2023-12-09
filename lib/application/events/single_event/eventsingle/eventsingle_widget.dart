@@ -12,6 +12,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'eventsingle_model.dart';
 export 'eventsingle_model.dart';
 
@@ -169,14 +170,32 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 15.0, 8.0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.share,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
+                                Builder(
+                                  builder: (context) => Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 15.0, 8.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'EVENTSINGLE_PAGE_Icon_wiu2n8av_ON_TAP');
+                                        logFirebaseEvent('Icon_share');
+                                        await Share.share(
+                                          widget.eventID!,
+                                          sharePositionOrigin:
+                                              getWidgetBoundingBox(context),
+                                        );
+                                      },
+                                      child: FaIcon(
+                                        FontAwesomeIcons.share,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ],
