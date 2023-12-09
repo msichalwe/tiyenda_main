@@ -69,6 +69,11 @@ class FFAppState extends ChangeNotifier {
       _likedEvents =
           await secureStorage.getStringList('ff_likedEvents') ?? _likedEvents;
     });
+    await _safeInitAsync(() async {
+      _totalAfterServiceCharge =
+          await secureStorage.getInt('ff_totalAfterServiceCharge') ??
+              _totalAfterServiceCharge;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -230,7 +235,7 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_cartPriceTotal');
   }
 
-  List<String> _likedEvents = [];
+  List<String> _likedEvents = ['12'];
   List<String> get likedEvents => _likedEvents;
   set likedEvents(List<String> value) {
     _likedEvents = value;
@@ -267,6 +272,17 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInLikedEvents(int index, String value) {
     _likedEvents.insert(index, value);
     secureStorage.setStringList('ff_likedEvents', _likedEvents);
+  }
+
+  int _totalAfterServiceCharge = 0;
+  int get totalAfterServiceCharge => _totalAfterServiceCharge;
+  set totalAfterServiceCharge(int value) {
+    _totalAfterServiceCharge = value;
+    secureStorage.setInt('ff_totalAfterServiceCharge', value);
+  }
+
+  void deleteTotalAfterServiceCharge() {
+    secureStorage.delete(key: 'ff_totalAfterServiceCharge');
   }
 
   final _allEventsManager = FutureRequestManager<ApiCallResponse>();

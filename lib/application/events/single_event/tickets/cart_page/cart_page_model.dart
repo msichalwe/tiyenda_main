@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'buy_tickets_widget.dart' show BuyTicketsWidget;
+import 'cart_page_widget.dart' show CartPageWidget;
 import 'package:flutter/material.dart';
 
-class BuyTicketsModel extends FlutterFlowModel<BuyTicketsWidget> {
+class CartPageModel extends FlutterFlowModel<CartPageWidget> {
   /// Initialization and disposal methods.
 
   @override

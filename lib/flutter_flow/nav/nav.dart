@@ -183,9 +183,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'buyTickets',
-              path: 'buyTickets',
-              builder: (context, params) => const BuyTicketsWidget(),
+              name: 'cartPage',
+              path: 'cartPage',
+              builder: (context, params) => const CartPageWidget(),
             ),
             FFRoute(
               name: 'selectTickets',

@@ -41,3 +41,43 @@ double? convertStringToNum(String? stringInput) {
     return null;
   }
 }
+
+int? calculateServiceCharge(
+  int? totalCharge,
+  double? percent,
+) {
+  // get the total charge as an int and the percentage from variables and return a rounded integer.
+  if (totalCharge == null || percent == null) {
+    return null;
+  }
+  double serviceCharge = totalCharge * (percent / 100);
+  int roundedCharge = serviceCharge.round();
+  return roundedCharge;
+}
+
+int? newCustomFunction(
+  int? total,
+  int? serviceCharge,
+) {
+  // add two numbres and return an int
+  if (total != null && serviceCharge != null) {
+    return total + serviceCharge;
+  } else {
+    return null;
+  }
+}
+
+int? stringToNegativeInteger(String? stringInput) {
+  if (stringInput == null) {
+    return null;
+  }
+
+  try {
+    int number = int.parse(stringInput);
+    return -number.abs(); // Ensures the number is negative
+  } catch (e) {
+    // Handle the case where the string does not represent a valid integer
+    print("Error: The string is not a valid integer.");
+    return null;
+  }
+}

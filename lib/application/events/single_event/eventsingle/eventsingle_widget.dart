@@ -141,28 +141,16 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                               .contains(widget.eventID)
                                           ? true
                                           : false) {
-                                        logFirebaseEvent(
-                                            'ToggleIcon_update_app_state');
-                                        setState(() {
-                                          FFAppState().removeFromLikedEvents(
-                                              widget.eventID!);
-                                        });
-                                        logFirebaseEvent(
-                                            'ToggleIcon_update_app_state');
-                                        setState(() {});
-                                        return;
-                                      } else {
-                                        logFirebaseEvent(
-                                            'ToggleIcon_update_app_state');
-                                        setState(() {
-                                          FFAppState().addToLikedEvents(
-                                              widget.eventID!);
-                                        });
-                                        logFirebaseEvent(
-                                            'ToggleIcon_update_app_state');
-                                        setState(() {});
                                         return;
                                       }
+
+                                      logFirebaseEvent(
+                                          'ToggleIcon_update_app_state');
+                                      setState(() {
+                                        FFAppState()
+                                            .addToLikedEvents(widget.eventID!);
+                                      });
+                                      return;
                                     },
                                     value: FFAppState()
                                         .likedEvents

@@ -182,6 +182,37 @@ class _DashboardWidgetState extends State<DashboardWidget>
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            floatingActionButton: Visibility(
+              visible: FFAppState().cartItems.isNotEmpty,
+              child: FloatingActionButton.extended(
+                onPressed: () async {
+                  logFirebaseEvent('DASHBOARD_FloatingActionButton_66qsh94m_');
+                  logFirebaseEvent('FloatingActionButton_navigate_to');
+
+                  context.pushNamed('cartPage');
+                },
+                backgroundColor: FlutterFlowTheme.of(context).primary,
+                elevation: 8.0,
+                label: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      '${FFAppState().cartItems.length.toString()} In Cart',
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                      child: Icon(
+                        Icons.shopping_cart,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             body: SafeArea(
               top: true,
               child: FutureBuilder<ApiCallResponse>(

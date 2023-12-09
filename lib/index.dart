@@ -26,7 +26,7 @@ export '/loading/single_events_component/single_events_component_widget.dart'
     show SingleEventsComponentWidget;
 export '/application/search/search_results/search_results_widget.dart'
     show SearchResultsWidget;
-export '/application/events/single_event/tickets/buy_tickets/buy_tickets_widget.dart'
-    show BuyTicketsWidget;
+export '/application/events/single_event/tickets/cart_page/cart_page_widget.dart'
+    show CartPageWidget;
 export '/application/events/single_event/tickets/select_tickets/select_tickets_widget.dart'
     show SelectTicketsWidget;
