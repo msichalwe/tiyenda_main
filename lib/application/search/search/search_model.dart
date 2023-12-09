@@ -1,4 +1,4 @@
-import '/components/recent_search_list_widget.dart';
+import '/application/search/recent_search_list/recent_search_list_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'search_widget.dart' show SearchWidget;
 import 'package:flutter/material.dart';

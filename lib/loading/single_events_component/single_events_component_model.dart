@@ -1,5 +1,5 @@
-import '/components/single_events_shimmer_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/loading/single_events_shimmer/single_events_shimmer_widget.dart';
 import 'single_events_component_widget.dart' show SingleEventsComponentWidget;
 import 'package:flutter/material.dart';
 

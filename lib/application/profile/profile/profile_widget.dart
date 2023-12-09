@@ -408,6 +408,96 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
+                                        if (FFAppState().cartItems.isNotEmpty)
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 20.0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                ),
+                                              ),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'PROFILE_PAGE_Row_h5t2o1wk_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Row_navigate_to');
+
+                                                  context.pushNamed('cartPage');
+                                                },
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    12.0,
+                                                                    0.0,
+                                                                    12.0),
+                                                        child: Text(
+                                                          'You have ${FFAppState().cartItems.length.toString()} in your cart.',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                                fontSize: 16.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  20.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        Icons.shopping_cart,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        size: 24.0,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         Container(
                                           width: double.infinity,
                                           decoration: BoxDecoration(
@@ -1127,8 +1217,43 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 24.0, 0.0, 0.0),
                                             child: FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'PROFILE_PAGE_LOG_OUT_BTN_ON_TAP');
+                                                logFirebaseEvent('Button_auth');
+                                                GoRouter.of(context)
+                                                    .prepareAuthEvent();
+                                                await authManager.signOut();
+                                                GoRouter.of(context)
+                                                    .clearRedirectLocation();
+
+                                                logFirebaseEvent(
+                                                    'Button_update_app_state');
+                                                setState(() {
+                                                  FFAppState()
+                                                      .deleteSearchHistory();
+                                                  FFAppState().searchHistory =
+                                                      [];
+
+                                                  FFAppState()
+                                                      .deleteCartItems();
+                                                  FFAppState().cartItems = [];
+
+                                                  FFAppState()
+                                                      .deleteCartPriceTotal();
+                                                  FFAppState().cartPriceTotal =
+                                                      0;
+
+                                                  FFAppState()
+                                                      .deleteLikedEvents();
+                                                  FFAppState().likedEvents = [];
+
+                                                  FFAppState().like = false;
+                                                });
+
+                                                context.goNamedAuth(
+                                                    'onBoarding',
+                                                    context.mounted);
                                               },
                                               text: 'Log Out',
                                               options: FFButtonOptions(

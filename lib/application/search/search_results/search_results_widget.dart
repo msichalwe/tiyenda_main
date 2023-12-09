@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/no_search_results_found/no_search_results_found_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -81,7 +82,7 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                     automaticallyImplyLeading: true,
                     actions: const [],
                     centerTitle: false,
-                    elevation: 4.0,
+                    elevation: 0.0,
                   )
                 : null,
             body: SafeArea(
@@ -153,6 +154,9 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                                       final searchResults =
                                           containerEventsSearchResponse.jsonBody
                                               .toList();
+                                      if (searchResults.isEmpty) {
+                                        return const NoSearchResultsFoundWidget();
+                                      }
                                       return ListView.builder(
                                         padding: const EdgeInsets.fromLTRB(
                                           0,

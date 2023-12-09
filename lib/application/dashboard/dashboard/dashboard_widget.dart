@@ -1,10 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/components/categories_loading_widget.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/loading/categories_loading/categories_loading_widget.dart';
 import '/loading/dashboard_featured_shimmer/dashboard_featured_shimmer_widget.dart';
 import '/loading/dashboard_top_container_loading/dashboard_top_container_loading_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -144,6 +146,38 @@ class _DashboardWidgetState extends State<DashboardWidget>
       FFAppState().clearAllEventsCache();
       logFirebaseEvent('dashboard_clear_query_cache');
       FFAppState().clearAllCategoriesCache();
+      logFirebaseEvent('dashboard_backend_call');
+      _model.apiResultcyr = await EventsGroup.createBackendUserCall.call(
+        email: currentUserEmail,
+        name: currentUserDisplayName,
+        userId: currentUserUid,
+      );
+      if ((_model.apiResultcyr?.succeeded ?? true)) {
+        logFirebaseEvent('dashboard_backend_call');
+
+        await currentUserReference!.update(createUsersRecordData(
+          backendUserId: getJsonField(
+            (_model.apiResultcyr?.jsonBody ?? ''),
+            r'''$.id''',
+          ).toString().toString(),
+        ));
+        logFirebaseEvent('dashboard_show_snack_bar');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Welcome to Tiyenda',
+              style: TextStyle(
+                color: FlutterFlowTheme.of(context).primaryText,
+              ),
+            ),
+            duration: const Duration(milliseconds: 4000),
+            backgroundColor: FlutterFlowTheme.of(context).info,
+          ),
+        );
+        return;
+      } else {
+        return;
+      }
     });
 
     _model.textController ??= TextEditingController();
@@ -182,6 +216,37 @@ class _DashboardWidgetState extends State<DashboardWidget>
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            floatingActionButton: Visibility(
+              visible: FFAppState().cartItems.isNotEmpty,
+              child: FloatingActionButton.extended(
+                onPressed: () async {
+                  logFirebaseEvent('DASHBOARD_FloatingActionButton_66qsh94m_');
+                  logFirebaseEvent('FloatingActionButton_navigate_to');
+
+                  context.pushNamed('cartPage');
+                },
+                backgroundColor: FlutterFlowTheme.of(context).primary,
+                elevation: 8.0,
+                label: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      '${FFAppState().cartItems.length.toString()} In Cart',
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                      child: Icon(
+                        Icons.shopping_cart,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             body: SafeArea(
               top: true,
               child: FutureBuilder<ApiCallResponse>(

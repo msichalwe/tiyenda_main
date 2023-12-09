@@ -181,6 +181,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SearchResultsWidget(
                 searchterm: params.getParam('searchterm', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'cartPage',
+              path: 'cartPage',
+              builder: (context, params) => const CartPageWidget(),
+            ),
+            FFRoute(
+              name: 'selectTickets',
+              path: 'selectTickets',
+              builder: (context, params) => SelectTicketsWidget(
+                eventId: params.getParam('eventId', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

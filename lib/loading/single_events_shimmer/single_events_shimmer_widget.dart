@@ -1,12 +1,10 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'single_events_shimmer_model.dart';
@@ -261,143 +259,79 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Align(
-                          alignment: const AlignmentDirectional(-1.00, 0.00),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 0.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'SINGLE_EVENTS_SHIMMER_Icon_ex6xl7yh_ON_T');
-                                logFirebaseEvent('Icon_navigate_back');
-                                context.safePop();
-                              },
-                              child: Icon(
-                                Icons.arrow_back_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 26.0,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                        child: ToggleIcon(
-                          onPressed: () async {
-                            setState(
-                                () => FFAppState().like = !FFAppState().like);
-                          },
-                          value: FFAppState().like,
-                          onIcon: Icon(
-                            Icons.favorite_rounded,
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 25.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 10.0),
+                        child: Container(
+                          width: 353.0,
+                          height: 200.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          offIcon: Icon(
-                            Icons.favorite_rounded,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 25.0,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                        child: FaIcon(
-                          FontAwesomeIcons.share,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                      child: Container(
-                        width: 353.0,
-                        height: 200.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: const AlignmentDirectional(0.00, 0.00),
-                              child: Container(
-                                height: MediaQuery.sizeOf(context).height * 1.0,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF364672),
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
+                          child: Stack(
+                            children: [
+                              Align(
                                 alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Container(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
                                   height:
                                       MediaQuery.sizeOf(context).height * 1.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFF334D86),
+                                    color: const Color(0xFF364672),
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  child: ClipRect(
-                                    child: ImageFiltered(
-                                      imageFilter: ImageFilter.blur(
-                                        sigmaX: 6.0,
-                                        sigmaY: 6.0,
-                                      ),
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
-                                        child: Transform.rotate(
-                                          angle: 1.5882,
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.asset(
-                                              'assets/images/dark-blue-textile-texture.jpg',
-                                              width: 300.0,
-                                              height: 200.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ).animateOnPageLoad(animationsMap[
-                                              'imageOnPageLoadAnimation1']!),
+                                  alignment: const AlignmentDirectional(0.00, 0.00),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 1.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFF334D86),
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    child: ClipRect(
+                                      child: ImageFiltered(
+                                        imageFilter: ImageFilter.blur(
+                                          sigmaX: 6.0,
+                                          sigmaY: 6.0,
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.00, 0.00),
+                                          child: Transform.rotate(
+                                            angle: 1.5882,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.asset(
+                                                'assets/images/dark-blue-textile-texture.jpg',
+                                                width: 300.0,
+                                                height: 200.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'imageOnPageLoadAnimation1']!),
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),

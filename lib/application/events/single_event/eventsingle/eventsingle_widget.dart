@@ -1,9 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/single_events_shimmer_widget.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/loading/single_events_shimmer/single_events_shimmer_widget.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -70,13 +71,130 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            body: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 0.0),
+            appBar: responsiveVisibility(
+              context: context,
+              tabletLandscape: false,
+              desktop: false,
+            )
+                ? AppBar(
+                    backgroundColor:
+                        FlutterFlowTheme.of(context).secondaryBackground,
+                    automaticallyImplyLeading: true,
+                    actions: const [],
+                    flexibleSpace: FlexibleSpaceBar(
+                      background: Stack(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 5.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Expanded(
+                                  child: Align(
+                                    alignment:
+                                        const AlignmentDirectional(-1.00, 1.00),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 0.0, 8.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'EVENTSINGLE_PAGE_Icon_9jwvzqm3_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Icon_navigate_back');
+                                          context.safePop();
+                                        },
+                                        child: const Icon(
+                                          Icons.arrow_back_rounded,
+                                          color: Color(0x00EEECEF),
+                                          size: 26.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 10.0, 0.0),
+                                  child: ToggleIcon(
+                                    onPressed: () async {
+                                      setState(
+                                        () => FFAppState()
+                                                .likedEvents
+                                                .contains(widget.eventID)
+                                            ? FFAppState()
+                                                .removeFromLikedEvents(
+                                                    widget.eventID!)
+                                            : FFAppState().addToLikedEvents(
+                                                widget.eventID!),
+                                      );
+                                      logFirebaseEvent(
+                                          'EVENTSINGLE_ToggleIcon_8me9kuq3_ON_TOGGL');
+                                      if (FFAppState()
+                                              .likedEvents
+                                              .contains(widget.eventID)
+                                          ? true
+                                          : false) {
+                                        return;
+                                      }
+
+                                      logFirebaseEvent(
+                                          'ToggleIcon_update_app_state');
+                                      setState(() {
+                                        FFAppState()
+                                            .addToLikedEvents(widget.eventID!);
+                                      });
+                                      return;
+                                    },
+                                    value: FFAppState()
+                                        .likedEvents
+                                        .contains(widget.eventID),
+                                    onIcon: Icon(
+                                      Icons.favorite_rounded,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 25.0,
+                                    ),
+                                    offIcon: Icon(
+                                      Icons.favorite_rounded,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 25.0,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 15.0, 8.0),
+                                  child: FaIcon(
+                                    FontAwesomeIcons.share,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    centerTitle: true,
+                    elevation: 0.0,
+                  )
+                : null,
+            body: SafeArea(
+              top: true,
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Expanded(
                     child: FutureBuilder<ApiCallResponse>(
                       future: (_model.apiRequestCompleter ??=
                               Completer<ApiCallResponse>()
@@ -105,83 +223,6 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                             padding: EdgeInsets.zero,
                             scrollDirection: Axis.vertical,
                             children: [
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                height: 50.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.00, 0.00),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  15.0, 0.0, 0.0, 0.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'EVENTSINGLE_PAGE_Icon_lc5hycmo_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Icon_navigate_back');
-                                              context.safePop();
-                                            },
-                                            child: Icon(
-                                              Icons.arrow_back_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 26.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 10.0, 0.0),
-                                      child: ToggleIcon(
-                                        onPressed: () async {
-                                          setState(() => FFAppState().like =
-                                              !FFAppState().like);
-                                        },
-                                        value: FFAppState().like,
-                                        onIcon: Icon(
-                                          Icons.favorite_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 25.0,
-                                        ),
-                                        offIcon: Icon(
-                                          Icons.favorite_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 25.0,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 15.0, 0.0),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.share,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
@@ -203,24 +244,80 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  2.0, 2.0, 2.0, 2.0),
-                                          child: ClipRRect(
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFF2D3A5C),
                                             borderRadius:
                                                 BorderRadius.circular(10.0),
-                                            child: Image.network(
-                                              getCORSProxyUrl(
-                                                getJsonField(
+                                          ),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    2.0, 2.0, 2.0, 2.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'EVENTSINGLE_PAGE_event_main_image_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'event_main_image_expand_image');
+                                                await Navigator.push(
+                                                  context,
+                                                  PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child:
+                                                        FlutterFlowExpandedImageView(
+                                                      image: Image.network(
+                                                        getCORSProxyUrl(
+                                                          getJsonField(
+                                                            scrollingColumnGetSingleEventsResponse
+                                                                .jsonBody,
+                                                            r'''$.image''',
+                                                          ),
+                                                        ),
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                      allowRotation: false,
+                                                      tag: getJsonField(
+                                                        scrollingColumnGetSingleEventsResponse
+                                                            .jsonBody,
+                                                        r'''$.image''',
+                                                      ),
+                                                      useHeroAnimation: true,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Hero(
+                                                tag: getJsonField(
                                                   scrollingColumnGetSingleEventsResponse
                                                       .jsonBody,
                                                   r'''$.image''',
                                                 ),
+                                                transitionOnUserGestures: true,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10.0),
+                                                  child: Image.network(
+                                                    getCORSProxyUrl(
+                                                      getJsonField(
+                                                        scrollingColumnGetSingleEventsResponse
+                                                            .jsonBody,
+                                                        r'''$.image''',
+                                                      ),
+                                                    ),
+                                                    width: double.infinity,
+                                                    height: 200.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
                                               ),
-                                              width: double.infinity,
-                                              height: 200.0,
-                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
@@ -942,84 +1039,97 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                       },
                     ),
                   ),
-                ),
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 120.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                    boxShadow: const [
-                      BoxShadow(
-                        blurRadius: 4.0,
-                        color: Color(0x33000000),
-                        offset: Offset(0.0, 2.0),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(0.0),
-                  ),
-                  alignment: const AlignmentDirectional(0.00, 0.00),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Order Now',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                  Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: 120.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      boxShadow: const [
+                        BoxShadow(
+                          blurRadius: 4.0,
+                          color: Color(0x33000000),
+                          offset: Offset(0.0, 2.0),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(0.0),
+                    ),
+                    alignment: const AlignmentDirectional(0.00, 0.00),
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          20.0, 20.0, 20.0, 20.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Order Now',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      fontSize: 25.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                              ),
+                            ),
+                          ),
+                          FFButtonWidget(
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'EVENTSINGLE_PAGE_GET_TICKETS_BTN_ON_TAP');
+                              logFirebaseEvent('Button_navigate_to');
+
+                              context.pushNamed(
+                                'selectTickets',
+                                queryParameters: {
+                                  'eventId': serializeParam(
+                                    widget.eventID,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            },
+                            text: 'Get tickets',
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 0.0, 24.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    fontSize: 25.0,
+                                        .titleSmallFamily,
+                                    color: Colors.white,
+                                    fontSize: 20.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
                                             FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                                .titleSmallFamily),
                                   ),
+                              elevation: 0.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                        ),
-                        FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
-                          },
-                          text: 'Get tickets',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleSmallFamily,
-                                  color: Colors.white,
-                                  fontSize: 20.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleSmallFamily),
-                                ),
-                            elevation: 0.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));
