@@ -632,6 +632,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "photo_view",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/photo_view-0.14.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "pigeon",
       "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/pigeon-11.0.1",
       "packageUri": "lib/",
@@ -980,7 +986,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-12-09T05:57:24.226302Z",
+  "generated": "2023-12-09T12:09:18.300496Z",
   "generator": "pub",
   "generatorVersion": "3.1.0"
 }
