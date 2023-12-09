@@ -1,6 +1,7 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
+import '/flutter_flow/request_manager.dart';
+
 import 'dashboard_widget.dart' show DashboardWidget;
 import 'package:flutter/material.dart';
 
@@ -8,11 +9,27 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  Completer<ApiCallResponse>? apiRequestCompleter;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+
+  /// Query cache managers for this widget.
+
+  final _featuredEventsCacheManager = FutureRequestManager<ApiCallResponse>();
+  Future<ApiCallResponse> featuredEventsCache({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<ApiCallResponse> Function() requestFn,
+  }) =>
+      _featuredEventsCacheManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearFeaturedEventsCacheCache() => _featuredEventsCacheManager.clear();
+  void clearFeaturedEventsCacheCacheKey(String? uniqueKey) =>
+      _featuredEventsCacheManager.clearRequest(uniqueKey);
 
   /// Initialization and disposal methods.
 
@@ -24,24 +41,13 @@ class DashboardModel extends FlutterFlowModel<DashboardWidget> {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
+
+    /// Dispose query cache managers for this widget.
+
+    clearFeaturedEventsCacheCache();
   }
 
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  Future waitForApiRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(const Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = apiRequestCompleter?.isCompleted ?? false;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
 }

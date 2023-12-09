@@ -27,14 +27,11 @@ class EventsGroup {
   static GetMongoUserCall getMongoUserCall = GetMongoUserCall();
   static GetAllOrganizersCall getAllOrganizersCall = GetAllOrganizersCall();
   static GetOneOrganizerCall getOneOrganizerCall = GetOneOrganizerCall();
+  static EventsSearchCall eventsSearchCall = EventsSearchCall();
 }
 
 class GetAllEventsCall {
-  Future<ApiCallResponse> call({
-    dynamic eventsJson,
-  }) async {
-    final events = _serializeJson(eventsJson, true);
-
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAllEvents',
       apiUrl: '${EventsGroup.baseUrl}events',
@@ -163,11 +160,7 @@ class GetAllEventsCall {
 }
 
 class GetAllEventsFeaturedCall {
-  Future<ApiCallResponse> call({
-    dynamic eventsJson,
-  }) async {
-    final events = _serializeJson(eventsJson, true);
-
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAllEventsFeatured',
       apiUrl: '${EventsGroup.baseUrl}events/featured',
@@ -298,10 +291,7 @@ class GetAllEventsFeaturedCall {
 class GetSingleEventsCall {
   Future<ApiCallResponse> call({
     String? eventId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
-
     return ApiManager.instance.makeApiCall(
       callName: 'getSingleEvents',
       apiUrl: '${EventsGroup.baseUrl}events/$eventId',
@@ -321,10 +311,7 @@ class GetSingleEventsCall {
 class GetEventTicketsCall {
   Future<ApiCallResponse> call({
     String? eventId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
-
     return ApiManager.instance.makeApiCall(
       callName: 'getEventTickets',
       apiUrl: '${EventsGroup.baseUrl}tickets/$eventId',
@@ -345,9 +332,7 @@ class FollowOrganizerCall {
   Future<ApiCallResponse> call({
     String? organizerId = '',
     String? userId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
     final ffApiRequestBody = '''
 {
   "userId": "$userId"
@@ -374,10 +359,7 @@ class UnfollowOrganizerCall {
   Future<ApiCallResponse> call({
     String? organizerId = '',
     String? userId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
-
     return ApiManager.instance.makeApiCall(
       callName: 'unfollowOrganizer',
       apiUrl: '${EventsGroup.baseUrl}follow/$organizerId',
@@ -395,11 +377,7 @@ class UnfollowOrganizerCall {
 }
 
 class GetAllCategoriesCall {
-  Future<ApiCallResponse> call({
-    dynamic eventsJson,
-  }) async {
-    final events = _serializeJson(eventsJson, true);
-
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAllCategories',
       apiUrl: '${EventsGroup.baseUrl}categories',
@@ -450,10 +428,7 @@ class GetAllCategoriesCall {
 class GetCategoryEventsCall {
   Future<ApiCallResponse> call({
     String? categoryId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
-
     return ApiManager.instance.makeApiCall(
       callName: 'getCategoryEvents',
       apiUrl: '${EventsGroup.baseUrl}events/category/$categoryId',
@@ -475,9 +450,7 @@ class CreateUserMongoCall {
     String? email = '',
     String? name = '',
     String? userId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
     final ffApiRequestBody = '''
 {
   "email": "$email",
@@ -510,10 +483,7 @@ class CreateUserMongoCall {
 class GetMongoUserCall {
   Future<ApiCallResponse> call({
     String? firebaseId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
-
     return ApiManager.instance.makeApiCall(
       callName: 'getMongoUser',
       apiUrl: '${EventsGroup.baseUrl}user/$firebaseId',
@@ -531,11 +501,7 @@ class GetMongoUserCall {
 }
 
 class GetAllOrganizersCall {
-  Future<ApiCallResponse> call({
-    dynamic eventsJson,
-  }) async {
-    final events = _serializeJson(eventsJson, true);
-
+  Future<ApiCallResponse> call() async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAllOrganizers',
       apiUrl: '${EventsGroup.baseUrl}organizer',
@@ -577,10 +543,7 @@ class GetAllOrganizersCall {
 class GetOneOrganizerCall {
   Future<ApiCallResponse> call({
     String? organizerId = '',
-    dynamic eventsJson,
   }) async {
-    final events = _serializeJson(eventsJson, true);
-
     return ApiManager.instance.makeApiCall(
       callName: 'getOneOrganizer',
       apiUrl: '${EventsGroup.baseUrl}organizer/$organizerId',
@@ -589,6 +552,32 @@ class GetOneOrganizerCall {
         'Content-type': 'application/json',
       },
       params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class EventsSearchCall {
+  Future<ApiCallResponse> call({
+    String? eventName = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "query": "$eventName"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'events Search',
+      apiUrl: '${EventsGroup.baseUrl}events/search',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

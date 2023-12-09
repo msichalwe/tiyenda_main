@@ -445,7 +445,12 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                               24.0),
                                                                         ),
                                                                         style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium,
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                              fontSize: 16.0,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                            ),
                                                                         validator: _model
                                                                             .emailAddressControllerValidator
                                                                             .asValidator(context),
@@ -590,6 +595,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                                 FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryBtnText,
+                                                                            fontSize:
+                                                                                16.0,
                                                                             useGoogleFonts:
                                                                                 GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                           ),

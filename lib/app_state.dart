@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
+import 'backend/api_requests/api_manager.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -27,6 +29,36 @@ class FFAppState extends ChangeNotifier {
   set like(bool value) {
     _like = value;
   }
+
+  final _allEventsManager = FutureRequestManager<ApiCallResponse>();
+  Future<ApiCallResponse> allEvents({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<ApiCallResponse> Function() requestFn,
+  }) =>
+      _allEventsManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearAllEventsCache() => _allEventsManager.clear();
+  void clearAllEventsCacheKey(String? uniqueKey) =>
+      _allEventsManager.clearRequest(uniqueKey);
+
+  final _allCategoriesManager = FutureRequestManager<ApiCallResponse>();
+  Future<ApiCallResponse> allCategories({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<ApiCallResponse> Function() requestFn,
+  }) =>
+      _allCategoriesManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearAllCategoriesCache() => _allCategoriesManager.clear();
+  void clearAllCategoriesCacheKey(String? uniqueKey) =>
+      _allCategoriesManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

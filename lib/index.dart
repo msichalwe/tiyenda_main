@@ -24,3 +24,5 @@ export '/loading/dashboard_loading/dashboard_loading_widget.dart'
     show DashboardLoadingWidget;
 export '/single_events_component/single_events_component_widget.dart'
     show SingleEventsComponentWidget;
+export '/application/search/search_results/search_results_widget.dart'
+    show SearchResultsWidget;

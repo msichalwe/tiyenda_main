@@ -107,11 +107,37 @@ class _MyAppState extends State<MyApp> {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
-        scrollbarTheme: const ScrollbarThemeData(),
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: MaterialStateProperty.all(false),
+          trackVisibility: MaterialStateProperty.all(true),
+          interactive: true,
+          thumbColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.dragged)) {
+              return const Color(0xffe14613);
+            }
+            if (states.contains(MaterialState.hovered)) {
+              return const Color(0xffe14613);
+            }
+            return const Color(0xffe14613);
+          }),
+        ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        scrollbarTheme: const ScrollbarThemeData(),
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: MaterialStateProperty.all(false),
+          trackVisibility: MaterialStateProperty.all(true),
+          interactive: true,
+          thumbColor: MaterialStateProperty.resolveWith((states) {
+            if (states.contains(MaterialState.dragged)) {
+              return const Color(0xffcb440c);
+            }
+            if (states.contains(MaterialState.hovered)) {
+              return const Color(0xffcb440c);
+            }
+            return const Color(0xffcb440c);
+          }),
+        ),
       ),
       themeMode: _themeMode,
       routerConfig: _router,
@@ -175,7 +201,7 @@ class _NavBarPageState extends State<NavBarPage> {
           tabBackgroundColor: const Color(0x00000000),
           tabBorderRadius: 100.0,
           tabMargin: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 23.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 35.0),
           gap: 5.0,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           duration: const Duration(milliseconds: 500),

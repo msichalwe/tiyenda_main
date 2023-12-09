@@ -174,6 +174,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'singleEventsComponent',
               path: 'singleEventsComponent',
               builder: (context, params) => const SingleEventsComponentWidget(),
+            ),
+            FFRoute(
+              name: 'searchResults',
+              path: 'searchResults',
+              builder: (context, params) => SearchResultsWidget(
+                searchterm: params.getParam('searchterm', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -402,7 +409,7 @@ class TransitionInfo {
 
   static TransitionInfo appDefault() => const TransitionInfo(
         hasTransition: true,
-        transitionType: PageTransitionType.fade,
+        transitionType: PageTransitionType.rightToLeft,
         duration: Duration(milliseconds: 300),
       );
 }
