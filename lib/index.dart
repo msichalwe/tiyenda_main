@@ -22,7 +22,11 @@ export '/application/tickets/tickets/tickets_widget.dart' show TicketsWidget;
 export '/application/settings/web_page/web_page_widget.dart' show WebPageWidget;
 export '/loading/dashboard_loading/dashboard_loading_widget.dart'
     show DashboardLoadingWidget;
-export '/single_events_component/single_events_component_widget.dart'
+export '/loading/single_events_component/single_events_component_widget.dart'
     show SingleEventsComponentWidget;
 export '/application/search/search_results/search_results_widget.dart'
     show SearchResultsWidget;
+export '/application/events/single_event/tickets/buy_tickets/buy_tickets_widget.dart'
+    show BuyTicketsWidget;
+export '/application/events/single_event/tickets/select_tickets/select_tickets_widget.dart'
+    show SelectTicketsWidget;

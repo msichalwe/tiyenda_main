@@ -1,4 +1,4 @@
-import '/components/search_page_empty_list_widget.dart';
+import '/application/search/search_page_empty_list/search_page_empty_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';

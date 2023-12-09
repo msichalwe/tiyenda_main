@@ -36,6 +36,39 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _searchHistory;
     });
+    await _safeInitAsync(() async {
+      _cart = (await secureStorage.getStringList('ff_cart'))?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _cart;
+    });
+    await _safeInitAsync(() async {
+      _cartItems = (await secureStorage.getStringList('ff_cartItems'))
+              ?.map((x) {
+                try {
+                  return TicketStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _cartItems;
+    });
+    await _safeInitAsync(() async {
+      _cartPriceTotal =
+          await secureStorage.getInt('ff_cartPriceTotal') ?? _cartPriceTotal;
+    });
+    await _safeInitAsync(() async {
+      _likedEvents =
+          await secureStorage.getStringList('ff_likedEvents') ?? _likedEvents;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -94,6 +127,146 @@ class FFAppState extends ChangeNotifier {
     _searchHistory.insert(index, value);
     secureStorage.setStringList(
         'ff_searchHistory', _searchHistory.map((x) => x.serialize()).toList());
+  }
+
+  List<dynamic> _cart = [];
+  List<dynamic> get cart => _cart;
+  set cart(List<dynamic> value) {
+    _cart = value;
+    secureStorage.setStringList(
+        'ff_cart', value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void deleteCart() {
+    secureStorage.delete(key: 'ff_cart');
+  }
+
+  void addToCart(dynamic value) {
+    _cart.add(value);
+    secureStorage.setStringList(
+        'ff_cart', _cart.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromCart(dynamic value) {
+    _cart.remove(value);
+    secureStorage.setStringList(
+        'ff_cart', _cart.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromCart(int index) {
+    _cart.removeAt(index);
+    secureStorage.setStringList(
+        'ff_cart', _cart.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateCartAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _cart[index] = updateFn(_cart[index]);
+    secureStorage.setStringList(
+        'ff_cart', _cart.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInCart(int index, dynamic value) {
+    _cart.insert(index, value);
+    secureStorage.setStringList(
+        'ff_cart', _cart.map((x) => jsonEncode(x)).toList());
+  }
+
+  List<TicketStruct> _cartItems = [];
+  List<TicketStruct> get cartItems => _cartItems;
+  set cartItems(List<TicketStruct> value) {
+    _cartItems = value;
+    secureStorage.setStringList(
+        'ff_cartItems', value.map((x) => x.serialize()).toList());
+  }
+
+  void deleteCartItems() {
+    secureStorage.delete(key: 'ff_cartItems');
+  }
+
+  void addToCartItems(TicketStruct value) {
+    _cartItems.add(value);
+    secureStorage.setStringList(
+        'ff_cartItems', _cartItems.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromCartItems(TicketStruct value) {
+    _cartItems.remove(value);
+    secureStorage.setStringList(
+        'ff_cartItems', _cartItems.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromCartItems(int index) {
+    _cartItems.removeAt(index);
+    secureStorage.setStringList(
+        'ff_cartItems', _cartItems.map((x) => x.serialize()).toList());
+  }
+
+  void updateCartItemsAtIndex(
+    int index,
+    TicketStruct Function(TicketStruct) updateFn,
+  ) {
+    _cartItems[index] = updateFn(_cartItems[index]);
+    secureStorage.setStringList(
+        'ff_cartItems', _cartItems.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInCartItems(int index, TicketStruct value) {
+    _cartItems.insert(index, value);
+    secureStorage.setStringList(
+        'ff_cartItems', _cartItems.map((x) => x.serialize()).toList());
+  }
+
+  int _cartPriceTotal = 0;
+  int get cartPriceTotal => _cartPriceTotal;
+  set cartPriceTotal(int value) {
+    _cartPriceTotal = value;
+    secureStorage.setInt('ff_cartPriceTotal', value);
+  }
+
+  void deleteCartPriceTotal() {
+    secureStorage.delete(key: 'ff_cartPriceTotal');
+  }
+
+  List<String> _likedEvents = [];
+  List<String> get likedEvents => _likedEvents;
+  set likedEvents(List<String> value) {
+    _likedEvents = value;
+    secureStorage.setStringList('ff_likedEvents', value);
+  }
+
+  void deleteLikedEvents() {
+    secureStorage.delete(key: 'ff_likedEvents');
+  }
+
+  void addToLikedEvents(String value) {
+    _likedEvents.add(value);
+    secureStorage.setStringList('ff_likedEvents', _likedEvents);
+  }
+
+  void removeFromLikedEvents(String value) {
+    _likedEvents.remove(value);
+    secureStorage.setStringList('ff_likedEvents', _likedEvents);
+  }
+
+  void removeAtIndexFromLikedEvents(int index) {
+    _likedEvents.removeAt(index);
+    secureStorage.setStringList('ff_likedEvents', _likedEvents);
+  }
+
+  void updateLikedEventsAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    _likedEvents[index] = updateFn(_likedEvents[index]);
+    secureStorage.setStringList('ff_likedEvents', _likedEvents);
+  }
+
+  void insertAtIndexInLikedEvents(int index, String value) {
+    _likedEvents.insert(index, value);
+    secureStorage.setStringList('ff_likedEvents', _likedEvents);
   }
 
   final _allEventsManager = FutureRequestManager<ApiCallResponse>();

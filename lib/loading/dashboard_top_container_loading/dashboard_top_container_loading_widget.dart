@@ -1,7 +1,7 @@
-import '/components/categories_loading_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/loading/categories_loading/categories_loading_widget.dart';
 import '/loading/dashboard_featured_shimmer/dashboard_featured_shimmer_widget.dart';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';

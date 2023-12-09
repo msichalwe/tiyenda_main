@@ -1,5 +1,5 @@
-import '/components/categories_loading_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/loading/categories_loading/categories_loading_widget.dart';
 import '/loading/dashboard_featured_shimmer/dashboard_featured_shimmer_widget.dart';
 import 'dashboard_top_container_loading_widget.dart'
     show DashboardTopContainerLoadingWidget;

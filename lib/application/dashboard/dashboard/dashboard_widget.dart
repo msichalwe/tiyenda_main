@@ -1,10 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/categories_loading_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/loading/categories_loading/categories_loading_widget.dart';
 import '/loading/dashboard_featured_shimmer/dashboard_featured_shimmer_widget.dart';
 import '/loading/dashboard_top_container_loading/dashboard_top_container_loading_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
