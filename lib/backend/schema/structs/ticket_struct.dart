@@ -14,25 +14,25 @@ class TicketStruct extends FFFirebaseStruct {
     DateTime? createdAt,
     DateTime? updatedAt,
     String? name,
-    double? price,
     DateTime? startDate,
     DateTime? endDate,
     int? availableTickets,
     int? ticketLimit,
     String? description,
     String? ticketId,
+    int? price,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _eventId = eventId,
         _createdAt = createdAt,
         _updatedAt = updatedAt,
         _name = name,
-        _price = price,
         _startDate = startDate,
         _endDate = endDate,
         _availableTickets = availableTickets,
         _ticketLimit = ticketLimit,
         _description = description,
         _ticketId = ticketId,
+        _price = price,
         super(firestoreUtilData);
 
   // "event_id" field.
@@ -58,13 +58,6 @@ class TicketStruct extends FFFirebaseStruct {
   String get name => _name ?? '';
   set name(String? val) => _name = val;
   bool hasName() => _name != null;
-
-  // "price" field.
-  double? _price;
-  double get price => _price ?? 0.0;
-  set price(double? val) => _price = val;
-  void incrementPrice(double amount) => _price = price + amount;
-  bool hasPrice() => _price != null;
 
   // "startDate" field.
   DateTime? _startDate;
@@ -105,18 +98,25 @@ class TicketStruct extends FFFirebaseStruct {
   set ticketId(String? val) => _ticketId = val;
   bool hasTicketId() => _ticketId != null;
 
+  // "price" field.
+  int? _price;
+  int get price => _price ?? 0;
+  set price(int? val) => _price = val;
+  void incrementPrice(int amount) => _price = price + amount;
+  bool hasPrice() => _price != null;
+
   static TicketStruct fromMap(Map<String, dynamic> data) => TicketStruct(
         eventId: data['event_id'] as String?,
         createdAt: data['created_at'] as DateTime?,
         updatedAt: data['updated_at'] as DateTime?,
         name: data['name'] as String?,
-        price: castToType<double>(data['price']),
         startDate: data['startDate'] as DateTime?,
         endDate: data['endDate'] as DateTime?,
         availableTickets: castToType<int>(data['availableTickets']),
         ticketLimit: castToType<int>(data['ticketLimit']),
         description: data['description'] as String?,
         ticketId: data['ticket_id'] as String?,
+        price: castToType<int>(data['price']),
       );
 
   static TicketStruct? maybeFromMap(dynamic data) =>
@@ -127,13 +127,13 @@ class TicketStruct extends FFFirebaseStruct {
         'created_at': _createdAt,
         'updated_at': _updatedAt,
         'name': _name,
-        'price': _price,
         'startDate': _startDate,
         'endDate': _endDate,
         'availableTickets': _availableTickets,
         'ticketLimit': _ticketLimit,
         'description': _description,
         'ticket_id': _ticketId,
+        'price': _price,
       }.withoutNulls;
 
   @override
@@ -153,10 +153,6 @@ class TicketStruct extends FFFirebaseStruct {
         'name': serializeParam(
           _name,
           ParamType.String,
-        ),
-        'price': serializeParam(
-          _price,
-          ParamType.double,
         ),
         'startDate': serializeParam(
           _startDate,
@@ -182,6 +178,10 @@ class TicketStruct extends FFFirebaseStruct {
           _ticketId,
           ParamType.String,
         ),
+        'price': serializeParam(
+          _price,
+          ParamType.int,
+        ),
       }.withoutNulls;
 
   static TicketStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -204,11 +204,6 @@ class TicketStruct extends FFFirebaseStruct {
         name: deserializeParam(
           data['name'],
           ParamType.String,
-          false,
-        ),
-        price: deserializeParam(
-          data['price'],
-          ParamType.double,
           false,
         ),
         startDate: deserializeParam(
@@ -241,6 +236,11 @@ class TicketStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        price: deserializeParam(
+          data['price'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -253,13 +253,13 @@ class TicketStruct extends FFFirebaseStruct {
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
         name == other.name &&
-        price == other.price &&
         startDate == other.startDate &&
         endDate == other.endDate &&
         availableTickets == other.availableTickets &&
         ticketLimit == other.ticketLimit &&
         description == other.description &&
-        ticketId == other.ticketId;
+        ticketId == other.ticketId &&
+        price == other.price;
   }
 
   @override
@@ -268,13 +268,13 @@ class TicketStruct extends FFFirebaseStruct {
         createdAt,
         updatedAt,
         name,
-        price,
         startDate,
         endDate,
         availableTickets,
         ticketLimit,
         description,
-        ticketId
+        ticketId,
+        price
       ]);
 }
 
@@ -283,13 +283,13 @@ TicketStruct createTicketStruct({
   DateTime? createdAt,
   DateTime? updatedAt,
   String? name,
-  double? price,
   DateTime? startDate,
   DateTime? endDate,
   int? availableTickets,
   int? ticketLimit,
   String? description,
   String? ticketId,
+  int? price,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -300,13 +300,13 @@ TicketStruct createTicketStruct({
       createdAt: createdAt,
       updatedAt: updatedAt,
       name: name,
-      price: price,
       startDate: startDate,
       endDate: endDate,
       availableTickets: availableTickets,
       ticketLimit: ticketLimit,
       description: description,
       ticketId: ticketId,
+      price: price,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

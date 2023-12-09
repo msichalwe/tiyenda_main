@@ -396,15 +396,17 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                               ticketListItem,
                                                               r'''$.name''',
                                                             ).toString(),
-                                                            price: getJsonField(
-                                                              ticketListItem,
-                                                              r'''$.price''',
-                                                            ),
                                                             ticketId:
                                                                 getJsonField(
                                                               ticketListItem,
                                                               r'''$.id''',
                                                             ).toString(),
+                                                            price: functions
+                                                                .convertStringToNum(
+                                                                    getJsonField(
+                                                              ticketListItem,
+                                                              r'''$.price''',
+                                                            ).toString()),
                                                           ));
                                                         });
                                                         logFirebaseEvent(
