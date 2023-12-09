@@ -30,13 +30,13 @@ int? convertNumIntoInt(String? num) {
   }
 }
 
-double? convertStringToNum(String? stringInput) {
+int? convertStringToNum(String? stringInput) {
   // a function that takes a string and returns a num
   if (stringInput == null) {
     return null;
   }
   try {
-    return double.parse(stringInput);
+    return int.parse(stringInput);
   } catch (e) {
     return null;
   }
