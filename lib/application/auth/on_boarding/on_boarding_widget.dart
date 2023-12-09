@@ -261,7 +261,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                       ClipRRect(
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 420.0,
+                          height: 600.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,

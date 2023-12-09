@@ -304,7 +304,7 @@ class GetSingleEventsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getSingleEvents',
-      apiUrl: '${EventsGroup.baseUrl}/events/$eventId',
+      apiUrl: '${EventsGroup.baseUrl}events/$eventId',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
@@ -327,7 +327,7 @@ class GetEventTicketsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getEventTickets',
-      apiUrl: '${EventsGroup.baseUrl}/tickets/$eventId',
+      apiUrl: '${EventsGroup.baseUrl}tickets/$eventId',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
@@ -354,7 +354,7 @@ class FollowOrganizerCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'followOrganizer',
-      apiUrl: '${EventsGroup.baseUrl}/follow/$organizerId',
+      apiUrl: '${EventsGroup.baseUrl}follow/$organizerId',
       callType: ApiCallType.POST,
       headers: {
         'Content-type': 'application/json',
@@ -380,7 +380,7 @@ class UnfollowOrganizerCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'unfollowOrganizer',
-      apiUrl: '${EventsGroup.baseUrl}/follow/$organizerId',
+      apiUrl: '${EventsGroup.baseUrl}follow/$organizerId',
       callType: ApiCallType.DELETE,
       headers: {
         'Content-type': 'application/json',
@@ -402,7 +402,7 @@ class GetAllCategoriesCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getAllCategories',
-      apiUrl: '${EventsGroup.baseUrl}/categories',
+      apiUrl: '${EventsGroup.baseUrl}categories',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
@@ -456,7 +456,7 @@ class GetCategoryEventsCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getCategoryEvents',
-      apiUrl: '${EventsGroup.baseUrl}/events/category/$categoryId',
+      apiUrl: '${EventsGroup.baseUrl}events/category/$categoryId',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
@@ -516,7 +516,7 @@ class GetMongoUserCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getMongoUser',
-      apiUrl: '${EventsGroup.baseUrl}/user/$firebaseId',
+      apiUrl: '${EventsGroup.baseUrl}user/$firebaseId',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
@@ -538,7 +538,7 @@ class GetAllOrganizersCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getAllOrganizers',
-      apiUrl: '${EventsGroup.baseUrl}/organizer',
+      apiUrl: '${EventsGroup.baseUrl}organizer',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
@@ -583,7 +583,7 @@ class GetOneOrganizerCall {
 
     return ApiManager.instance.makeApiCall(
       callName: 'getOneOrganizer',
-      apiUrl: '${EventsGroup.baseUrl}/organizer/$organizerId',
+      apiUrl: '${EventsGroup.baseUrl}organizer/$organizerId',
       callType: ApiCallType.GET,
       headers: {
         'Content-type': 'application/json',
