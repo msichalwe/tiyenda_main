@@ -368,13 +368,14 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                             'Button_update_app_state');
                                                         setState(() {
                                                           FFAppState()
-                                                                  .cartPriceTotal =
-                                                              FFAppState()
-                                                                      .cartPriceTotal +
-                                                                  getJsonField(
-                                                                    ticketListItem,
-                                                                    r'''$.price''',
-                                                                  );
+                                                              .cartPriceTotal = FFAppState()
+                                                                  .cartPriceTotal +
+                                                              functions
+                                                                  .convertNumIntoInt(
+                                                                      getJsonField(
+                                                                ticketListItem,
+                                                                r'''$.price''',
+                                                              ).toString())!;
                                                         });
                                                         logFirebaseEvent(
                                                             'Button_show_snack_bar');

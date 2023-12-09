@@ -20,3 +20,24 @@ DateTime? convertToDateTime(String? stringDate) {
   }
   return DateTime.parse(stringDate);
 }
+
+int? convertNumIntoInt(String? num) {
+  // gets a string and returns an int
+  try {
+    return int.parse(num!);
+  } catch (e) {
+    return null;
+  }
+}
+
+double? convertStringToNum(String? stringInput) {
+  // a function that takes a string and returns a num
+  if (stringInput == null) {
+    return null;
+  }
+  try {
+    return double.parse(stringInput);
+  } catch (e) {
+    return null;
+  }
+}
