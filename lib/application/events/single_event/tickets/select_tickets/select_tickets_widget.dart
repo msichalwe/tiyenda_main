@@ -124,7 +124,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.00, 1.00),
+                          alignment: const AlignmentDirectional(0.0, 1.0),
                           child: Builder(
                             builder: (context) {
                               final ticketList =
@@ -154,9 +154,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 5.0, 5.0, 5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Container(
                                               decoration: BoxDecoration(
                                                 borderRadius:
@@ -169,9 +167,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 5.0, 5.0, 5.0),
+                                                padding: const EdgeInsets.all(5.0),
                                                 child: Text(
                                                   getJsonField(
                                                     ticketListItem,
@@ -370,9 +366,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(10.0, 10.0,
-                                                          10.0, 10.0),
+                                                  padding: const EdgeInsets.all(10.0),
                                                   child: Container(
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
@@ -587,12 +581,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10.0,
-                                                                10.0,
-                                                                10.0,
-                                                                10.0),
+                                                        const EdgeInsets.all(10.0),
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme
@@ -618,12 +607,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                10.0,
-                                                                10.0,
-                                                                10.0,
-                                                                10.0),
+                                                        const EdgeInsets.all(10.0),
                                                     child: Container(
                                                       decoration: BoxDecoration(
                                                         color: FlutterFlowTheme

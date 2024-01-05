@@ -356,8 +356,7 @@ class _DashboardTopContainerLoadingWidgetState
               child: Container(
                 decoration: const BoxDecoration(),
                 child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -526,8 +525,7 @@ class _DashboardTopContainerLoadingWidgetState
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          10.0, 10.0, 10.0, 10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -581,8 +579,7 @@ class _DashboardTopContainerLoadingWidgetState
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          20.0, 20.0, 20.0, 20.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -637,8 +634,7 @@ class _DashboardTopContainerLoadingWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 20.0, 20.0, 20.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -718,13 +714,13 @@ class _DashboardTopContainerLoadingWidgetState
                                             ),
                                             child: Align(
                                               alignment: const AlignmentDirectional(
-                                                  0.00, 0.00),
+                                                  0.0, 0.0),
                                               child: Transform.rotate(
                                                 angle: 1.6057,
                                                 child: Align(
                                                   alignment:
                                                       const AlignmentDirectional(
-                                                          0.00, 0.00),
+                                                          0.0, 0.0),
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -764,13 +760,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -812,13 +808,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -860,13 +856,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -926,13 +922,13 @@ class _DashboardTopContainerLoadingWidgetState
                                             ),
                                             child: Align(
                                               alignment: const AlignmentDirectional(
-                                                  0.00, 0.00),
+                                                  0.0, 0.0),
                                               child: Transform.rotate(
                                                 angle: 1.6057,
                                                 child: Align(
                                                   alignment:
                                                       const AlignmentDirectional(
-                                                          0.00, 0.00),
+                                                          0.0, 0.0),
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -972,13 +968,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1020,13 +1016,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1068,13 +1064,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1134,13 +1130,13 @@ class _DashboardTopContainerLoadingWidgetState
                                             ),
                                             child: Align(
                                               alignment: const AlignmentDirectional(
-                                                  0.00, 0.00),
+                                                  0.0, 0.0),
                                               child: Transform.rotate(
                                                 angle: 1.6057,
                                                 child: Align(
                                                   alignment:
                                                       const AlignmentDirectional(
-                                                          0.00, 0.00),
+                                                          0.0, 0.0),
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -1180,13 +1176,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1228,13 +1224,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -1276,13 +1272,13 @@ class _DashboardTopContainerLoadingWidgetState
                                               ),
                                               child: Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Transform.rotate(
                                                   angle: 1.6057,
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: ClipRRect(
                                                       borderRadius:
                                                           BorderRadius.circular(

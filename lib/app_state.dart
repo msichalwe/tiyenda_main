@@ -314,6 +314,21 @@ class FFAppState extends ChangeNotifier {
   void clearAllCategoriesCache() => _allCategoriesManager.clear();
   void clearAllCategoriesCacheKey(String? uniqueKey) =>
       _allCategoriesManager.clearRequest(uniqueKey);
+
+  final _getSingleEventManager = FutureRequestManager<ApiCallResponse>();
+  Future<ApiCallResponse> getSingleEvent({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<ApiCallResponse> Function() requestFn,
+  }) =>
+      _getSingleEventManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearGetSingleEventCache() => _getSingleEventManager.clear();
+  void clearGetSingleEventCacheKey(String? uniqueKey) =>
+      _getSingleEventManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

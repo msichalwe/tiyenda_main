@@ -169,6 +169,9 @@ class _TicketsWidgetState extends State<TicketsWidget>
                                   ),
                                 ],
                                 controller: _model.tabBarController,
+                                onTap: (i) async {
+                                  [() async {}, () async {}][i]();
+                                },
                               ),
                             ),
                             Expanded(
@@ -232,9 +235,7 @@ class _TicketsWidgetState extends State<TicketsWidget>
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        12.0, 12.0, 12.0, 12.0),
+                                                padding: const EdgeInsets.all(12.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -376,8 +377,7 @@ class _TicketsWidgetState extends State<TicketsWidget>
                                                             child: Align(
                                                               alignment:
                                                                   const AlignmentDirectional(
-                                                                      0.00,
-                                                                      0.00),
+                                                                      0.0, 0.0),
                                                               child: Padding(
                                                                 padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(

@@ -145,7 +145,7 @@ class _PhoneSignInWidgetState extends State<PhoneSignInWidget>
                 )
               : null,
           body: Align(
-            alignment: const AlignmentDirectional(0.00, 0.00),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [

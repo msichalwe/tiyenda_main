@@ -279,7 +279,7 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                           child: Stack(
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   height:
                                       MediaQuery.sizeOf(context).height * 1.0,
@@ -287,7 +287,7 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     color: const Color(0xFF364672),
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  alignment: const AlignmentDirectional(0.00, 0.00),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Container(
                                     width:
                                         MediaQuery.sizeOf(context).width * 1.0,
@@ -305,7 +305,7 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.00, 0.00),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Transform.rotate(
                                             angle: 1.5882,
                                             child: ClipRRect(
@@ -368,12 +368,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -409,12 +409,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -450,12 +450,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -491,12 +491,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -532,12 +532,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -573,12 +573,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -614,12 +614,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -655,12 +655,12 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                                     sigmaY: 6.0,
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.00, 0.00),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Transform.rotate(
                                       angle: 1.6057,
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -709,9 +709,9 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
               ],
               borderRadius: BorderRadius.circular(0.0),
             ),
-            alignment: const AlignmentDirectional(0.00, 0.00),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -732,11 +732,11 @@ class _SingleEventsShimmerWidgetState extends State<SingleEventsShimmerWidget>
                             sigmaY: 6.0,
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Transform.rotate(
                               angle: 1.6057,
                               child: Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(

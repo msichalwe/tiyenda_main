@@ -268,8 +268,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 10.0, 10.0, 10.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: wrapWithModel(
                                   model: _model.recentSearchListModel,
                                   updateCallback: () => setState(() {}),

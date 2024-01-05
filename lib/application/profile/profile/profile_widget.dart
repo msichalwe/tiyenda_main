@@ -132,7 +132,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
               children: [
                 Expanded(
                   child: Align(
-                    alignment: const AlignmentDirectional(0.00, -1.00),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -148,7 +148,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               decoration: const BoxDecoration(),
                             ),
                           Align(
-                            alignment: const AlignmentDirectional(0.00, -1.00),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
@@ -178,9 +178,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 16.0, 16.0, 16.0),
+                                          padding: const EdgeInsets.all(16.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -560,7 +558,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                         child: Align(
                                                           alignment:
                                                               const AlignmentDirectional(
-                                                                  1.00, 0.00),
+                                                                  1.0, 0.0),
                                                           child: Icon(
                                                             Icons
                                                                 .chevron_right_rounded,
@@ -615,7 +613,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                         child: Align(
                                                           alignment:
                                                               const AlignmentDirectional(
-                                                                  1.00, 0.00),
+                                                                  1.0, 0.0),
                                                           child: Icon(
                                                             Icons
                                                                 .chevron_right_rounded,
@@ -670,7 +668,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                         child: Align(
                                                           alignment:
                                                               const AlignmentDirectional(
-                                                                  1.00, 0.00),
+                                                                  1.0, 0.0),
                                                           child: Icon(
                                                             Icons
                                                                 .chevron_right_rounded,
@@ -725,7 +723,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                         child: Align(
                                                           alignment:
                                                               const AlignmentDirectional(
-                                                                  1.00, 0.00),
+                                                                  1.0, 0.0),
                                                           child: Icon(
                                                             Icons
                                                                 .chevron_right_rounded,
@@ -793,7 +791,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                         child: Align(
                                                           alignment:
                                                               const AlignmentDirectional(
-                                                                  1.00, 0.00),
+                                                                  1.0, 0.0),
                                                           child: Icon(
                                                             Icons
                                                                 .chevron_right_rounded,
@@ -912,7 +910,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                           child: Align(
                                                             alignment:
                                                                 const AlignmentDirectional(
-                                                                    1.00, 0.00),
+                                                                    1.0, 0.0),
                                                             child: Icon(
                                                               Icons
                                                                   .chevron_right_rounded,
@@ -1006,7 +1004,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                           child: Align(
                                                             alignment:
                                                                 const AlignmentDirectional(
-                                                                    1.00, 0.00),
+                                                                    1.0, 0.0),
                                                             child: Icon(
                                                               Icons
                                                                   .chevron_right_rounded,
@@ -1087,7 +1085,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                           child: Align(
                                                             alignment:
                                                                 const AlignmentDirectional(
-                                                                    1.00, 0.00),
+                                                                    1.0, 0.0),
                                                             child: Icon(
                                                               Icons
                                                                   .chevron_right_rounded,
@@ -1143,7 +1141,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                         child: Align(
                                                           alignment:
                                                               const AlignmentDirectional(
-                                                                  1.00, 0.00),
+                                                                  1.0, 0.0),
                                                           child: Icon(
                                                             Icons
                                                                 .chevron_right_rounded,
@@ -1211,7 +1209,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.00, -1.00),
+                                              const AlignmentDirectional(0.0, -1.0),
                                           child: Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
@@ -1299,7 +1297,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.00, -1.00),
+                                              const AlignmentDirectional(0.0, -1.0),
                                           child: Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(

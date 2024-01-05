@@ -85,14 +85,14 @@ class _DashboardFeaturedShimmerWidgetState
             child: Stack(
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.00, 0.00),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Container(
                     height: MediaQuery.sizeOf(context).height * 1.0,
                     decoration: BoxDecoration(
                       color: const Color(0xFF364672),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    alignment: const AlignmentDirectional(0.00, 0.00),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: MediaQuery.sizeOf(context).height * 1.0,
@@ -107,7 +107,7 @@ class _DashboardFeaturedShimmerWidgetState
                             sigmaY: 6.0,
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Transform.rotate(
                               angle: 1.5882,
                               child: ClipRRect(

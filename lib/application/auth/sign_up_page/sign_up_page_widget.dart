@@ -215,7 +215,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                 Stack(
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.00, -1.00),
+                      alignment: const AlignmentDirectional(0.0, -1.0),
                       child: Container(
                         height: MediaQuery.sizeOf(context).height * 1.0,
                         decoration: const BoxDecoration(
@@ -227,7 +227,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Align(
-                                alignment: const AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 30.0, 0.0, 0.0),
@@ -241,8 +241,7 @@ class _SignUpPageWidgetState extends State<SignUpPageWidget>
                                       color: Color(0xFF0D121D),
                                     ),
                                     child: Align(
-                                      alignment:
-                                          const AlignmentDirectional(1.00, 0.00),
+                                      alignment: const AlignmentDirectional(1.0, 0.0),
                                       child: Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 50.0, 20.0, 12.0),

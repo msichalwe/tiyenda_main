@@ -110,8 +110,7 @@ class _UpComingEventOrdersWidgetState extends State<UpComingEventOrdersWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              12.0, 12.0, 12.0, 12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -127,7 +126,7 @@ class _UpComingEventOrdersWidgetState extends State<UpComingEventOrdersWidget> {
                                       getJsonField(
                                         ordersItem,
                                         r'''$.event.image''',
-                                      ),
+                                      ).toString(),
                                     ),
                                     width: 60.0,
                                     height: 80.0,
@@ -228,7 +227,7 @@ class _UpComingEventOrdersWidgetState extends State<UpComingEventOrdersWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.00, 0.00),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(

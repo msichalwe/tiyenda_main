@@ -202,7 +202,7 @@ class _SignInWidgetState extends State<SignInWidget>
                       Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.00, -1.00),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
                             child: Container(
                               height: MediaQuery.sizeOf(context).height * 1.0,
                               decoration: const BoxDecoration(
@@ -224,7 +224,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                             children: [
                                               Align(
                                                 alignment: const AlignmentDirectional(
-                                                    0.00, 0.00),
+                                                    0.0, 0.0),
                                                 child: Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -241,7 +241,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                                     child: Align(
                                                       alignment:
                                                           const AlignmentDirectional(
-                                                              1.00, 0.00),
+                                                              1.0, 0.0),
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsetsDirectional
@@ -864,11 +864,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                         .center,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            8.0,
-                                                                            8.0,
+                                                                    padding:
+                                                                        const EdgeInsets.all(
                                                                             8.0),
                                                                     child:
                                                                         FlutterFlowIconButton(
@@ -912,11 +909,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            8.0,
-                                                                            8.0,
+                                                                    padding:
+                                                                        const EdgeInsets.all(
                                                                             8.0),
                                                                     child:
                                                                         FlutterFlowIconButton(
@@ -960,11 +954,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            8.0,
-                                                                            8.0,
+                                                                    padding:
+                                                                        const EdgeInsets.all(
                                                                             8.0),
                                                                     child:
                                                                         FlutterFlowIconButton(
@@ -1008,11 +999,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            8.0,
-                                                                            8.0,
+                                                                    padding:
+                                                                        const EdgeInsets.all(
                                                                             8.0),
                                                                     child:
                                                                         FlutterFlowIconButton(

@@ -44,8 +44,9 @@ class SearchHistoryStruct extends FFFirebaseStruct {
         searchDate: data['searchDate'] as DateTime?,
       );
 
-  static SearchHistoryStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? SearchHistoryStruct.fromMap(data) : null;
+  static SearchHistoryStruct? maybeFromMap(dynamic data) => data is Map
+      ? SearchHistoryStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'event_id': _eventId,

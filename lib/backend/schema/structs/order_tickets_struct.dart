@@ -36,8 +36,9 @@ class OrderTicketsStruct extends FFFirebaseStruct {
         quantity: castToType<int>(data['quantity']),
       );
 
-  static OrderTicketsStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? OrderTicketsStruct.fromMap(data) : null;
+  static OrderTicketsStruct? maybeFromMap(dynamic data) => data is Map
+      ? OrderTicketsStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'ticket_id': _ticketId,

@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/loading/single_events_shimmer/single_events_shimmer_widget.dart';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -94,8 +93,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                               children: [
                                 Expanded(
                                   child: Align(
-                                    alignment:
-                                        const AlignmentDirectional(-1.00, 1.00),
+                                    alignment: const AlignmentDirectional(-1.0, 1.0),
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           15.0, 0.0, 0.0, 8.0),
@@ -215,12 +213,27 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                 children: [
                   Expanded(
                     child: FutureBuilder<ApiCallResponse>(
-                      future: (_model.apiRequestCompleter ??=
-                              Completer<ApiCallResponse>()
-                                ..complete(EventsGroup.getSingleEventsCall.call(
-                                  eventId: widget.eventID,
-                                )))
-                          .future,
+                      future: FFAppState()
+                          .getSingleEvent(
+                        uniqueQueryKey: valueOrDefault<String>(
+                          widget.eventID,
+                          '1',
+                        ),
+                        requestFn: () => EventsGroup.getSingleEventsCall.call(
+                          eventId: widget.eventID,
+                        ),
+                      )
+                          .then((result) {
+                        try {
+                          _model.apiRequestCompleted = true;
+                          _model.apiRequestLastUniqueKey =
+                              valueOrDefault<String>(
+                            widget.eventID,
+                            '1',
+                          );
+                        } finally {}
+                        return result;
+                      }),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
                         if (!snapshot.hasData) {
@@ -235,7 +248,11 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                 'EVENTSINGLE_scrolling_Column_ON_PULL_TO_');
                             logFirebaseEvent(
                                 'scrolling_Column_refresh_database_reques');
-                            setState(() => _model.apiRequestCompleter = null);
+                            setState(() {
+                              FFAppState().clearGetSingleEventCacheKey(
+                                  _model.apiRequestLastUniqueKey);
+                              _model.apiRequestCompleted = false;
+                            });
                             await _model.waitForApiRequestCompleted();
                           },
                           child: ListView(
@@ -270,9 +287,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 2.0, 2.0, 2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -297,7 +312,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                             scrollingColumnGetSingleEventsResponse
                                                                 .jsonBody,
                                                             r'''$.image''',
-                                                          ),
+                                                          ).toString(),
                                                         ),
                                                         fit: BoxFit.contain,
                                                       ),
@@ -306,7 +321,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                         scrollingColumnGetSingleEventsResponse
                                                             .jsonBody,
                                                         r'''$.image''',
-                                                      ),
+                                                      ).toString(),
                                                       useHeroAnimation: true,
                                                     ),
                                                   ),
@@ -317,7 +332,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                   scrollingColumnGetSingleEventsResponse
                                                       .jsonBody,
                                                   r'''$.image''',
-                                                ),
+                                                ).toString(),
                                                 transitionOnUserGestures: true,
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -329,7 +344,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                         scrollingColumnGetSingleEventsResponse
                                                             .jsonBody,
                                                         r'''$.image''',
-                                                      ),
+                                                      ).toString(),
                                                     ),
                                                     width: double.infinity,
                                                     height: 200.0,
@@ -564,9 +579,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                           10.0),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(10.0, 10.0,
-                                                          10.0, 10.0),
+                                                  padding: const EdgeInsets.all(10.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -730,9 +743,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 16.0, 16.0, 16.0),
+                                              padding: const EdgeInsets.all(16.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
@@ -921,7 +932,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                             ),
                                                             alignment:
                                                                 const AlignmentDirectional(
-                                                                    0.00, 0.00),
+                                                                    0.0, 0.0),
                                                             child: Padding(
                                                               padding:
                                                                   const EdgeInsetsDirectional
@@ -1072,10 +1083,9 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                       ],
                       borderRadius: BorderRadius.circular(0.0),
                     ),
-                    alignment: const AlignmentDirectional(0.00, 0.00),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          20.0, 20.0, 20.0, 20.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [

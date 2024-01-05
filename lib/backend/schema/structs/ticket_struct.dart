@@ -120,7 +120,7 @@ class TicketStruct extends FFFirebaseStruct {
       );
 
   static TicketStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? TicketStruct.fromMap(data) : null;
+      data is Map ? TicketStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'event_id': _eventId,

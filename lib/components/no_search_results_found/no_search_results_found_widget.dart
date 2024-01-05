@@ -47,7 +47,7 @@ class _NoSearchResultsFoundWidgetState
       mainAxisSize: MainAxisSize.max,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+          padding: const EdgeInsets.all(10.0),
           child: Text(
             'OOps 😵  looks like we didnt find what you where looking for, try something else. 🤔',
             textAlign: TextAlign.center,

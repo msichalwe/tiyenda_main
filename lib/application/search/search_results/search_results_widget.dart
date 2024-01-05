@@ -117,7 +117,7 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                       color: FlutterFlowTheme.of(context).alternate,
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.00, 0.00),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: FutureBuilder<ApiCallResponse>(
                         future: EventsGroup.eventsSearchCall.call(
                           eventName: widget.searchterm,
@@ -240,12 +240,7 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    2.0,
-                                                                    2.0,
-                                                                    2.0,
-                                                                    2.0),
+                                                            const EdgeInsets.all(2.0),
                                                         child: ClipRRect(
                                                           borderRadius:
                                                               BorderRadius
@@ -266,7 +261,7 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                                                               getJsonField(
                                                                 searchResultsItem,
                                                                 r'''$.image''',
-                                                              ),
+                                                              ).toString(),
                                                             ),
                                                             width: 120.0,
                                                             height: 120.0,

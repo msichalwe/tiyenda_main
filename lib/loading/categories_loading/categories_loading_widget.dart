@@ -76,7 +76,7 @@ class _CategoriesLoadingWidgetState extends State<CategoriesLoadingWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+            padding: const EdgeInsets.all(5.0),
             child: FFButtonWidget(
               onPressed: () {
                 print('Button pressed ...');
@@ -103,7 +103,7 @@ class _CategoriesLoadingWidgetState extends State<CategoriesLoadingWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+            padding: const EdgeInsets.all(5.0),
             child: FFButtonWidget(
               onPressed: () {
                 print('Button pressed ...');
@@ -130,7 +130,7 @@ class _CategoriesLoadingWidgetState extends State<CategoriesLoadingWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+            padding: const EdgeInsets.all(5.0),
             child: FFButtonWidget(
               onPressed: () {
                 print('Button pressed ...');
@@ -157,7 +157,7 @@ class _CategoriesLoadingWidgetState extends State<CategoriesLoadingWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+            padding: const EdgeInsets.all(5.0),
             child: FFButtonWidget(
               onPressed: () {
                 print('Button pressed ...');
@@ -184,7 +184,7 @@ class _CategoriesLoadingWidgetState extends State<CategoriesLoadingWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+            padding: const EdgeInsets.all(5.0),
             child: FFButtonWidget(
               onPressed: () {
                 print('Button pressed ...');

@@ -177,9 +177,6 @@ class _DashboardWidgetState extends State<DashboardWidget>
       }
     });
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -276,8 +273,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                           child: Container(
                             decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 10.0, 10.0, 10.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -344,146 +340,6 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                     size: 24.0,
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(4.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          _model.textController,
-                                                      focusNode: _model
-                                                          .textFieldFocusNode,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        hintText: 'Search...',
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Nunito Sans',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBtnText,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                        enabledBorder:
-                                                            const UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedBorder:
-                                                            const UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        errorBorder:
-                                                            const UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            const UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .only(
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    4.0),
-                                                          ),
-                                                        ),
-                                                        filled: true,
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Nunito Sans',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                fontSize: 14.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                      validator: _model
-                                                          .textControllerValidator
-                                                          .asValidator(context),
-                                                    ),
-                                                  ),
-                                                ),
                                               ],
                                             ),
                                           ),
@@ -507,11 +363,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 10.0, 0.0),
                                 child: FutureBuilder<ApiCallResponse>(
-                                  future: _model.featuredEventsCache(
-                                    requestFn: () => EventsGroup
-                                        .getAllEventsFeaturedCall
-                                        .call(),
-                                  ),
+                                  future: EventsGroup.getAllEventsFeaturedCall
+                                      .call(),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -525,9 +378,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 10.0),
+                                            padding: const EdgeInsets.all(10.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -602,12 +453,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                             eventFeaturedIndex];
                                                     return Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  10.0,
-                                                                  10.0,
-                                                                  10.0),
+                                                          const EdgeInsets.all(10.0),
                                                       child: Container(
                                                         width: 300.0,
                                                         height: 150.0,
@@ -634,7 +480,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                   getJsonField(
                                                                     eventFeaturedItem,
                                                                     r'''$.image''',
-                                                                  ),
+                                                                  ).toString(),
                                                                 ),
                                                                 width: 353.0,
                                                                 height: 200.0,
@@ -865,6 +711,11 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                             0.0, 10.0, 0.0, 0.0),
                                         child: FutureBuilder<ApiCallResponse>(
                                           future: FFAppState().allCategories(
+                                            uniqueQueryKey: getJsonField(
+                                              listViewGetAllEventsResponse
+                                                  .jsonBody,
+                                              r'''$.id''',
+                                            ).toString(),
                                             requestFn: () => EventsGroup
                                                 .getAllCategoriesCall
                                                 .call(),
@@ -896,12 +747,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               categoriesIndex];
                                                       return Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0),
+                                                            const EdgeInsets.all(5.0),
                                                         child: FFButtonWidget(
                                                           onPressed: () {
                                                             print(
@@ -991,8 +837,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 20.0, 20.0, 20.0),
+                                        padding: const EdgeInsets.all(20.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -1051,7 +896,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                         decoration: const BoxDecoration(),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(0.00, 0.00),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Builder(
                                             builder: (context) {
                                               final events =
@@ -1180,7 +1025,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                         getJsonField(
                                                                           eventsItem,
                                                                           r'''$.image''',
-                                                                        ),
+                                                                        ).toString(),
                                                                       ),
                                                                       width: MediaQuery.sizeOf(context)
                                                                               .width *
@@ -1234,8 +1079,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                       child:
                                                                           Align(
                                                                         alignment: const AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                            0.0,
+                                                                            0.0),
                                                                         child:
                                                                             AutoSizeText(
                                                                           dateTimeFormat(
@@ -1526,9 +1371,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 20.0, 20.0, 20.0),
+                                            padding: const EdgeInsets.all(20.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -1664,8 +1507,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                   child: Align(
                                                                     alignment:
                                                                         const AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       '17 DEC',
                                                                       textAlign:
@@ -1974,8 +1817,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                   child: Align(
                                                                     alignment:
                                                                         const AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       '18 NOV',
                                                                       textAlign:
@@ -2284,8 +2127,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                   child: Align(
                                                                     alignment:
                                                                         const AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                            0.0,
+                                                                            0.0),
                                                                     child: Text(
                                                                       '1 JAN',
                                                                       textAlign:
@@ -2531,9 +2374,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 20.0, 20.0, 20.0),
+                                          padding: const EdgeInsets.all(20.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -2589,8 +2430,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                   1.0,
                                           decoration: const BoxDecoration(),
                                           child: Align(
-                                            alignment: const AlignmentDirectional(
-                                                0.00, 0.00),
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
                                             child: Builder(
                                               builder: (context) {
                                                 final events =
@@ -2646,11 +2487,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            2.0,
-                                                                            2.0,
-                                                                            2.0,
+                                                                    const EdgeInsets
+                                                                        .all(
                                                                             2.0),
                                                                 child:
                                                                     ClipRRect(
@@ -2673,7 +2511,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                       getJsonField(
                                                                         eventsItem,
                                                                         r'''$.image''',
-                                                                      ),
+                                                                      ).toString(),
                                                                     ),
                                                                     width:
                                                                         120.0,
@@ -2810,9 +2648,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 20.0, 20.0, 20.0),
+                                            padding: const EdgeInsets.all(20.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -2883,14 +2719,11 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                           return Align(
                                                             alignment:
                                                                 const AlignmentDirectional(
-                                                                    0.00, 0.00),
+                                                                    0.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0,
+                                                                  const EdgeInsets
+                                                                      .all(
                                                                           10.0),
                                                               child: Container(
                                                                 decoration:
@@ -2911,11 +2744,9 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                           .center,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0),
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              10.0),
                                                                       child:
                                                                           Text(
                                                                         getJsonField(

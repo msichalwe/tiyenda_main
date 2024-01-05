@@ -28,8 +28,9 @@ class OrderItemsStruct extends FFFirebaseStruct {
         ticketId: getDataList(data['ticketId']),
       );
 
-  static OrderItemsStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? OrderItemsStruct.fromMap(data) : null;
+  static OrderItemsStruct? maybeFromMap(dynamic data) => data is Map
+      ? OrderItemsStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'ticketId': _ticketId,

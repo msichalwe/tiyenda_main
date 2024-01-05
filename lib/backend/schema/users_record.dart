@@ -74,6 +74,11 @@ class UsersRecord extends FirestoreRecord {
   String get backendUserId => _backendUserId ?? '';
   bool hasBackendUserId() => _backendUserId != null;
 
+  // "favoriteEvents" field.
+  List<FavEventsStruct>? _favoriteEvents;
+  List<FavEventsStruct> get favoriteEvents => _favoriteEvents ?? const [];
+  bool hasFavoriteEvents() => _favoriteEvents != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -87,6 +92,10 @@ class UsersRecord extends FirestoreRecord {
     _type = snapshotData['type'] as String?;
     _backendAuthToken = snapshotData['backendAuthToken'] as String?;
     _backendUserId = snapshotData['backendUserId'] as String?;
+    _favoriteEvents = getStructList(
+      snapshotData['favoriteEvents'],
+      FavEventsStruct.fromMap,
+    );
   }
 
   static CollectionReference get collection =>
@@ -161,6 +170,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.photoUrl == e2?.photoUrl &&
@@ -172,7 +182,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.city == e2?.city &&
         e1?.type == e2?.type &&
         e1?.backendAuthToken == e2?.backendAuthToken &&
-        e1?.backendUserId == e2?.backendUserId;
+        e1?.backendUserId == e2?.backendUserId &&
+        listEquality.equals(e1?.favoriteEvents, e2?.favoriteEvents);
   }
 
   @override
@@ -188,7 +199,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.city,
         e?.type,
         e?.backendAuthToken,
-        e?.backendUserId
+        e?.backendUserId,
+        e?.favoriteEvents
       ]);
 
   @override

@@ -98,7 +98,7 @@ class _PhoneVerifyWidgetState extends State<PhoneVerifyWidget> {
                   )
                 : null,
             body: Align(
-              alignment: const AlignmentDirectional(0.00, 0.00),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -196,7 +196,12 @@ class _PhoneVerifyWidgetState extends State<PhoneVerifyWidget> {
                               fieldHeight: 50.0,
                               fieldWidth: 50.0,
                               borderWidth: 2.0,
-                              borderRadius: BorderRadius.circular(60.0),
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(60.0),
+                                bottomRight: Radius.circular(60.0),
+                                topLeft: Radius.circular(60.0),
+                                topRight: Radius.circular(60.0),
+                              ),
                               shape: PinCodeFieldShape.box,
                               activeColor: FlutterFlowTheme.of(context).primary,
                               inactiveColor: FlutterFlowTheme.of(context)

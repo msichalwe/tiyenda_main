@@ -201,7 +201,7 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
             const GButton(
               icon: FontAwesomeIcons.ticketAlt,
-              text: 'Tickets',
+              text: ' Tickets',
               iconSize: 24.0,
             ),
             GButton(
