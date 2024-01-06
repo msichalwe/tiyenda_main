@@ -30,3 +30,8 @@ export '/application/events/single_event/tickets/cart_page/cart_page_widget.dart
     show CartPageWidget;
 export '/application/events/single_event/tickets/select_tickets/select_tickets_widget.dart'
     show SelectTicketsWidget;
+export '/application/profile/dynamicpage/dynamicpage_widget.dart'
+    show DynamicpageWidget;
+export '/order_history/order_history_widget.dart' show OrderHistoryWidget;
+export '/application/tickets/single_ticket/single_ticket_widget.dart'
+    show SingleTicketWidget;

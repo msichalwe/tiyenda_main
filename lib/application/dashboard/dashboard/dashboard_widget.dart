@@ -1259,8 +1259,12 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                                 Text(
                                                                               getJsonField(
                                                                                 eventsItem,
-                                                                                r'''$.location''',
-                                                                              ).toString(),
+                                                                                r'''$.address''',
+                                                                              ).toString().maybeHandleOverflow(
+                                                                                    maxChars: 30,
+                                                                                    replacement: '…',
+                                                                                  ),
+                                                                              maxLines: 1,
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     fontSize: 13.0,

@@ -222,7 +222,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        'Recent',
+                                        'Recents',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -240,30 +240,37 @@ class _SearchWidgetState extends State<SearchWidget> {
                                             ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 10.0, 0.0),
-                                      child: Text(
-                                        'See all',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              fontSize: 15.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
-                                            ),
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                      tablet: false,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 10.0, 0.0),
+                                        child: Text(
+                                          'See all',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                fontSize: 15.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
+                                              ),
+                                        ),
                                       ),
-                                    ),
                                   ],
                                 ),
                               ),

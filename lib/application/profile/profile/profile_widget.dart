@@ -247,151 +247,168 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                             ],
                                           ),
                                         ),
-                                        const Divider(
-                                          height: 2.0,
-                                          thickness: 1.0,
-                                          color: Color(0xFF364672),
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 12.0),
-                                                child: Container(
-                                                  width: 200.0,
-                                                  decoration: BoxDecoration(
-                                                    color: const Color(0xFF2D3A5C),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                12.0,
-                                                                12.0,
-                                                                12.0,
-                                                                0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Icon(
-                                                          Icons.receipt_rounded,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          size: 44.0,
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      8.0,
-                                                                      0.0,
-                                                                      4.0),
-                                                          child: Text(
-                                                            '80',
+                                        if (responsiveVisibility(
+                                          context: context,
+                                          phone: false,
+                                          tablet: false,
+                                          tabletLandscape: false,
+                                          desktop: false,
+                                        ))
+                                          const Divider(
+                                            height: 2.0,
+                                            thickness: 1.0,
+                                            color: Color(0xFF364672),
+                                          ),
+                                        if (responsiveVisibility(
+                                          context: context,
+                                          phone: false,
+                                          tablet: false,
+                                          tabletLandscape: false,
+                                          desktop: false,
+                                        ))
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: Container(
+                                                    width: 200.0,
+                                                    decoration: BoxDecoration(
+                                                      color: const Color(0xFF2D3A5C),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .receipt_rounded,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            size: 44.0,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0,
+                                                                        4.0),
+                                                            child: Text(
+                                                              '80',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            'My Tickets',
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .headlineSmall,
+                                                                .labelMedium,
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          'My Tickets',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium,
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'containerOnPageLoadAnimation1']!),
+                                                  ).animateOnPageLoad(animationsMap[
+                                                      'containerOnPageLoadAnimation1']!),
+                                                ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 12.0),
-                                                child: Container(
-                                                  width: 200.0,
-                                                  decoration: BoxDecoration(
-                                                    color: const Color(0xFF2D3A5C),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                12.0,
-                                                                12.0,
-                                                                12.0,
-                                                                0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Icon(
-                                                          Icons
-                                                              .ssid_chart_rounded,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          size: 44.0,
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      8.0,
-                                                                      0.0,
-                                                                      4.0),
-                                                          child: Text(
-                                                            '12',
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: Container(
+                                                    width: 200.0,
+                                                    decoration: BoxDecoration(
+                                                      color: const Color(0xFF2D3A5C),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  12.0,
+                                                                  12.0,
+                                                                  12.0,
+                                                                  0.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Icon(
+                                                            Icons
+                                                                .ssid_chart_rounded,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            size: 44.0,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0,
+                                                                        4.0),
+                                                            child: Text(
+                                                              '12',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall,
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            'Following',
                                                             textAlign: TextAlign
                                                                 .center,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .headlineSmall,
+                                                                .labelMedium,
                                                           ),
-                                                        ),
-                                                        Text(
-                                                          'Following',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium,
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'containerOnPageLoadAnimation2']!),
+                                                  ).animateOnPageLoad(animationsMap[
+                                                      'containerOnPageLoadAnimation2']!),
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
+                                            ],
+                                          ),
                                       ],
                                     ),
                                   ),
@@ -525,108 +542,67 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 1.0),
-                                          child: Container(
-                                            width: double.infinity,
-                                            height: 60.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              shape: BoxShape.rectangle,
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'My Orders',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge,
-                                                      ),
-                                                      Expanded(
-                                                        child: Align(
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  1.0, 0.0),
-                                                          child: Icon(
-                                                            Icons
-                                                                .chevron_right_rounded,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 20.0,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'PROFILE_PAGE_changePassword_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'changePassword_navigate_to');
+
+                                              context.pushNamed('OrderHistory');
+                                            },
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 60.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                shape: BoxShape.rectangle,
                                               ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 1.0),
-                                          child: Container(
-                                            width: double.infinity,
-                                            height: 60.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              shape: BoxShape.rectangle,
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'My Tickets',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge,
-                                                      ),
-                                                      Expanded(
-                                                        child: Align(
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  1.0, 0.0),
-                                                          child: Icon(
-                                                            Icons
-                                                                .chevron_right_rounded,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 20.0,
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          'My Orders',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyLarge,
+                                                        ),
+                                                        Expanded(
+                                                          child: Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    1.0, 0.0),
+                                                            child: Icon(
+                                                              Icons
+                                                                  .chevron_right_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 20.0,
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -851,14 +827,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                   'faqs_navigate_to');
 
                                               context.pushNamed(
-                                                'webPage',
+                                                'dynamicpage',
                                                 queryParameters: {
-                                                  'title': serializeParam(
-                                                    'FAQ',
+                                                  'pageTitle': serializeParam(
+                                                    'FAQ\'s',
                                                     ParamType.String,
                                                   ),
                                                   'url': serializeParam(
-                                                    'faq',
+                                                    FFAppConstants.websiteUrl,
                                                     ParamType.String,
                                                   ),
                                                 }.withoutNulls,
@@ -945,14 +921,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                   'submitBug_navigate_to');
 
                                               context.pushNamed(
-                                                'webPage',
+                                                'dynamicpage',
                                                 queryParameters: {
-                                                  'title': serializeParam(
-                                                    'FAQ',
+                                                  'pageTitle': serializeParam(
+                                                    'Submit a bug',
                                                     ParamType.String,
                                                   ),
                                                   'url': serializeParam(
-                                                    'faq',
+                                                    FFAppConstants.websiteUrl,
                                                     ParamType.String,
                                                   ),
                                                 }.withoutNulls,
@@ -1039,14 +1015,14 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                   'submitFeature_navigate_to');
 
                                               context.pushNamed(
-                                                'webPage',
+                                                'dynamicpage',
                                                 queryParameters: {
-                                                  'title': serializeParam(
-                                                    'FAQ',
+                                                  'pageTitle': serializeParam(
+                                                    'Privacy Policy',
                                                     ParamType.String,
                                                   ),
                                                   'url': serializeParam(
-                                                    'faq',
+                                                    FFAppConstants.websiteUrl,
                                                     ParamType.String,
                                                   ),
                                                 }.withoutNulls,
@@ -1108,53 +1084,79 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 1.0),
-                                          child: Container(
-                                            width: double.infinity,
-                                            height: 60.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              shape: BoxShape.rectangle,
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 16.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Text(
-                                                        'Terms of service',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge,
-                                                      ),
-                                                      Expanded(
-                                                        child: Align(
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  1.0, 0.0),
-                                                          child: Icon(
-                                                            Icons
-                                                                .chevron_right_rounded,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryText,
-                                                            size: 20.0,
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'PROFILE_PAGE_submitFeature_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'submitFeature_navigate_to');
+
+                                              context.pushNamed(
+                                                'dynamicpage',
+                                                queryParameters: {
+                                                  'pageTitle': serializeParam(
+                                                    'Terms of servce',
+                                                    ParamType.String,
+                                                  ),
+                                                  'url': serializeParam(
+                                                    FFAppConstants.websiteUrl,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 60.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                shape: BoxShape.rectangle,
+                                              ),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          'Terms of service',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyLarge,
+                                                        ),
+                                                        Expanded(
+                                                          child: Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    1.0, 0.0),
+                                                            child: Icon(
+                                                              Icons
+                                                                  .chevron_right_rounded,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryText,
+                                                              size: 20.0,
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),

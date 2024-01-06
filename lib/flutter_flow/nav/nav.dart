@@ -193,6 +193,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SelectTicketsWidget(
                 eventId: params.getParam('eventId', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'dynamicpage',
+              path: 'dynamicpage',
+              builder: (context, params) => DynamicpageWidget(
+                pageTitle: params.getParam('pageTitle', ParamType.String),
+                url: params.getParam('url', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'OrderHistory',
+              path: 'orderHistory',
+              builder: (context, params) => const OrderHistoryWidget(),
+            ),
+            FFRoute(
+              name: 'singleTicket',
+              path: 'singleTicket',
+              builder: (context, params) => const SingleTicketWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
