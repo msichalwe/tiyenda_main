@@ -31,6 +31,7 @@ class EventsGroup {
   static OrderTicketsCall orderTicketsCall = OrderTicketsCall();
   static CreateBackendUserCall createBackendUserCall = CreateBackendUserCall();
   static GetEventOrdersCall getEventOrdersCall = GetEventOrdersCall();
+  static GetOrderTicketsCall getOrderTicketsCall = GetOrderTicketsCall();
 }
 
 class GetAllEventsCall {
@@ -841,6 +842,27 @@ class GetEventOrdersCall {
         r'''$[:].OrderItem''',
         true,
       ) as List?;
+}
+
+class GetOrderTicketsCall {
+  Future<ApiCallResponse> call({
+    String? orderId = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getOrderTickets',
+      apiUrl: '${EventsGroup.baseUrl}order/$orderId',
+      callType: ApiCallType.GET,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 /// End Events Group Code

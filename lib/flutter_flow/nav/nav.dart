@@ -210,7 +210,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'singleTicket',
               path: 'singleTicket',
-              builder: (context, params) => const SingleTicketWidget(),
+              builder: (context, params) => SingleTicketWidget(
+                orderId: params.getParam('orderId', ParamType.String),
+                eventName: params.getParam('eventName', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

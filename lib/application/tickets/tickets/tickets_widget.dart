@@ -270,195 +270,226 @@ class _TicketsWidgetState extends State<TicketsWidget>
                                                                       12.0,
                                                                       16.0,
                                                                       0.0),
-                                                          child: Container(
-                                                            width:
-                                                                double.infinity,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              boxShadow: const [
-                                                                BoxShadow(
-                                                                  blurRadius:
-                                                                      3.0,
-                                                                  color: Color(
-                                                                      0x33000000),
-                                                                  offset:
-                                                                      Offset(
-                                                                          0.0,
-                                                                          1.0),
-                                                                )
-                                                              ],
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          12.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(
-                                                                          12.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Container(
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .info,
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              12.0),
-                                                                    ),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              12.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        getCORSProxyUrl(
-                                                                          getJsonField(
-                                                                            ordersItem,
-                                                                            r'''$.event.image''',
-                                                                          ).toString(),
-                                                                        ),
-                                                                        width:
-                                                                            60.0,
-                                                                        height:
-                                                                            80.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              logFirebaseEvent(
+                                                                  'TICKETS_PAGE_Container_m377n4m2_ON_TAP');
+                                                              logFirebaseEvent(
+                                                                  'Container_navigate_to');
+
+                                                              context.pushNamed(
+                                                                'singleTicket',
+                                                                queryParameters:
+                                                                    {
+                                                                  'orderId':
+                                                                      serializeParam(
+                                                                    getJsonField(
+                                                                      ordersItem,
+                                                                      r'''$.id''',
+                                                                    ).toString(),
+                                                                    ParamType
+                                                                        .String,
                                                                   ),
-                                                                  Expanded(
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          12.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
+                                                                  'eventName':
+                                                                      serializeParam(
+                                                                    getJsonField(
+                                                                      ordersItem,
+                                                                      r'''$.event.name''',
+                                                                    ).toString(),
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+                                                            },
+                                                            child: Container(
+                                                              width: double
+                                                                  .infinity,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                boxShadow: const [
+                                                                  BoxShadow(
+                                                                    blurRadius:
+                                                                        3.0,
+                                                                    color: Color(
+                                                                        0x33000000),
+                                                                    offset:
+                                                                        Offset(
+                                                                            0.0,
+                                                                            1.0),
+                                                                  )
+                                                                ],
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12.0),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(
+                                                                            12.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Container(
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(12.0),
+                                                                      ),
                                                                       child:
-                                                                          Column(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        mainAxisAlignment:
-                                                                            MainAxisAlignment.center,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: [
-                                                                          Text(
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(12.0),
+                                                                        child: Image
+                                                                            .network(
+                                                                          getCORSProxyUrl(
                                                                             getJsonField(
                                                                               ordersItem,
-                                                                              r'''$.event.name''',
+                                                                              r'''$.event.image''',
                                                                             ).toString(),
-                                                                            style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
-                                                                                  fontSize: 18.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
-                                                                                ),
                                                                           ),
+                                                                          width:
+                                                                              60.0,
+                                                                          height:
+                                                                              80.0,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Expanded(
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            12.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Column(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.start,
+                                                                          children: [
+                                                                            Text(
+                                                                              getJsonField(
+                                                                                ordersItem,
+                                                                                r'''$.event.name''',
+                                                                              ).toString(),
+                                                                              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyLargeFamily,
+                                                                                    fontSize: 18.0,
+                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyLargeFamily),
+                                                                                  ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                              child: Text(
+                                                                                dateTimeFormat(
+                                                                                  'yMMMd',
+                                                                                  functions.convertToDateTime(getJsonField(
+                                                                                    ordersItem,
+                                                                                    r'''$.event.startDate''',
+                                                                                  ).toString()),
+                                                                                  locale: FFLocalizations.of(context).languageCode,
+                                                                                ),
+                                                                                style: FlutterFlowTheme.of(context).labelSmall.override(
+                                                                                      fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                      fontSize: 17.0,
+                                                                                      fontWeight: FontWeight.w600,
+                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .end,
+                                                                      children: [
+                                                                        Text(
+                                                                          'K${getJsonField(
+                                                                            ordersItem,
+                                                                            r'''$.total''',
+                                                                          ).toString()}',
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodyLarge,
+                                                                        ),
+                                                                        if (responsiveVisibility(
+                                                                          context:
+                                                                              context,
+                                                                          phone:
+                                                                              false,
+                                                                          tablet:
+                                                                              false,
+                                                                          tabletLandscape:
+                                                                              false,
+                                                                          desktop:
+                                                                              false,
+                                                                        ))
                                                                           Padding(
                                                                             padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
-                                                                                4.0,
+                                                                                8.0,
                                                                                 0.0,
                                                                                 0.0),
                                                                             child:
-                                                                                Text(
-                                                                              dateTimeFormat(
-                                                                                'yMMMd',
-                                                                                functions.convertToDateTime(getJsonField(
-                                                                                  ordersItem,
-                                                                                  r'''$.event.startDate''',
-                                                                                ).toString()),
-                                                                                locale: FFLocalizations.of(context).languageCode,
+                                                                                Container(
+                                                                              height: 32.0,
+                                                                              decoration: BoxDecoration(
+                                                                                color: FlutterFlowTheme.of(context).accent1,
+                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                border: Border.all(
+                                                                                  width: 2.0,
+                                                                                ),
                                                                               ),
-                                                                              style: FlutterFlowTheme.of(context).labelSmall.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                                    fontSize: 17.0,
-                                                                                    fontWeight: FontWeight.w600,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                              child: Align(
+                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                child: Padding(
+                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                                                                                  child: Text(
+                                                                                    'Not Scanned',
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                                                                                          useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                        ),
                                                                                   ),
-                                                                            ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .end,
-                                                                    children: [
-                                                                      Text(
-                                                                        'K${getJsonField(
-                                                                          ordersItem,
-                                                                          r'''$.total''',
-                                                                        ).toString()}',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge,
-                                                                      ),
-                                                                      if (responsiveVisibility(
-                                                                        context:
-                                                                            context,
-                                                                        phone:
-                                                                            false,
-                                                                        tablet:
-                                                                            false,
-                                                                        tabletLandscape:
-                                                                            false,
-                                                                        desktop:
-                                                                            false,
-                                                                      ))
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              8.0,
-                                                                              0.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Container(
-                                                                            height:
-                                                                                32.0,
-                                                                            decoration:
-                                                                                BoxDecoration(
-                                                                              color: FlutterFlowTheme.of(context).accent1,
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              border: Border.all(
-                                                                                width: 2.0,
-                                                                              ),
-                                                                            ),
-                                                                            child:
-                                                                                Align(
-                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
-                                                                              child: Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
-                                                                                child: Text(
-                                                                                  'Not Scanned',
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                        color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                      ),
                                                                                 ),
                                                                               ),
                                                                             ),
                                                                           ),
-                                                                        ),
-                                                                    ],
-                                                                  ),
-                                                                ],
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                           ),

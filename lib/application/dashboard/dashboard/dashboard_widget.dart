@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/loading/categories_loading/categories_loading_widget.dart';
 import '/loading/dashboard_featured_shimmer/dashboard_featured_shimmer_widget.dart';
 import '/loading/dashboard_top_container_loading/dashboard_top_container_loading_widget.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -277,16 +276,23 @@ class _DashboardWidgetState extends State<DashboardWidget>
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Container(
-                                    width: 40.0,
-                                    height: 40.0,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.asset(
-                                      'assets/images/girl_10.jpg',
-                                      fit: BoxFit.cover,
+                                  Opacity(
+                                    opacity: 0.6,
+                                    child: Align(
+                                      alignment:
+                                          const AlignmentDirectional(-1.0, -1.0),
+                                      child: Container(
+                                        width: 40.0,
+                                        height: 40.0,
+                                        clipBehavior: Clip.antiAlias,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                        ),
+                                        child: Image.asset(
+                                          'assets/images/rounded_logo.png',
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   Expanded(
@@ -1083,16 +1089,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                             0.0),
                                                                         child:
                                                                             AutoSizeText(
-                                                                          dateTimeFormat(
-                                                                            'Hm',
-                                                                            functions.convertToDateTime(getJsonField(
-                                                                              eventsItem,
-                                                                              r'''$.startTime''',
-                                                                            ).toString()),
-                                                                            locale:
-                                                                                FFLocalizations.of(context).languageCode,
-                                                                          ).maybeHandleOverflow(
-                                                                              maxChars: 10),
+                                                                          '17 DEC',
                                                                           textAlign:
                                                                               TextAlign.center,
                                                                           maxLines:
@@ -1306,14 +1303,10 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              dateTimeFormat(
-                                                                                'MMMEd',
-                                                                                functions.convertToDateTime(getJsonField(
-                                                                                  eventsItem,
-                                                                                  r'''$.startDate''',
-                                                                                ).toString()),
-                                                                                locale: FFLocalizations.of(context).languageCode,
-                                                                              ),
+                                                                              getJsonField(
+                                                                                eventsItem,
+                                                                                r'''$.formattedStartDate''',
+                                                                              ).toString(),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     fontSize: 13.0,
@@ -2585,14 +2578,10 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                                 Padding(
                                                                               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
                                                                               child: Text(
-                                                                                dateTimeFormat(
-                                                                                  'MMMEd',
-                                                                                  functions.convertToDateTime(getJsonField(
-                                                                                    eventsItem,
-                                                                                    r'''$.startTime''',
-                                                                                  ).toString()),
-                                                                                  locale: FFLocalizations.of(context).languageCode,
-                                                                                ),
+                                                                                getJsonField(
+                                                                                  eventsItem,
+                                                                                  r'''$.formattedStartDate''',
+                                                                                ).toString(),
                                                                                 style: FlutterFlowTheme.of(context).labelSmall,
                                                                               ),
                                                                             ),

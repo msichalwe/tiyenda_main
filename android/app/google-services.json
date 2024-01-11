@@ -8,6 +8,50 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:172945682634:android:f768f48bc27aa20670c433",
+        "android_client_info": {
+          "package_name": "com.chalotech.tiyeda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172945682634-nkfudkvoqj64crvlha0tc59dn7pvb8ip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chalotech.tiyeda",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "172945682634-pm0mlm0s5j9fdh2l3vdm04ma84rjai87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7GE86R9XGX-lAaNUVQu9dHs6J-QEvVK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172945682634-d22vubmajmd5kuidlkl8stq4thvk1jmr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172945682634-0oitfs3iasajrcqbram2h22sr8fbi3nc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.chalotech.tiyendaAdmin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:172945682634:android:57e0257b2b0eeb2370c433",
         "android_client_info": {
           "package_name": "com.chalotech.tiyedaAdmin"
@@ -23,7 +67,7 @@
           }
         },
         {
-          "client_id": "172945682634-o4ela181hsbrk4utmq6v7fmskvgedema.apps.googleusercontent.com",
+          "client_id": "172945682634-pm0mlm0s5j9fdh2l3vdm04ma84rjai87.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

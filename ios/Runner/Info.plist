@@ -28,7 +28,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.172945682634-3gvmnj2f00q9gfq7nemfk6nglkpaj6o0</string>
+                <string>com.googleusercontent.apps.172945682634-e7ec166dgjj6r7opc2mhdgl3eb29ov18</string>
                 
             </array>
         </dict>
@@ -40,7 +40,7 @@
         <string>tiyenda</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>com.chalotech.tiyedaAdmin</string>
+        <string>com.chalotech.tiyeda</string>
         </array>
         </dict>
     </array>

@@ -76,6 +76,11 @@ abstract class FlutterFlowTheme {
   late Color neonBlue;
   late Color chefchaouenBlue;
   late Color vividSkyBlue;
+  late Color savoyBlue;
+  late Color tiffanyBlue;
+  late Color lavenderWeb;
+  late Color rosyBrown;
+  late Color delftBlue;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -193,6 +198,11 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color neonBlue = const Color(0xFF4361EE);
   late Color chefchaouenBlue = const Color(0xFF4895EF);
   late Color vividSkyBlue = const Color(0xFF4CC9F0);
+  late Color savoyBlue = const Color(0xFF6369D1);
+  late Color tiffanyBlue = const Color(0xFF60E1E0);
+  late Color lavenderWeb = const Color(0xFFD8D2E1);
+  late Color rosyBrown = const Color(0xFFB88E8D);
+  late Color delftBlue = const Color(0xFF34435E);
 }
 
 abstract class Typography {
@@ -602,6 +612,11 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color neonBlue = const Color(0xFF4361EE);
   late Color chefchaouenBlue = const Color(0xFF4895EF);
   late Color vividSkyBlue = const Color(0xFF4CC9F0);
+  late Color savoyBlue = const Color(0xFF6369D1);
+  late Color tiffanyBlue = const Color(0xFF60E1E0);
+  late Color lavenderWeb = const Color(0xFFD8D2E1);
+  late Color rosyBrown = const Color(0xFFB88E8D);
+  late Color delftBlue = const Color(0xFF34435E);
 }
 
 extension TextStyleHelper on TextStyle {
