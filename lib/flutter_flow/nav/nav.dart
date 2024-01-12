@@ -148,6 +148,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'eventsingle',
               builder: (context, params) => EventsingleWidget(
                 eventID: params.getParam('eventID', ParamType.String),
+                eventName: params.getParam('eventName', ParamType.String),
+                eventDate: params.getParam('eventDate', ParamType.String),
               ),
             ),
             FFRoute(
@@ -214,6 +216,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 orderId: params.getParam('orderId', ParamType.String),
                 eventName: params.getParam('eventName', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'singleCategorysPage',
+              path: 'singleCategorysPage',
+              builder: (context, params) => const SingleCategorysPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

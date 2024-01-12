@@ -102,6 +102,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                     ? AppBar(
                         backgroundColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
+                        iconTheme: const IconThemeData(color: Colors.white),
                         automaticallyImplyLeading: true,
                         actions: const [],
                         centerTitle: true,

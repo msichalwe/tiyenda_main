@@ -35,3 +35,5 @@ export '/application/profile/dynamicpage/dynamicpage_widget.dart'
 export '/order_history/order_history_widget.dart' show OrderHistoryWidget;
 export '/application/tickets/single_ticket/single_ticket_widget.dart'
     show SingleTicketWidget;
+export '/application/categories/single_categorys_page/single_categorys_page_widget.dart'
+    show SingleCategorysPageWidget;

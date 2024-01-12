@@ -130,6 +130,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                           onFieldSubmitted: (_) async {
                             logFirebaseEvent(
                                 'SEARCH_eventSearch_ON_TEXTFIELD_SUBMIT');
+                            logFirebaseEvent(
+                                'eventSearch_close_dialog,_drawer,_etc');
+                            Navigator.pop(context);
                             logFirebaseEvent('eventSearch_navigate_to');
 
                             context.pushNamed(
@@ -142,6 +145,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               }.withoutNulls,
                             );
                           },
+                          textCapitalization: TextCapitalization.none,
                           textInputAction: TextInputAction.search,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -196,72 +200,59 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
+                          keyboardType: TextInputType.name,
                           cursorColor: FlutterFlowTheme.of(context).primary,
                           validator: _model.eventSearchControllerValidator
                               .asValidator(context),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(
+                                RegExp('[a-zA-Z0-9]'))
+                          ],
                         ),
                       ),
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: Container(
-                          height: MediaQuery.sizeOf(context).height * 1.0,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF141A2A),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 10.0, 10.0, 0.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        'Recents',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMediumFamily,
-                                              fontSize: 18.0,
-                                              fontWeight: FontWeight.w800,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
-                                            ),
-                                      ),
-                                    ),
-                                    if (responsiveVisibility(
-                                      context: context,
-                                      phone: false,
-                                      tablet: false,
-                                      tabletLandscape: false,
-                                      desktop: false,
-                                    ))
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 10.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'SEARCH_PAGE_Container_7t1n0woj_ON_TAP');
+                            logFirebaseEvent(
+                                'Container_close_dialog,_drawer,_etc');
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            height: MediaQuery.sizeOf(context).height * 1.0,
+                            decoration: const BoxDecoration(
+                              color: Color(0xFF141A2A),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 10.0, 10.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Expanded(
                                         child: Text(
-                                          'See all',
+                                          'Recents',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMediumFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                fontSize: 15.0,
+                                                fontSize: 18.0,
+                                                fontWeight: FontWeight.w800,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
@@ -271,18 +262,52 @@ class _SearchWidgetState extends State<SearchWidget> {
                                               ),
                                         ),
                                       ),
-                                  ],
+                                      if (responsiveVisibility(
+                                        context: context,
+                                        phone: false,
+                                        tablet: false,
+                                        tabletLandscape: false,
+                                        desktop: false,
+                                      ))
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 10.0, 0.0),
+                                          child: Text(
+                                            'See all',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  fontSize: 15.0,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: wrapWithModel(
-                                  model: _model.recentSearchListModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: const RecentSearchListWidget(),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: wrapWithModel(
+                                    model: _model.recentSearchListModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: const RecentSearchListWidget(),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),

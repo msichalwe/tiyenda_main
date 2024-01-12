@@ -1138,7 +1138,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               padding:
                                                                   const EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          15.0,
+                                                                          5.0,
                                                                           10.0,
                                                                           0.0,
                                                                           0.0),
@@ -1285,7 +1285,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                                 eventsItem,
                                                                                 r'''$.address''',
                                                                               ).toString().maybeHandleOverflow(
-                                                                                    maxChars: 40,
+                                                                                    maxChars: 28,
                                                                                     replacement: '…',
                                                                                   ),
                                                                               maxLines: 2,
@@ -2485,180 +2485,200 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                       (eventsIndex) {
                                                     final eventsItem =
                                                         events[eventsIndex];
-                                                    return Container(
-                                                      width: 100.0,
-                                                      decoration:
-                                                          const BoxDecoration(),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    12.0,
-                                                                    16.0,
-                                                                    12.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Container(
-                                                              width: 100.0,
-                                                              height: 100.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: const Color(
-                                                                    0xFF334D86),
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                ),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                        .all(
-                                                                            2.0),
-                                                                child:
-                                                                    ClipRRect(
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'DASHBOARD_PAGE_trending_list_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'trending_list_navigate_to');
+
+                                                        context.pushNamed(
+                                                          'eventsingle',
+                                                          queryParameters: {
+                                                            'eventID':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.id''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        decoration:
+                                                            const BoxDecoration(),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      12.0,
+                                                                      16.0,
+                                                                      12.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Container(
+                                                                width: 100.0,
+                                                                height: 100.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: const Color(
+                                                                      0xFF334D86),
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              10.0),
+                                                                              12.0),
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                ),
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .all(
+                                                                              2.0),
                                                                   child:
-                                                                      CachedNetworkImage(
-                                                                    fadeInDuration:
-                                                                        const Duration(
-                                                                            milliseconds:
-                                                                                500),
-                                                                    fadeOutDuration:
-                                                                        const Duration(
-                                                                            milliseconds:
-                                                                                500),
-                                                                    imageUrl:
-                                                                        getCORSProxyUrl(
-                                                                      getJsonField(
-                                                                        eventsItem,
-                                                                        r'''$.image''',
-                                                                      ).toString(),
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
+                                                                    child:
+                                                                        CachedNetworkImage(
+                                                                      fadeInDuration:
+                                                                          const Duration(
+                                                                              milliseconds: 500),
+                                                                      fadeOutDuration:
+                                                                          const Duration(
+                                                                              milliseconds: 500),
+                                                                      imageUrl:
+                                                                          getCORSProxyUrl(
+                                                                        getJsonField(
+                                                                          eventsItem,
+                                                                          r'''$.image''',
+                                                                        ).toString(),
+                                                                      ),
+                                                                      width:
+                                                                          120.0,
+                                                                      height:
+                                                                          120.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
-                                                                    width:
-                                                                        120.0,
-                                                                    height:
-                                                                        120.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            12.0,
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          12.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Text(
+                                                                        getJsonField(
+                                                                          eventsItem,
+                                                                          r'''$.name''',
+                                                                        ).toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyLarge,
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
+                                                                            4.0,
                                                                             0.0,
                                                                             0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      getJsonField(
-                                                                        eventsItem,
-                                                                        r'''$.name''',
-                                                                      ).toString(),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyLarge,
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Row(
-                                                                        mainAxisSize:
-                                                                            MainAxisSize.max,
-                                                                        children: [
-                                                                          Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                4.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Icon(
-                                                                              Icons.calendar_month_rounded,
-                                                                              color: FlutterFlowTheme.of(context).secondaryText,
-                                                                              size: 16.0,
-                                                                            ),
-                                                                          ),
-                                                                          Expanded(
-                                                                            child:
-                                                                                Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
-                                                                              child: Text(
-                                                                                dateTimeFormat(
-                                                                                  'yMMMd',
-                                                                                  functions.convertToDateTime(valueOrDefault<String>(
-                                                                                    getJsonField(
-                                                                                      eventsItem,
-                                                                                      r'''$.startDate''',
-                                                                                    )?.toString(),
-                                                                                    'null',
-                                                                                  )),
-                                                                                  locale: FFLocalizations.of(context).languageCode,
-                                                                                ),
-                                                                                style: FlutterFlowTheme.of(context).labelSmall,
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                              child: Icon(
+                                                                                Icons.calendar_month_rounded,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                size: 16.0,
                                                                               ),
                                                                             ),
-                                                                          ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                    Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          8.0,
-                                                                          12.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        'BOOK NOW',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .labelSmall
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                              color: FlutterFlowTheme.of(context).primary,
-                                                                              fontSize: 15.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                            Expanded(
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                                                child: Text(
+                                                                                  dateTimeFormat(
+                                                                                    'yMMMd',
+                                                                                    functions.convertToDateTime(valueOrDefault<String>(
+                                                                                      getJsonField(
+                                                                                        eventsItem,
+                                                                                        r'''$.startDate''',
+                                                                                      )?.toString(),
+                                                                                      'null',
+                                                                                    )),
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).labelSmall,
+                                                                                ),
+                                                                              ),
                                                                             ),
+                                                                          ],
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ].divide(const SizedBox(
-                                                                      height:
-                                                                          4.0)),
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            8.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          'BOOK NOW',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelSmall
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                fontSize: 15.0,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    ].divide(const SizedBox(
+                                                                        height:
+                                                                            4.0)),
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     );

@@ -132,12 +132,11 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                             builder: (context) {
                               final myTicketsSelected =
                                   FFAppState().cartItems.toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: myTicketsSelected.length,
-                                itemBuilder: (context, myTicketsSelectedIndex) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children:
+                                    List.generate(myTicketsSelected.length,
+                                        (myTicketsSelectedIndex) {
                                   final myTicketsSelectedItem =
                                       myTicketsSelected[myTicketsSelectedIndex];
                                   return Padding(
@@ -305,7 +304,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                       ),
                                     ),
                                   );
-                                },
+                                }),
                               );
                             },
                           ),

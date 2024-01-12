@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -19,9 +20,14 @@ class EventsingleWidget extends StatefulWidget {
   const EventsingleWidget({
     super.key,
     required this.eventID,
-  });
+    String? eventName,
+    String? eventDate,
+  })  : eventName = eventName ?? 'null',
+        eventDate = eventDate ?? 'null';
 
   final String? eventID;
+  final String eventName;
+  final String eventDate;
 
   @override
   _EventsingleWidgetState createState() => _EventsingleWidgetState();
@@ -79,6 +85,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                 ? AppBar(
                     backgroundColor:
                         FlutterFlowTheme.of(context).secondaryBackground,
+                    iconTheme: const IconThemeData(color: Colors.white),
                     automaticallyImplyLeading: true,
                     actions: const [],
                     flexibleSpace: FlexibleSpaceBar(
@@ -118,56 +125,63 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 10.0, 0.0),
-                                  child: ToggleIcon(
-                                    onPressed: () async {
-                                      setState(
-                                        () => FFAppState()
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                  tablet: false,
+                                  tabletLandscape: false,
+                                  desktop: false,
+                                ))
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 10.0, 0.0),
+                                    child: ToggleIcon(
+                                      onPressed: () async {
+                                        setState(
+                                          () => FFAppState()
+                                                  .likedEvents
+                                                  .contains(widget.eventID)
+                                              ? FFAppState()
+                                                  .removeFromLikedEvents(
+                                                      widget.eventID!)
+                                              : FFAppState().addToLikedEvents(
+                                                  widget.eventID!),
+                                        );
+                                        logFirebaseEvent(
+                                            'EVENTSINGLE_ToggleIcon_8me9kuq3_ON_TOGGL');
+                                        if (FFAppState()
                                                 .likedEvents
                                                 .contains(widget.eventID)
-                                            ? FFAppState()
-                                                .removeFromLikedEvents(
-                                                    widget.eventID!)
-                                            : FFAppState().addToLikedEvents(
-                                                widget.eventID!),
-                                      );
-                                      logFirebaseEvent(
-                                          'EVENTSINGLE_ToggleIcon_8me9kuq3_ON_TOGGL');
-                                      if (FFAppState()
-                                              .likedEvents
-                                              .contains(widget.eventID)
-                                          ? true
-                                          : false) {
-                                        return;
-                                      }
+                                            ? true
+                                            : false) {
+                                          return;
+                                        }
 
-                                      logFirebaseEvent(
-                                          'ToggleIcon_update_app_state');
-                                      setState(() {
-                                        FFAppState()
-                                            .addToLikedEvents(widget.eventID!);
-                                      });
-                                      return;
-                                    },
-                                    value: FFAppState()
-                                        .likedEvents
-                                        .contains(widget.eventID),
-                                    onIcon: Icon(
-                                      Icons.favorite_rounded,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 25.0,
-                                    ),
-                                    offIcon: Icon(
-                                      Icons.favorite_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 25.0,
+                                        logFirebaseEvent(
+                                            'ToggleIcon_update_app_state');
+                                        setState(() {
+                                          FFAppState().addToLikedEvents(
+                                              widget.eventID!);
+                                        });
+                                        return;
+                                      },
+                                      value: FFAppState()
+                                          .likedEvents
+                                          .contains(widget.eventID),
+                                      onIcon: Icon(
+                                        Icons.favorite_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 25.0,
+                                      ),
+                                      offIcon: Icon(
+                                        Icons.favorite_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 25.0,
+                                      ),
                                     ),
                                   ),
-                                ),
                                 Builder(
                                   builder: (context) => Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
@@ -182,7 +196,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                             'EVENTSINGLE_PAGE_Icon_wiu2n8av_ON_TAP');
                                         logFirebaseEvent('Icon_share');
                                         await Share.share(
-                                          widget.eventID!,
+                                          '$currentUserDisplayName shared the ${widget.eventName} event. The event is sceduled for ${widget.eventDate}. View it here at :  https://tiyenda.page.link/dashboard',
                                           sharePositionOrigin:
                                               getWidgetBoundingBox(context),
                                         );
