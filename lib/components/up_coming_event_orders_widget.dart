@@ -161,14 +161,25 @@ class _UpComingEventOrdersWidgetState extends State<UpComingEventOrdersWidget> {
                                             BorderRadius.circular(12.0),
                                         child: Image.network(
                                           getCORSProxyUrl(
-                                            getJsonField(
-                                              ordersItem,
-                                              r'''$.event.image''',
-                                            ).toString(),
+                                            valueOrDefault<String>(
+                                              getJsonField(
+                                                ordersItem,
+                                                r'''$.event.image''',
+                                              )?.toString(),
+                                              'null',
+                                            ),
                                           ),
                                           width: 60.0,
                                           height: 80.0,
                                           fit: BoxFit.cover,
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  Image.asset(
+                                            'assets/images/error_image.png',
+                                            width: 60.0,
+                                            height: 80.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -229,6 +240,62 @@ class _UpComingEventOrdersWidgetState extends State<UpComingEventOrdersWidget> {
                                                                       context)
                                                                   .labelSmallFamily,
                                                           fontSize: 17.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                              child: Text(
+                                                getJsonField(
+                                                  ordersItem,
+                                                  r'''$.id''',
+                                                ).toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          fontSize: 10.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmallFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                              child: Text(
+                                                getJsonField(
+                                                  ordersItem,
+                                                  r'''$.event.image''',
+                                                ).toString(),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelSmallFamily,
+                                                          fontSize: 10.0,
                                                           fontWeight:
                                                               FontWeight.w600,
                                                           useGoogleFonts: GoogleFonts
