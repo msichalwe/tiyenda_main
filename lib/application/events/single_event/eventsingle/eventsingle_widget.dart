@@ -825,25 +825,21 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                           ),
                                                         );
                                                       }
-                                                      final listViewGetEventTicketsResponse =
+                                                      final columnGetEventTicketsResponse =
                                                           snapshot.data!;
                                                       return Builder(
                                                         builder: (context) {
                                                           final tickets =
-                                                              listViewGetEventTicketsResponse
+                                                              columnGetEventTicketsResponse
                                                                   .jsonBody
                                                                   .toList();
-                                                          return ListView
-                                                              .builder(
-                                                            padding:
-                                                                EdgeInsets.zero,
-                                                            shrinkWrap: true,
-                                                            scrollDirection:
-                                                                Axis.vertical,
-                                                            itemCount:
+                                                          return Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: List.generate(
                                                                 tickets.length,
-                                                            itemBuilder: (context,
-                                                                ticketsIndex) {
+                                                                (ticketsIndex) {
                                                               final ticketsItem =
                                                                   tickets[
                                                                       ticketsIndex];
@@ -908,7 +904,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                                   ],
                                                                 ),
                                                               );
-                                                            },
+                                                            }),
                                                           );
                                                         },
                                                       );

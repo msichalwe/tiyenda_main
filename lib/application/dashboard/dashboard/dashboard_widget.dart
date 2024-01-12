@@ -596,6 +596,26 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                             ).toString(),
                                                                             ParamType.String,
                                                                           ),
+                                                                          'eventName':
+                                                                              serializeParam(
+                                                                            getJsonField(
+                                                                              eventFeaturedItem,
+                                                                              r'''$.name''',
+                                                                            ).toString(),
+                                                                            ParamType.String,
+                                                                          ),
+                                                                          'eventDate':
+                                                                              serializeParam(
+                                                                            dateTimeFormat(
+                                                                              'yMMMd',
+                                                                              functions.convertToDateTime(getJsonField(
+                                                                                eventFeaturedItem,
+                                                                                r'''$.startDate''',
+                                                                              ).toString()),
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
+                                                                            ParamType.String,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     },
@@ -964,6 +984,25 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                 eventsItem,
                                                                 r'''$.id''',
                                                               ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventName':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.name''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventDate':
+                                                                serializeParam(
+                                                              functions
+                                                                  .convertToDateTime(
+                                                                      getJsonField(
+                                                                    eventsItem,
+                                                                    r'''$.startDate''',
+                                                                  ).toString())
+                                                                  ?.toString(),
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,
@@ -2509,6 +2548,25 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                 eventsItem,
                                                                 r'''$.id''',
                                                               ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventName':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.name''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventDate':
+                                                                serializeParam(
+                                                              functions
+                                                                  .convertToDateTime(
+                                                                      getJsonField(
+                                                                    eventsItem,
+                                                                    r'''$.startDate''',
+                                                                  ).toString())
+                                                                  ?.toString(),
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,

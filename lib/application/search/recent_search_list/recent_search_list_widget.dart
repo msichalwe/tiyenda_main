@@ -93,6 +93,20 @@ class _RecentSearchListWidgetState extends State<RecentSearchListWidget> {
                                     searchhistoryItem.eventId,
                                     ParamType.String,
                                   ),
+                                  'eventName': serializeParam(
+                                    getJsonField(
+                                      searchhistoryItem.toMap(),
+                                      r'''$.name''',
+                                    ).toString(),
+                                    ParamType.String,
+                                  ),
+                                  'eventDate': serializeParam(
+                                    getJsonField(
+                                      searchhistoryItem.toMap(),
+                                      r'''$.startDate''',
+                                    ).toString(),
+                                    ParamType.String,
+                                  ),
                                 }.withoutNulls,
                               );
                             },
