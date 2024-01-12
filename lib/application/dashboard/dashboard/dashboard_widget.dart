@@ -616,6 +616,14 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                             ),
                                                                             ParamType.String,
                                                                           ),
+                                                                          'eventimage':
+                                                                              serializeParam(
+                                                                            getJsonField(
+                                                                              eventFeaturedItem,
+                                                                              r'''$.image''',
+                                                                            ).toString(),
+                                                                            ParamType.String,
+                                                                          ),
                                                                         }.withoutNulls,
                                                                       );
                                                                     },
@@ -1003,6 +1011,14 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                     r'''$.startDate''',
                                                                   ).toString())
                                                                   ?.toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventimage':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.image''',
+                                                              ).toString(),
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,
@@ -2570,6 +2586,14 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                     r'''$.startDate''',
                                                                   ).toString())
                                                                   ?.toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventimage':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.image''',
+                                                              ).toString(),
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,

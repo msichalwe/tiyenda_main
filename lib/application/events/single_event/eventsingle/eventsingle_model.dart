@@ -9,6 +9,7 @@ class EventsingleModel extends FlutterFlowModel<EventsingleWidget> {
   final unfocusNode = FocusNode();
   bool apiRequestCompleted = false;
   String? apiRequestLastUniqueKey;
+  String currentPageLink = '';
 
   /// Initialization and disposal methods.
 

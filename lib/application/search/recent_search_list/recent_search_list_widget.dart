@@ -107,6 +107,13 @@ class _RecentSearchListWidgetState extends State<RecentSearchListWidget> {
                                     ).toString(),
                                     ParamType.String,
                                   ),
+                                  'eventimage': serializeParam(
+                                    getJsonField(
+                                      searchhistoryItem.toMap(),
+                                      r'''$.image''',
+                                    ).toString(),
+                                    ParamType.String,
+                                  ),
                                 }.withoutNulls,
                               );
                             },

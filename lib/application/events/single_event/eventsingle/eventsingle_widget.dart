@@ -23,12 +23,14 @@ class EventsingleWidget extends StatefulWidget {
     required this.eventID,
     String? eventName,
     String? eventDate,
+    required this.eventimage,
   })  : eventName = eventName ?? 'null',
         eventDate = eventDate ?? 'null';
 
   final String? eventID;
   final String eventName;
   final String eventDate;
+  final String? eventimage;
 
   @override
   _EventsingleWidgetState createState() => _EventsingleWidgetState();
@@ -195,15 +197,25 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'EVENTSINGLE_PAGE_Icon_wiu2n8av_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Icon_generate_current_page_link');
+                                        _model.currentPageLink =
+                                            await generateCurrentPageLink(
+                                          context,
+                                          title: widget.eventName,
+                                          imageUrl: widget.eventimage,
+                                          description: 'Tiyenda Events link.',
+                                        );
+
                                         logFirebaseEvent('Icon_share');
                                         await Share.share(
-                                          '$currentUserDisplayName shared the ${widget.eventName} event. The event is sceduled for ${dateTimeFormat(
+                                          '${_model.currentPageLink}        $currentUserDisplayName shared the ${widget.eventName} event. The event is sceduled for ${dateTimeFormat(
                                             'yMMMd',
                                             functions.convertToDateTime(
                                                 widget.eventDate),
                                             locale: FFLocalizations.of(context)
                                                 .languageCode,
-                                          )}. View it here at :  https://tiyenda.page.link/dashboard',
+                                          )}. View it here at : ${_model.currentPageLink}dashboard',
                                           sharePositionOrigin:
                                               getWidgetBoundingBox(context),
                                         );

@@ -125,6 +125,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dashboard',
               path: 'dashboard',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? const NavBarPage(initialPage: 'dashboard')
                   : const DashboardWidget(),
@@ -132,6 +133,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'search',
               path: 'search',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? const NavBarPage(initialPage: 'search')
                   : const SearchWidget(),
@@ -139,6 +141,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'profile',
               path: 'profile',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? const NavBarPage(initialPage: 'profile')
                   : const ProfileWidget(),
@@ -146,15 +149,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'eventsingle',
               path: 'eventsingle',
+              requireAuth: true,
               builder: (context, params) => EventsingleWidget(
                 eventID: params.getParam('eventID', ParamType.String),
                 eventName: params.getParam('eventName', ParamType.String),
                 eventDate: params.getParam('eventDate', ParamType.String),
+                eventimage: params.getParam('eventimage', ParamType.String),
               ),
             ),
             FFRoute(
               name: 'tickets',
               path: 'tickets',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? const NavBarPage(initialPage: 'tickets')
                   : const TicketsWidget(),
@@ -162,6 +168,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'webPage',
               path: 'webPage',
+              requireAuth: true,
               builder: (context, params) => WebPageWidget(
                 title: params.getParam('title', ParamType.String),
                 url: params.getParam('url', ParamType.String),
@@ -170,16 +177,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dashboard_loading',
               path: 'dashboardLoading',
+              requireAuth: true,
               builder: (context, params) => const DashboardLoadingWidget(),
             ),
             FFRoute(
               name: 'singleEventsComponent',
               path: 'singleEventsComponent',
+              requireAuth: true,
               builder: (context, params) => const SingleEventsComponentWidget(),
             ),
             FFRoute(
               name: 'searchResults',
               path: 'searchResults',
+              requireAuth: true,
               builder: (context, params) => SearchResultsWidget(
                 searchterm: params.getParam('searchterm', ParamType.String),
               ),
@@ -187,11 +197,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'cartPage',
               path: 'cartPage',
+              requireAuth: true,
               builder: (context, params) => const CartPageWidget(),
             ),
             FFRoute(
               name: 'selectTickets',
               path: 'selectTickets',
+              requireAuth: true,
               builder: (context, params) => SelectTicketsWidget(
                 eventId: params.getParam('eventId', ParamType.String),
               ),
@@ -199,6 +211,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'dynamicpage',
               path: 'dynamicpage',
+              requireAuth: true,
               builder: (context, params) => DynamicpageWidget(
                 pageTitle: params.getParam('pageTitle', ParamType.String),
                 url: params.getParam('url', ParamType.String),
@@ -207,11 +220,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'OrderHistory',
               path: 'orderHistory',
+              requireAuth: true,
               builder: (context, params) => const OrderHistoryWidget(),
             ),
             FFRoute(
               name: 'singleTicket',
               path: 'singleTicket',
+              requireAuth: true,
               builder: (context, params) => SingleTicketWidget(
                 eventName: params.getParam('eventName', ParamType.String),
                 id: params.getParam('id', ParamType.String),
@@ -220,6 +235,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'singleCategorysPage',
               path: 'singleCategorysPage',
+              requireAuth: true,
               builder: (context, params) => const SingleCategorysPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -209,6 +209,27 @@ class _SearchResultsWidgetState extends State<SearchResultsWidget> {
                                                     ).toString(),
                                                     ParamType.String,
                                                   ),
+                                                  'eventName': serializeParam(
+                                                    getJsonField(
+                                                      searchResultsItem,
+                                                      r'''$.name''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                  'eventDate': serializeParam(
+                                                    getJsonField(
+                                                      searchResultsItem,
+                                                      r'''$.startDate''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                  'eventimage': serializeParam(
+                                                    getJsonField(
+                                                      searchResultsItem,
+                                                      r'''$.image''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
                                                 }.withoutNulls,
                                               );
                                             },
