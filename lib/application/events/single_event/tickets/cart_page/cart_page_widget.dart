@@ -556,10 +556,12 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                     fireBaseId: currentUserUid,
                                     tickets: valueOrDefault<String>(
                                       functions.convertJsonListToString(
-                                          FFAppState()
-                                              .cartItems
-                                              .map((e) => e.toMap())
-                                              .toList()),
+                                          functions
+                                              .selectJsonFields(FFAppState()
+                                                  .cartItems
+                                                  .map((e) => e.toMap())
+                                                  .toList())
+                                              ?.toList()),
                                       'null',
                                     ),
                                   );
