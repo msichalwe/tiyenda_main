@@ -213,8 +213,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'singleTicket',
               path: 'singleTicket',
               builder: (context, params) => SingleTicketWidget(
-                orderId: params.getParam('orderId', ParamType.String),
                 eventName: params.getParam('eventName', ParamType.String),
+                id: params.getParam('id', ParamType.String),
               ),
             ),
             FFRoute(

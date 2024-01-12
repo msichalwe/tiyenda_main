@@ -113,18 +113,21 @@ class _UpComingEventOrdersWidgetState extends State<UpComingEventOrdersWidget> {
                               context.pushNamed(
                                 'singleTicket',
                                 queryParameters: {
-                                  'orderId': serializeParam(
-                                    getJsonField(
-                                      ordersItem,
-                                      r'''$.id''',
-                                    ).toString(),
-                                    ParamType.String,
-                                  ),
                                   'eventName': serializeParam(
                                     getJsonField(
                                       ordersItem,
                                       r'''$.event.name''',
                                     ).toString(),
+                                    ParamType.String,
+                                  ),
+                                  'id': serializeParam(
+                                    valueOrDefault<String>(
+                                      getJsonField(
+                                        ordersItem,
+                                        r'''$.id''',
+                                      )?.toString(),
+                                      'null',
+                                    ),
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,

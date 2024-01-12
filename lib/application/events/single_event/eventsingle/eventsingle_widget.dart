@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/loading/single_events_shimmer/single_events_shimmer_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -196,7 +197,13 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                             'EVENTSINGLE_PAGE_Icon_wiu2n8av_ON_TAP');
                                         logFirebaseEvent('Icon_share');
                                         await Share.share(
-                                          '$currentUserDisplayName shared the ${widget.eventName} event. The event is sceduled for ${widget.eventDate}. View it here at :  https://tiyenda.page.link/dashboard',
+                                          '$currentUserDisplayName shared the ${widget.eventName} event. The event is sceduled for ${dateTimeFormat(
+                                            'yMMMd',
+                                            functions.convertToDateTime(
+                                                widget.eventDate),
+                                            locale: FFLocalizations.of(context)
+                                                .languageCode,
+                                          )}. View it here at :  https://tiyenda.page.link/dashboard',
                                           sharePositionOrigin:
                                               getWidgetBoundingBox(context),
                                         );

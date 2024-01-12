@@ -20,12 +20,12 @@ export 'single_ticket_model.dart';
 class SingleTicketWidget extends StatefulWidget {
   const SingleTicketWidget({
     super.key,
-    this.orderId,
     this.eventName,
-  });
+    String? id,
+  })  : id = id ?? 'null';
 
-  final String? orderId;
   final String? eventName;
+  final String id;
 
   @override
   _SingleTicketWidgetState createState() => _SingleTicketWidgetState();
@@ -231,10 +231,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                   Expanded(
                     child: FutureBuilder<ApiCallResponse>(
                       future: EventsGroup.getOrderTicketsCall.call(
-                        orderId: valueOrDefault<String>(
-                          widget.orderId,
-                          'null',
-                        ),
+                        orderId: widget.id,
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.

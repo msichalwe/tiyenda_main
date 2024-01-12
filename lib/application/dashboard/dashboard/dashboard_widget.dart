@@ -1212,6 +1212,9 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                             replacement:
                                                                                 '…',
                                                                           ),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .start,
                                                                       maxLines:
                                                                           1,
                                                                       style: FlutterFlowTheme.of(
