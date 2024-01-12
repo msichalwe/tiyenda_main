@@ -231,7 +231,10 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                   Expanded(
                     child: FutureBuilder<ApiCallResponse>(
                       future: EventsGroup.getOrderTicketsCall.call(
-                        orderId: widget.orderId,
+                        orderId: valueOrDefault<String>(
+                          widget.orderId,
+                          'null',
+                        ),
                       ),
                       builder: (context, snapshot) {
                         // Customize what your widget looks like when it's loading.
