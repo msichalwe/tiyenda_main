@@ -113,3 +113,9 @@ List<dynamic>? selectJsonFields(List<dynamic>? tickets) {
 
   return result;
 }
+
+String? convertJsonListToString(List<dynamic>? jsonList) {
+  // convert a json list to a string
+  if (jsonList == null) return null;
+  return json.encode(jsonList);
+}

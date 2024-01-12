@@ -285,6 +285,35 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_totalAfterServiceCharge');
   }
 
+  List<dynamic> _cartTickets = [];
+  List<dynamic> get cartTickets => _cartTickets;
+  set cartTickets(List<dynamic> value) {
+    _cartTickets = value;
+  }
+
+  void addToCartTickets(dynamic value) {
+    _cartTickets.add(value);
+  }
+
+  void removeFromCartTickets(dynamic value) {
+    _cartTickets.remove(value);
+  }
+
+  void removeAtIndexFromCartTickets(int index) {
+    _cartTickets.removeAt(index);
+  }
+
+  void updateCartTicketsAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _cartTickets[index] = updateFn(_cartTickets[index]);
+  }
+
+  void insertAtIndexInCartTickets(int index, dynamic value) {
+    _cartTickets.insert(index, value);
+  }
+
   final _allEventsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> allEvents({
     String? uniqueQueryKey,

@@ -466,12 +466,11 @@ class EventsSearchCall {
 
 class OrderTicketsCall {
   Future<ApiCallResponse> call({
-    dynamic ticketsJson,
+    String? tickets = '',
     int? total,
     String? fireBaseId = '',
     String? eventId = '',
   }) async {
-    final tickets = _serializeJson(ticketsJson, true);
     final ffApiRequestBody = '''
 {
   "fireBaseId": "$fireBaseId",
@@ -485,6 +484,8 @@ class OrderTicketsCall {
       callType: ApiCallType.POST,
       headers: {
         'Content-type': 'application/json',
+        'Content-Type': 'text/plain',
+        'Accept': '*/*',
       },
       params: {},
       body: ffApiRequestBody,

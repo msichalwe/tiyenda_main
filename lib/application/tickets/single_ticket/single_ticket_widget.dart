@@ -196,26 +196,6 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                             context.pop();
                           },
                         ),
-                        Expanded(
-                          child: Text(
-                            valueOrDefault<String>(
-                              widget.eventName,
-                              'null',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyMediumFamily,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 20.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
-                                ),
-                          ),
-                        ),
                       ],
                     ),
                     actions: const [],

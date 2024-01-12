@@ -554,11 +554,14 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                     eventId:
                                         FFAppState().cartItems.first.eventId,
                                     fireBaseId: currentUserUid,
-                                    ticketsJson: functions.selectJsonFields(
-                                        FFAppState()
-                                            .cartItems
-                                            .map((e) => e.toMap())
-                                            .toList()),
+                                    tickets: valueOrDefault<String>(
+                                      functions.convertJsonListToString(
+                                          FFAppState()
+                                              .cartItems
+                                              .map((e) => e.toMap())
+                                              .toList()),
+                                      'null',
+                                    ),
                                   );
                                   shouldSetState = true;
                                   if ((_model.apiResultb3o?.succeeded ??

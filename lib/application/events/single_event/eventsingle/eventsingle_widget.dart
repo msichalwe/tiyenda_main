@@ -205,6 +205,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                           title: widget.eventName,
                                           imageUrl: widget.eventimage,
                                           description: 'Tiyenda Events link.',
+                                          isShortLink: false,
                                         );
 
                                         logFirebaseEvent('Icon_share');
