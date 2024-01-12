@@ -276,22 +276,18 @@ class _DashboardWidgetState extends State<DashboardWidget>
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Opacity(
-                                    opacity: 0.6,
-                                    child: Align(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, -1.0),
-                                      child: Container(
-                                        width: 40.0,
-                                        height: 40.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.asset(
-                                          'assets/images/rounded_logo.png',
-                                          fit: BoxFit.cover,
-                                        ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                                    child: Container(
+                                      width: 40.0,
+                                      height: 40.0,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.asset(
+                                        'assets/images/rounded_logo.png',
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
@@ -399,8 +395,9 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyLargeFamily,
+                                                          fontSize: 17.0,
                                                           fontWeight:
-                                                              FontWeight.w600,
+                                                              FontWeight.bold,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -421,9 +418,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                                            const Color(0xFFFA4914),
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
@@ -462,7 +457,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                           const EdgeInsets.all(10.0),
                                                       child: Container(
                                                         width: 300.0,
-                                                        height: 150.0,
+                                                        height: 180.0,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
@@ -481,17 +476,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                       .circular(
                                                                           10.0),
                                                               child:
-                                                                  CachedNetworkImage(
-                                                                fadeInDuration:
-                                                                    const Duration(
-                                                                        milliseconds:
-                                                                            500),
-                                                                fadeOutDuration:
-                                                                    const Duration(
-                                                                        milliseconds:
-                                                                            500),
-                                                                imageUrl:
-                                                                    getCORSProxyUrl(
+                                                                  Image.network(
+                                                                getCORSProxyUrl(
                                                                   valueOrDefault<
                                                                       String>(
                                                                     getJsonField(
@@ -505,7 +491,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                 height: 200.0,
                                                                 fit: BoxFit
                                                                     .cover,
-                                                                errorWidget: (context,
+                                                                errorBuilder: (context,
                                                                         error,
                                                                         stackTrace) =>
                                                                     Image.asset(
@@ -523,7 +509,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                           .sizeOf(
                                                                               context)
                                                                       .height *
-                                                                  1.0,
+                                                                  1.2,
                                                               decoration:
                                                                   BoxDecoration(
                                                                 color: const Color(
@@ -538,6 +524,9 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
                                                                       .start,
@@ -557,11 +546,11 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                         .toString()
                                                                         .maybeHandleOverflow(
                                                                           maxChars:
-                                                                              20,
+                                                                              40,
                                                                           replacement:
                                                                               '…',
                                                                         ),
-                                                                    maxLines: 1,
+                                                                    maxLines: 2,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -569,7 +558,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                           fontFamily:
                                                                               FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           fontSize:
-                                                                              16.0,
+                                                                              17.0,
                                                                           fontWeight:
                                                                               FontWeight.w800,
                                                                           useGoogleFonts:
@@ -583,7 +572,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                           20.0,
                                                                           10.0,
                                                                           0.0,
-                                                                          0.0),
+                                                                          20.0),
                                                                   child:
                                                                       FFButtonWidget(
                                                                     onPressed:
@@ -699,8 +688,9 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyLargeFamily,
+                                                          fontSize: 17.0,
                                                           fontWeight:
-                                                              FontWeight.w600,
+                                                              FontWeight.bold,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
@@ -721,9 +711,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                                            const Color(0xFFFA4914),
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
@@ -817,6 +805,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryBtnText,
+                                                                      fontSize:
+                                                                          18.0,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -903,9 +893,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                     context)
                                                                 .bodyMediumFamily,
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                                            const Color(0xFFFA4914),
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
@@ -2409,8 +2397,9 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyLargeFamily,
+                                                        fontSize: 17.0,
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FontWeight.bold,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
@@ -2430,9 +2419,8 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyMediumFamily,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
+                                                          color:
+                                                              const Color(0xFFFA4914),
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
                                                               .containsKey(
