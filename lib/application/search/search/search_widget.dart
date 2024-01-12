@@ -1,6 +1,7 @@
 import '/application/search/recent_search_list/recent_search_list_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -130,9 +131,10 @@ class _SearchWidgetState extends State<SearchWidget> {
                           onFieldSubmitted: (_) async {
                             logFirebaseEvent(
                                 'SEARCH_eventSearch_ON_TEXTFIELD_SUBMIT');
-                            logFirebaseEvent(
-                                'eventSearch_close_dialog,_drawer,_etc');
-                            Navigator.pop(context);
+                            logFirebaseEvent('eventSearch_custom_action');
+                            await actions.dissmiskeybaord(
+                              context,
+                            );
                             logFirebaseEvent('eventSearch_navigate_to');
 
                             context.pushNamed(
@@ -221,9 +223,10 @@ class _SearchWidgetState extends State<SearchWidget> {
                           onTap: () async {
                             logFirebaseEvent(
                                 'SEARCH_PAGE_Container_7t1n0woj_ON_TAP');
-                            logFirebaseEvent(
-                                'Container_close_dialog,_drawer,_etc');
-                            Navigator.pop(context);
+                            logFirebaseEvent('Container_custom_action');
+                            await actions.dissmiskeybaord(
+                              context,
+                            );
                           },
                           child: Container(
                             height: MediaQuery.sizeOf(context).height * 1.0,
