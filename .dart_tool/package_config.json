@@ -63,21 +63,21 @@
     },
     {
       "name": "cached_network_image",
-      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/cached_network_image-3.2.1",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/cached_network_image-3.3.1",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "cached_network_image_platform_interface",
-      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/cached_network_image_platform_interface-1.0.0",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/cached_network_image_platform_interface-4.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "cached_network_image_web",
-      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/cached_network_image_web-1.0.1",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/cached_network_image_web-1.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "characters",
@@ -300,12 +300,6 @@
       "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/flutter_animate-4.1.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
-    },
-    {
-      "name": "flutter_blurhash",
-      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/flutter_blurhash-0.7.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
     },
     {
       "name": "flutter_cache_manager",
@@ -585,7 +579,7 @@
     },
     {
       "name": "octo_image",
-      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/octo_image-1.0.2",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/octo_image-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -1022,7 +1016,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-01-12T13:23:59.461023Z",
+  "generated": "2024-01-12T13:39:52.393210Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }
