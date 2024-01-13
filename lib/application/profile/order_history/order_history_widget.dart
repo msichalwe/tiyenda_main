@@ -7,6 +7,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'order_history_model.dart';
 export 'order_history_model.dart';
@@ -218,13 +219,54 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                                               .bodyLarge,
                                                     ),
                                                   ),
+                                                  RichText(
+                                                    textScaleFactor:
+                                                        MediaQuery.of(context)
+                                                            .textScaleFactor,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        const TextSpan(
+                                                          text: 'Order ID : ',
+                                                          style: TextStyle(),
+                                                        ),
+                                                        TextSpan(
+                                                          text: getJsonField(
+                                                            singleOrdersItem,
+                                                            r'''$.id''',
+                                                          ).toString(),
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyLarge
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLargeFamily,
+                                                                fontSize: 15.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyLargeFamily),
+                                                              ),
+                                                    ),
+                                                  ),
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      valueOrDefault<String>(
+                                                      'Purchased on : ${valueOrDefault<String>(
                                                         dateTimeFormat(
                                                           'MMMMEEEEd',
                                                           functions
@@ -239,7 +281,42 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                                                   .languageCode,
                                                         ),
                                                         'null',
-                                                      ),
+                                                      )}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Event Name : ${getJsonField(
+                                                        singleOrdersItem,
+                                                        r'''$.event.name''',
+                                                      ).toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Purchased by : ${getJsonField(
+                                                        singleOrdersItem,
+                                                        r'''$.user.name''',
+                                                      ).toString()} @${getJsonField(
+                                                        singleOrdersItem,
+                                                        r'''$.user.email''',
+                                                      ).toString()}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -285,6 +362,72 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                                                 .labelMedium,
                                                           ),
                                                         ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 10.0,
+                                                                0.0, 0.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'ORDER_HISTORY_PAGE_Text_6okumem3_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Text_navigate_to');
+
+                                                        context.pushNamed(
+                                                          'singleTicket',
+                                                          queryParameters: {
+                                                            'eventName':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                singleOrdersItem,
+                                                                r'''$.event.name''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'id':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                singleOrdersItem,
+                                                                r'''$.id''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Text(
+                                                        'View Order Tickets',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelMediumFamily),
+                                                                ),
                                                       ),
                                                     ),
                                                   ),

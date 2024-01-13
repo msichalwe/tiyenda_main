@@ -93,7 +93,7 @@ List<dynamic>? selectJsonFields(List<dynamic>? tickets) {
 
   // Iterate through the tickets list and count the occurrences of each id
   for (var ticket in tickets) {
-    String? id = ticket['id'];
+    String? id = ticket['ticket_id'];
     if (id != null) {
       if (!idCount.containsKey(id)) {
         idCount[id] = 1;
@@ -118,4 +118,12 @@ String? convertJsonListToString(List<dynamic>? jsonList) {
   // convert a json list to a string
   if (jsonList == null) return null;
   return json.encode(jsonList);
+}
+
+int? countJsonItems(List<dynamic>? jsonList) {
+  // get a json array and count the number of json items
+  if (jsonList == null) {
+    return null;
+  }
+  return jsonList.length;
 }

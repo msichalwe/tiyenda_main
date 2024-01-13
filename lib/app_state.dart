@@ -74,6 +74,10 @@ class FFAppState extends ChangeNotifier {
           await secureStorage.getInt('ff_totalAfterServiceCharge') ??
               _totalAfterServiceCharge;
     });
+    await _safeInitAsync(() async {
+      _currentEventId =
+          await secureStorage.getString('ff_currentEventId') ?? _currentEventId;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -312,6 +316,17 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInCartTickets(int index, dynamic value) {
     _cartTickets.insert(index, value);
+  }
+
+  String _currentEventId = '';
+  String get currentEventId => _currentEventId;
+  set currentEventId(String value) {
+    _currentEventId = value;
+    secureStorage.setString('ff_currentEventId', value);
+  }
+
+  void deleteCurrentEventId() {
+    secureStorage.delete(key: 'ff_currentEventId');
   }
 
   final _allEventsManager = FutureRequestManager<ApiCallResponse>();

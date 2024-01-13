@@ -510,7 +510,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                             FFButtonWidget(
                               onPressed: () async {
                                 logFirebaseEvent(
-                                    'CART_PAY_FOR_TICKETS_BTN_ON_TAP');
+                                    'CART_PAGE_PAGE_BOOK_TICKETS_BTN_ON_TAP');
                                 var shouldSetState = false;
                                 logFirebaseEvent('Button_alert_dialog');
                                 var confirmDialogResponse =
@@ -597,6 +597,8 @@ class _CartPageWidgetState extends State<CartPageWidget> {
 
                                       FFAppState().deleteCartPriceTotal();
                                       FFAppState().cartPriceTotal = 0;
+
+                                      FFAppState().currentEventId = 'empty';
                                     });
                                     logFirebaseEvent('Button_navigate_to');
 
@@ -636,7 +638,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
 
                                 if (shouldSetState) setState(() {});
                               },
-                              text: 'Pay for tickets',
+                              text: 'Book Tickets',
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 50.0,
@@ -646,7 +648,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle:
                                     FlutterFlowTheme.of(context).titleSmall,
-                                elevation: 2.0,
+                                elevation: 0.0,
                                 borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,

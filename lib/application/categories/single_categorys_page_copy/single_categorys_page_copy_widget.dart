@@ -10,11 +10,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'single_categorys_page_model.dart';
-export 'single_categorys_page_model.dart';
+import 'single_categorys_page_copy_model.dart';
+export 'single_categorys_page_copy_model.dart';
 
-class SingleCategorysPageWidget extends StatefulWidget {
-  const SingleCategorysPageWidget({
+class SingleCategorysPageCopyWidget extends StatefulWidget {
+  const SingleCategorysPageCopyWidget({
     super.key,
     required this.categoryName,
     required this.catId,
@@ -24,13 +24,13 @@ class SingleCategorysPageWidget extends StatefulWidget {
   final String? catId;
 
   @override
-  _SingleCategorysPageWidgetState createState() =>
-      _SingleCategorysPageWidgetState();
+  _SingleCategorysPageCopyWidgetState createState() =>
+      _SingleCategorysPageCopyWidgetState();
 }
 
-class _SingleCategorysPageWidgetState extends State<SingleCategorysPageWidget>
-    with TickerProviderStateMixin {
-  late SingleCategorysPageModel _model;
+class _SingleCategorysPageCopyWidgetState
+    extends State<SingleCategorysPageCopyWidget> with TickerProviderStateMixin {
+  late SingleCategorysPageCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -52,10 +52,10 @@ class _SingleCategorysPageWidgetState extends State<SingleCategorysPageWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SingleCategorysPageModel());
+    _model = createModel(context, () => SingleCategorysPageCopyModel());
 
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'singleCategorysPage'});
+        parameters: {'screen_name': 'singleCategorysPageCopy'});
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -81,7 +81,7 @@ class _SingleCategorysPageWidgetState extends State<SingleCategorysPageWidget>
     context.watch<FFAppState>();
 
     return Title(
-        title: 'singleCategorysPage',
+        title: 'singleCategorysPageCopy',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -182,7 +182,7 @@ class _SingleCategorysPageWidgetState extends State<SingleCategorysPageWidget>
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
                                               logFirebaseEvent(
-                                                  'SINGLE_CATEGORYS_catListItem_ON_TAP');
+                                                  'SINGLE_CATEGORYS_COPY_catListItem_ON_TAP');
                                               logFirebaseEvent(
                                                   'catListItem_navigate_to');
 

@@ -926,96 +926,6 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                       icon:
                                                                           FaIcon(
                                                                         FontAwesomeIcons
-                                                                            .phoneSquare,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryBtnText,
-                                                                        size:
-                                                                            19.0,
-                                                                      ),
-                                                                      onPressed:
-                                                                          () async {
-                                                                        logFirebaseEvent(
-                                                                            'SIGN_IN_PAGE_phoneSquare_ICN_ON_TAP');
-                                                                        logFirebaseEvent(
-                                                                            'IconButton_auth');
-                                                                        GoRouter.of(context)
-                                                                            .prepareAuthEvent();
-                                                                        final user =
-                                                                            await authManager.signInWithGoogle(context);
-                                                                        if (user ==
-                                                                            null) {
-                                                                          return;
-                                                                        }
-
-                                                                        context.goNamedAuth(
-                                                                            'dashboard',
-                                                                            context.mounted);
-                                                                      },
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
-                                                                    child:
-                                                                        FlutterFlowIconButton(
-                                                                      borderColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .lineColor,
-                                                                      borderRadius:
-                                                                          12.0,
-                                                                      borderWidth:
-                                                                          1.0,
-                                                                      buttonSize:
-                                                                          44.0,
-                                                                      icon:
-                                                                          FaIcon(
-                                                                        FontAwesomeIcons
-                                                                            .facebook,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryBtnText,
-                                                                        size:
-                                                                            19.0,
-                                                                      ),
-                                                                      onPressed:
-                                                                          () async {
-                                                                        logFirebaseEvent(
-                                                                            'SIGN_IN_PAGE_facebook_ICN_ON_TAP');
-                                                                        logFirebaseEvent(
-                                                                            'IconButton_auth');
-                                                                        GoRouter.of(context)
-                                                                            .prepareAuthEvent();
-                                                                        final user =
-                                                                            await authManager.signInWithGoogle(context);
-                                                                        if (user ==
-                                                                            null) {
-                                                                          return;
-                                                                        }
-
-                                                                        context.goNamedAuth(
-                                                                            'dashboard',
-                                                                            context.mounted);
-                                                                      },
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            8.0),
-                                                                    child:
-                                                                        FlutterFlowIconButton(
-                                                                      borderColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .lineColor,
-                                                                      borderRadius:
-                                                                          12.0,
-                                                                      borderWidth:
-                                                                          1.0,
-                                                                      buttonSize:
-                                                                          44.0,
-                                                                      icon:
-                                                                          FaIcon(
-                                                                        FontAwesomeIcons
                                                                             .apple,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .primaryBtnText,
@@ -1031,7 +941,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                         GoRouter.of(context)
                                                                             .prepareAuthEvent();
                                                                         final user =
-                                                                            await authManager.signInWithGoogle(context);
+                                                                            await authManager.signInWithApple(context);
                                                                         if (user ==
                                                                             null) {
                                                                           return;

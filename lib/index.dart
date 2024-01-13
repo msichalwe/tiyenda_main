@@ -32,8 +32,16 @@ export '/application/events/single_event/tickets/select_tickets/select_tickets_w
     show SelectTicketsWidget;
 export '/application/profile/dynamicpage/dynamicpage_widget.dart'
     show DynamicpageWidget;
-export '/order_history/order_history_widget.dart' show OrderHistoryWidget;
+export '/application/profile/order_history/order_history_widget.dart'
+    show OrderHistoryWidget;
 export '/application/tickets/single_ticket/single_ticket_widget.dart'
     show SingleTicketWidget;
 export '/application/categories/single_categorys_page/single_categorys_page_widget.dart'
     show SingleCategorysPageWidget;
+export '/api_test/api_test_widget.dart' show ApiTestWidget;
+export '/application/profile/edit_account/edit_account_widget.dart'
+    show EditAccountWidget;
+export '/application/categories/single_categorys_page_copy/single_categorys_page_copy_widget.dart'
+    show SingleCategorysPageCopyWidget;
+export '/application/organisers/single_org/single_org_widget.dart'
+    show SingleOrgWidget;

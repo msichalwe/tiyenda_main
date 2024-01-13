@@ -131,13 +131,10 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                               final ticketList =
                                   selectTicketsGetEventTicketsResponse.jsonBody
                                       .toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                primary: false,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: ticketList.length,
-                                itemBuilder: (context, ticketListIndex) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: List.generate(ticketList.length,
+                                    (ticketListIndex) {
                                   final ticketListItem =
                                       ticketList[ticketListIndex];
                                   return Padding(
@@ -378,138 +375,235 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                       onPressed: () async {
                                                         logFirebaseEvent(
                                                             'SELECT_TICKETS_ADD_TO_CART_BTN_ON_TAP');
-                                                        if (widget.eventId ==
-                                                            getJsonField(
-                                                              ticketListItem,
-                                                              r'''$.eventId''',
-                                                            )) {
-                                                          logFirebaseEvent(
-                                                              'Button_hide_snack_bar');
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .hideCurrentSnackBar();
-                                                        } else {
-                                                          logFirebaseEvent(
-                                                              'Button_alert_dialog');
-                                                          var confirmDialogResponse =
-                                                              await showDialog<
-                                                                      bool>(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (alertDialogContext) {
-                                                                      return WebViewAware(
-                                                                          child:
-                                                                              AlertDialog(
-                                                                        title: const Text(
-                                                                            'Clear Cart'),
-                                                                        content:
-                                                                            const Text('You have tickets from another event, are you sure you want to clear your cart and add tickets from this event.'),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, false),
-                                                                            child:
-                                                                                const Text('Cancel'),
-                                                                          ),
-                                                                          TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(alertDialogContext, true),
-                                                                            child:
-                                                                                const Text('Confirm'),
-                                                                          ),
-                                                                        ],
-                                                                      ));
-                                                                    },
-                                                                  ) ??
-                                                                  false;
+                                                        if (FFAppState()
+                                                                .cartItems.isEmpty) {
                                                           logFirebaseEvent(
                                                               'Button_update_app_state');
                                                           setState(() {
                                                             FFAppState()
-                                                                .deleteCartItems();
-                                                            FFAppState()
-                                                                .cartItems = [];
-
-                                                            FFAppState()
-                                                                .deleteCartPriceTotal();
-                                                            FFAppState()
-                                                                .cartPriceTotal = 0;
-
-                                                            FFAppState()
-                                                                .deleteTotalAfterServiceCharge();
-                                                            FFAppState()
-                                                                .totalAfterServiceCharge = 0;
-                                                          });
-                                                        }
-
-                                                        logFirebaseEvent(
-                                                            'Button_update_app_state');
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .addToCartItems(
-                                                                  TicketStruct(
-                                                            eventId:
-                                                                getJsonField(
-                                                              ticketListItem,
-                                                              r'''$.eventId''',
-                                                            ).toString(),
-                                                            name: getJsonField(
-                                                              ticketListItem,
-                                                              r'''$.name''',
-                                                            ).toString(),
-                                                            ticketId:
-                                                                getJsonField(
-                                                              ticketListItem,
-                                                              r'''$.id''',
-                                                            ).toString(),
-                                                            price: functions
-                                                                .convertStringToNum(
-                                                                    getJsonField(
-                                                              ticketListItem,
-                                                              r'''$.price''',
-                                                            ).toString()),
-                                                          ));
-                                                        });
-                                                        logFirebaseEvent(
-                                                            'Button_update_app_state');
-                                                        setState(() {
-                                                          FFAppState()
-                                                              .cartPriceTotal = FFAppState()
-                                                                  .cartPriceTotal +
-                                                              functions
-                                                                  .convertNumIntoInt(
+                                                                .addToCartItems(
+                                                                    TicketStruct(
+                                                              eventId:
+                                                                  getJsonField(
+                                                                ticketListItem,
+                                                                r'''$.eventId''',
+                                                              ).toString(),
+                                                              name:
+                                                                  getJsonField(
+                                                                ticketListItem,
+                                                                r'''$.name''',
+                                                              ).toString(),
+                                                              ticketId:
+                                                                  getJsonField(
+                                                                ticketListItem,
+                                                                r'''$.id''',
+                                                              ).toString(),
+                                                              price: functions
+                                                                  .convertStringToNum(
                                                                       getJsonField(
                                                                 ticketListItem,
                                                                 r'''$.price''',
-                                                              ).toString())!;
-                                                        });
-                                                        logFirebaseEvent(
-                                                            'Button_show_snack_bar');
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                          SnackBar(
-                                                            content: Text(
-                                                              '${getJsonField(
+                                                              ).toString()),
+                                                            ));
+                                                          });
+                                                          logFirebaseEvent(
+                                                              'Button_update_app_state');
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .cartPriceTotal = FFAppState()
+                                                                    .cartPriceTotal +
+                                                                functions
+                                                                    .convertNumIntoInt(
+                                                                        getJsonField(
+                                                                  ticketListItem,
+                                                                  r'''$.price''',
+                                                                ).toString())!;
+                                                          });
+                                                          logFirebaseEvent(
+                                                              'Button_show_snack_bar');
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                '${getJsonField(
+                                                                  ticketListItem,
+                                                                  r'''$.name''',
+                                                                ).toString()} added to cart',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
+                                                              ),
+                                                              duration: const Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                            ),
+                                                          );
+                                                          return;
+                                                        } else {
+                                                          if (FFAppState()
+                                                                  .currentEventId ==
+                                                              FFAppState()
+                                                                  .cartItems
+                                                                  .first
+                                                                  .eventId) {
+                                                            logFirebaseEvent(
+                                                                'Button_hide_snack_bar');
+                                                            ScaffoldMessenger
+                                                                    .of(context)
+                                                                .hideCurrentSnackBar();
+                                                          } else {
+                                                            logFirebaseEvent(
+                                                                'Button_alert_dialog');
+                                                            var confirmDialogResponse =
+                                                                await showDialog<
+                                                                        bool>(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return WebViewAware(
+                                                                            child:
+                                                                                AlertDialog(
+                                                                          title:
+                                                                              const Text('Clear Cart'),
+                                                                          content:
+                                                                              const Text('You have tickets from another event, are you sure you want to clear your cart and add tickets from this event.'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                              child: const Text('Cancel'),
+                                                                            ),
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                              child: const Text('Confirm'),
+                                                                            ),
+                                                                          ],
+                                                                        ));
+                                                                      },
+                                                                    ) ??
+                                                                    false;
+                                                            if (confirmDialogResponse) {
+                                                              logFirebaseEvent(
+                                                                  'Button_update_app_state');
+                                                              setState(() {
+                                                                FFAppState()
+                                                                    .deleteCartItems();
+                                                                FFAppState()
+                                                                    .cartItems = [];
+
+                                                                FFAppState()
+                                                                    .deleteCartPriceTotal();
+                                                                FFAppState()
+                                                                    .cartPriceTotal = 0;
+
+                                                                FFAppState()
+                                                                    .deleteTotalAfterServiceCharge();
+                                                                FFAppState()
+                                                                    .totalAfterServiceCharge = 0;
+                                                              });
+                                                            } else {
+                                                              return;
+                                                            }
+
+                                                            logFirebaseEvent(
+                                                                'Button_update_app_state');
+                                                            setState(() {
+                                                              FFAppState()
+                                                                  .deleteCartItems();
+                                                              FFAppState()
+                                                                  .cartItems = [];
+
+                                                              FFAppState()
+                                                                  .deleteCartPriceTotal();
+                                                              FFAppState()
+                                                                  .cartPriceTotal = 0;
+
+                                                              FFAppState()
+                                                                  .deleteTotalAfterServiceCharge();
+                                                              FFAppState()
+                                                                  .totalAfterServiceCharge = 0;
+                                                            });
+                                                          }
+
+                                                          logFirebaseEvent(
+                                                              'Button_update_app_state');
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .addToCartItems(
+                                                                    TicketStruct(
+                                                              eventId:
+                                                                  getJsonField(
+                                                                ticketListItem,
+                                                                r'''$.eventId''',
+                                                              ).toString(),
+                                                              name:
+                                                                  getJsonField(
                                                                 ticketListItem,
                                                                 r'''$.name''',
-                                                              ).toString()} added to cart',
-                                                              style: TextStyle(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
+                                                              ).toString(),
+                                                              ticketId:
+                                                                  getJsonField(
+                                                                ticketListItem,
+                                                                r'''$.id''',
+                                                              ).toString(),
+                                                              price: functions
+                                                                  .convertStringToNum(
+                                                                      getJsonField(
+                                                                ticketListItem,
+                                                                r'''$.price''',
+                                                              ).toString()),
+                                                            ));
+                                                          });
+                                                          logFirebaseEvent(
+                                                              'Button_update_app_state');
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .cartPriceTotal = FFAppState()
+                                                                    .cartPriceTotal +
+                                                                functions
+                                                                    .convertNumIntoInt(
+                                                                        getJsonField(
+                                                                  ticketListItem,
+                                                                  r'''$.price''',
+                                                                ).toString())!;
+                                                          });
+                                                          logFirebaseEvent(
+                                                              'Button_show_snack_bar');
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                '${getJsonField(
+                                                                  ticketListItem,
+                                                                  r'''$.name''',
+                                                                ).toString()} added to cart',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                ),
                                                               ),
+                                                              duration: const Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
                                                             ),
-                                                            duration: const Duration(
-                                                                milliseconds:
-                                                                    4000),
-                                                            backgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                          ),
-                                                        );
+                                                          );
+                                                          return;
+                                                        }
                                                       },
                                                       text: 'Add to cart',
                                                       options: FFButtonOptions(
@@ -633,7 +727,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                       ),
                                     ),
                                   );
-                                },
+                                }),
                               );
                             },
                           ),

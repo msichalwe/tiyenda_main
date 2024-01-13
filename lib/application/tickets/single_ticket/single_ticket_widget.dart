@@ -1,6 +1,6 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -175,29 +175,8 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                 ? AppBar(
                     backgroundColor:
                         FlutterFlowTheme.of(context).secondaryBackground,
-                    automaticallyImplyLeading: false,
-                    leading: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 30.0,
-                          borderWidth: 1.0,
-                          buttonSize: 60.0,
-                          icon: Icon(
-                            Icons.arrow_back_rounded,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 30.0,
-                          ),
-                          onPressed: () async {
-                            logFirebaseEvent(
-                                'SINGLE_TICKET_arrow_back_rounded_ICN_ON_');
-                            logFirebaseEvent('IconButton_navigate_back');
-                            context.pop();
-                          },
-                        ),
-                      ],
-                    ),
+                    iconTheme: const IconThemeData(color: Colors.white),
+                    automaticallyImplyLeading: true,
                     actions: const [],
                     centerTitle: false,
                     elevation: 0.0,
@@ -405,7 +384,9 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                         20.0,
                                                                         0.0),
                                                                 child:
-                                                                    AutoSizeText(
+                                                                    SelectionArea(
+                                                                        child:
+                                                                            AutoSizeText(
                                                                   '@${getJsonField(
                                                                     ticketsItem,
                                                                     r'''$.id''',
@@ -424,7 +405,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                         useGoogleFonts:
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                       ),
-                                                                ),
+                                                                )),
                                                               ),
                                                               Padding(
                                                                 padding: const EdgeInsetsDirectional
@@ -442,6 +423,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                   textAlign:
                                                                       TextAlign
                                                                           .start,
+                                                                  maxLines: 2,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
@@ -461,12 +443,12 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                         20.0,
                                                                         10.0,
                                                                         0.0,
-                                                                        0.0),
+                                                                        5.0),
                                                                 child:
                                                                     AutoSizeText(
                                                                   getJsonField(
                                                                     ticketsItem,
-                                                                    r'''$.ticket.type''',
+                                                                    r'''$.ticket.name''',
                                                                   ).toString(),
                                                                   textAlign:
                                                                       TextAlign
@@ -481,6 +463,40 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                             .info,
                                                                         fontSize:
                                                                             25.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w800,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    AutoSizeText(
+                                                                  'ticket type : ${getJsonField(
+                                                                    ticketsItem,
+                                                                    r'''$.ticket.type''',
+                                                                  ).toString()}',
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                        fontSize:
+                                                                            15.0,
                                                                         fontWeight:
                                                                             FontWeight.w800,
                                                                         useGoogleFonts:
@@ -525,6 +541,38 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                             FlutterFlowTheme.of(context).titleSmallFamily,
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .accent4,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                              Padding(
+                                                                padding: const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        20.0,
+                                                                        10.0,
+                                                                        20.0,
+                                                                        0.0),
+                                                                child:
+                                                                    AutoSizeText(
+                                                                  getJsonField(
+                                                                    pageViewGetOrderTicketsResponse
+                                                                        .jsonBody,
+                                                                    r'''$.event.name''',
+                                                                  ).toString(),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .start,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .accent4,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
                                                                         useGoogleFonts:
                                                                             GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
                                                                       ),
@@ -775,11 +823,15 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Text(
-                                                                'Andrew Daniels',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium,
+                                                              AuthUserStreamWidget(
+                                                                builder:
+                                                                    (context) =>
+                                                                        Text(
+                                                                  currentUserDisplayName,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium,
+                                                                ),
                                                               ),
                                                               Padding(
                                                                 padding:

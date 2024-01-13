@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/loading/single_events_shimmer/single_events_shimmer_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -47,6 +48,15 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
     _model = createModel(context, () => EventsingleModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'eventsingle'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('EVENTSINGLE_eventsingle_ON_INIT_STATE');
+      logFirebaseEvent('eventsingle_update_app_state');
+      setState(() {
+        FFAppState().currentEventId = widget.eventID!;
+      });
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 

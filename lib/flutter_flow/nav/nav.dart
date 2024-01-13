@@ -236,7 +236,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'singleCategorysPage',
               path: 'singleCategorysPage',
               requireAuth: true,
-              builder: (context, params) => const SingleCategorysPageWidget(),
+              builder: (context, params) => SingleCategorysPageWidget(
+                categoryName: params.getParam('categoryName', ParamType.String),
+                catId: params.getParam('catId', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'apiTest',
+              path: 'apiTest',
+              builder: (context, params) => const ApiTestWidget(),
+            ),
+            FFRoute(
+              name: 'editAccount',
+              path: 'editAccount',
+              builder: (context, params) => const EditAccountWidget(),
+            ),
+            FFRoute(
+              name: 'singleCategorysPageCopy',
+              path: 'singleCategorysPageCopy',
+              requireAuth: true,
+              builder: (context, params) => SingleCategorysPageCopyWidget(
+                categoryName: params.getParam('categoryName', ParamType.String),
+                catId: params.getParam('catId', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'singleOrg',
+              path: 'singleOrg',
+              builder: (context, params) => SingleOrgWidget(
+                organiserName:
+                    params.getParam('organiserName', ParamType.String),
+                organizerId: params.getParam('organizerId', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
