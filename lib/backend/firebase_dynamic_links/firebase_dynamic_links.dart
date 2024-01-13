@@ -5,7 +5,7 @@ import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 
 const _kDynamicLinksUrl = 'https://tiyenda.page.link';
-const _kAppBundleId = 'com.chalotech.tiyeda';
+const _kAppBundleId = 'com.chalotech.tiyedaAdmin';
 
 Future<String> generateCurrentPageLink(
   BuildContext context, {

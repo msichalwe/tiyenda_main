@@ -8,7 +8,7 @@
 PRODUCT_NAME = Tiyenda
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.chalotech.tiyeda
+PRODUCT_BUNDLE_IDENTIFIER = com.chalotech.tiyedaAdmin
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2022 Tiyenda. All rights reserved.

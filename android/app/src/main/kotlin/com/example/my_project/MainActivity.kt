@@ -1,4 +1,4 @@
-package com.chalotech.tiyeda
+package com.chalotech.tiyedaAdmin
 
 import io.flutter.embedding.android.FlutterActivity
 

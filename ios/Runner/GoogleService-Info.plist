@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>172945682634-e7ec166dgjj6r7opc2mhdgl3eb29ov18.apps.googleusercontent.com</string>
+	<string>172945682634-3gvmnj2f00q9gfq7nemfk6nglkpaj6o0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.172945682634-e7ec166dgjj6r7opc2mhdgl3eb29ov18</string>
+	<string>com.googleusercontent.apps.172945682634-3gvmnj2f00q9gfq7nemfk6nglkpaj6o0</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>172945682634-0unlg4mp2rfql9ofqcm31g6u8bi5jtll.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.chalotech.tiyeda</string>
+	<string>com.chalotech.tiyedaAdmin</string>
 	<key>PROJECT_ID</key>
 	<string>tiyenda-3c24c</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:172945682634:ios:bcc77d26a064b8bb70c433</string>
+	<string>1:172945682634:ios:e50d8e571d8c06c670c433</string>
 	<key>DATABASE_URL</key>
 	<string>https://tiyenda-3c24c.firebaseio.com</string>
 </dict>
