@@ -207,6 +207,25 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                       onTap: () async {
                                         logFirebaseEvent(
                                             'EVENTSINGLE_PAGE_Icon_wiu2n8av_ON_TAP');
+                                        logFirebaseEvent('Icon_show_snack_bar');
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Event share loading...',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                const Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
                                         logFirebaseEvent(
                                             'Icon_generate_current_page_link');
                                         _model.currentPageLink =
@@ -215,7 +234,6 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                           title: widget.eventName,
                                           imageUrl: widget.eventimage,
                                           description: 'Tiyenda Events link.',
-                                          isShortLink: false,
                                         );
 
                                         logFirebaseEvent('Icon_share');
@@ -1016,88 +1034,175 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 20.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Events Gallary',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelLargeFamily,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLargeFamily),
-                                                ),
+                                        if (functions
+                                                .countJsonItems(getJsonField(
+                                                  scrollingColumnGetSingleEventsResponse
+                                                      .jsonBody,
+                                                  r'''$.gallery''',
+                                                  true,
+                                                ))
+                                                .toString() !=
+                                            '0')
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Events Gallary',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLargeFamily,
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeFamily),
+                                                      ),
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 12.0, 0.0, 50.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        2.0, 2.0, 12.0, 2.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                  child: Image.asset(
-                                                    'assets/images/jameson-connects-12.webp',
-                                                    width: 80.0,
-                                                    height: 80.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        2.0, 2.0, 12.0, 2.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                  child: Image.asset(
-                                                    'assets/images/gallery-jameson-14.jpg',
-                                                    width: 80.0,
-                                                    height: 80.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        2.0, 2.0, 12.0, 2.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                  child: Image.asset(
-                                                    'assets/images/gallery-jameson-1.jpg',
-                                                    width: 80.0,
-                                                    height: 80.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                        if (functions
+                                                .countJsonItems(getJsonField(
+                                                  scrollingColumnGetSingleEventsResponse
+                                                      .jsonBody,
+                                                  r'''$.gallery''',
+                                                  true,
+                                                ))
+                                                .toString() !=
+                                            '0')
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 12.0, 0.0, 50.0),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final gallery = getJsonField(
+                                                  scrollingColumnGetSingleEventsResponse
+                                                      .jsonBody,
+                                                  r'''$.assets''',
+                                                ).toList();
+                                                return Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: List.generate(
+                                                      gallery.length,
+                                                      (galleryIndex) {
+                                                    final galleryItem =
+                                                        gallery[galleryIndex];
+                                                    return Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  2.0,
+                                                                  2.0,
+                                                                  12.0,
+                                                                  2.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'EVENTSINGLE_PAGE_Image_tec43xcw_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Image_expand_image');
+                                                          await Navigator.push(
+                                                            context,
+                                                            PageTransition(
+                                                              type:
+                                                                  PageTransitionType
+                                                                      .fade,
+                                                              child:
+                                                                  FlutterFlowExpandedImageView(
+                                                                image: Image
+                                                                    .network(
+                                                                  getCORSProxyUrl(
+                                                                    getJsonField(
+                                                                      galleryItem,
+                                                                      r'''$.url''',
+                                                                    ).toString(),
+                                                                  ),
+                                                                  fit: BoxFit
+                                                                      .contain,
+                                                                  errorBuilder: (context,
+                                                                          error,
+                                                                          stackTrace) =>
+                                                                      Image
+                                                                          .asset(
+                                                                    'assets/images/error_image.png',
+                                                                    fit: BoxFit
+                                                                        .contain,
+                                                                  ),
+                                                                ),
+                                                                allowRotation:
+                                                                    false,
+                                                                tag:
+                                                                    getJsonField(
+                                                                  galleryItem,
+                                                                  r'''$.url''',
+                                                                ).toString(),
+                                                                useHeroAnimation:
+                                                                    true,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                        child: Hero(
+                                                          tag: getJsonField(
+                                                            galleryItem,
+                                                            r'''$.url''',
+                                                          ).toString(),
+                                                          transitionOnUserGestures:
+                                                              true,
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                            child:
+                                                                Image.network(
+                                                              getCORSProxyUrl(
+                                                                getJsonField(
+                                                                  galleryItem,
+                                                                  r'''$.url''',
+                                                                ).toString(),
+                                                              ),
+                                                              width: 80.0,
+                                                              height: 80.0,
+                                                              fit: BoxFit.cover,
+                                                              errorBuilder: (context,
+                                                                      error,
+                                                                      stackTrace) =>
+                                                                  Image.asset(
+                                                                'assets/images/error_image.png',
+                                                                width: 80.0,
+                                                                height: 80.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
+                                                );
+                                              },
+                                            ),
                                           ),
-                                        ),
                                       ],
                                     ),
                                   ),
