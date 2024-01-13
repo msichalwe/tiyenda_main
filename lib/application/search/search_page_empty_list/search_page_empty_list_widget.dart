@@ -1,5 +1,7 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'search_page_empty_list_model.dart';
 export 'search_page_empty_list_model.dart';
@@ -25,6 +27,15 @@ class _SearchPageEmptyListWidgetState extends State<SearchPageEmptyListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SearchPageEmptyListModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SEARCH_EMPTY_LIST_searchPageEmptyList_ON');
+      logFirebaseEvent('searchPageEmptyList_custom_action');
+      await actions.dissmiskeybaord(
+        context,
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
