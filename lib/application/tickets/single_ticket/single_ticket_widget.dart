@@ -905,7 +905,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                           isScrollControlled:
                                                                               true,
                                                                           backgroundColor:
-                                                                              const Color(0x6C121926),
+                                                                              const Color(0xFF1C2838),
                                                                           useSafeArea:
                                                                               true,
                                                                           context:
