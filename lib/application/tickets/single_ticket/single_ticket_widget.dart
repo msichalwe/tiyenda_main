@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -387,7 +386,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                     SelectionArea(
                                                                         child:
                                                                             AutoSizeText(
-                                                                  '@${getJsonField(
+                                                                  'Ticket id : ${getJsonField(
                                                                     ticketsItem,
                                                                     r'''$.id''',
                                                                   ).toString()}',
@@ -823,14 +822,33 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              AuthUserStreamWidget(
-                                                                builder:
-                                                                    (context) =>
-                                                                        Text(
-                                                                  currentUserDisplayName,
+                                                              Text(
+                                                                getJsonField(
+                                                                  pageViewGetOrderTicketsResponse
+                                                                      .jsonBody,
+                                                                  r'''$.user.name''',
+                                                                ).toString(),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineMedium,
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            8.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  getJsonField(
+                                                                    pageViewGetOrderTicketsResponse
+                                                                        .jsonBody,
+                                                                    r'''$.user.email''',
+                                                                  ).toString(),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .headlineMedium,
+                                                                      .labelMedium,
                                                                 ),
                                                               ),
                                                               Padding(
@@ -872,21 +890,6 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                           .titleLarge,
                                                                     ),
                                                                   ],
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            8.0,
-                                                                            12.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  'Airtel Money',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium,
                                                                 ),
                                                               ),
                                                             ],

@@ -268,7 +268,7 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                                     child: Text(
                                                       'Purchased on : ${valueOrDefault<String>(
                                                         dateTimeFormat(
-                                                          'MMMMEEEEd',
+                                                          'yMMMd',
                                                           functions
                                                               .convertToDateTime(
                                                                   getJsonField(
@@ -439,19 +439,34 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.end,
                                               children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 12.0),
-                                                  child: Text(
-                                                    'K${getJsonField(
-                                                      singleOrdersItem,
-                                                      r'''$.total''',
-                                                    ).toString()}',
-                                                    textAlign: TextAlign.end,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineSmall,
+                                                SingleChildScrollView(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    12.0),
+                                                        child: Text(
+                                                          'K${getJsonField(
+                                                            singleOrdersItem,
+                                                            r'''$.total''',
+                                                          ).toString()}',
+                                                          textAlign:
+                                                              TextAlign.end,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ],
