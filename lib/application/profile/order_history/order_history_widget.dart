@@ -178,295 +178,301 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 12.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  RichText(
-                                                    textScaleFactor:
-                                                        MediaQuery.of(context)
-                                                            .textScaleFactor,
-                                                    text: TextSpan(
-                                                      children: [
-                                                        const TextSpan(
-                                                          text: 'Order #: ',
-                                                          style: TextStyle(),
-                                                        ),
-                                                        TextSpan(
-                                                          text: getJsonField(
-                                                            singleOrdersItem,
-                                                            r'''$.orderNumber''',
-                                                          ).toString(),
-                                                          style: TextStyle(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            fontWeight:
-                                                                FontWeight.bold,
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 12.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    RichText(
+                                                      textScaleFactor:
+                                                          MediaQuery.of(context)
+                                                              .textScaleFactor,
+                                                      text: TextSpan(
+                                                        children: [
+                                                          const TextSpan(
+                                                            text: 'Order #: ',
+                                                            style: TextStyle(),
                                                           ),
-                                                        )
-                                                      ],
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge,
-                                                    ),
-                                                  ),
-                                                  RichText(
-                                                    textScaleFactor:
-                                                        MediaQuery.of(context)
-                                                            .textScaleFactor,
-                                                    text: TextSpan(
-                                                      children: [
-                                                        const TextSpan(
-                                                          text: 'Order ID : ',
-                                                          style: TextStyle(),
-                                                        ),
-                                                        TextSpan(
-                                                          text: getJsonField(
-                                                            singleOrdersItem,
-                                                            r'''$.id''',
-                                                          ).toString(),
-                                                          style: TextStyle(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),
-                                                        )
-                                                      ],
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLargeFamily,
-                                                                fontSize: 15.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyLargeFamily),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Purchased on : ${valueOrDefault<String>(
-                                                        dateTimeFormat(
-                                                          'yMMMd',
-                                                          functions
-                                                              .convertToDateTime(
-                                                                  getJsonField(
-                                                            singleOrdersItem,
-                                                            r'''$.createdAt''',
-                                                          ).toString()),
-                                                          locale:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode,
-                                                        ),
-                                                        'null',
-                                                      )}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Event Name : ${getJsonField(
-                                                        singleOrdersItem,
-                                                        r'''$.event.name''',
-                                                      ).toString()}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Purchased by : ${getJsonField(
-                                                        singleOrdersItem,
-                                                        r'''$.user.name''',
-                                                      ).toString()} @${getJsonField(
-                                                        singleOrdersItem,
-                                                        r'''$.user.email''',
-                                                      ).toString()}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 12.0,
-                                                                0.0, 0.0),
-                                                    child: Container(
-                                                      height: 32.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                        border: Border.all(
-                                                          color:
-                                                              const Color(0xDC89F5D8),
-                                                          width: 2.0,
-                                                        ),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      7.0,
-                                                                      0.0,
-                                                                      7.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'processed',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 0.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        logFirebaseEvent(
-                                                            'ORDER_HISTORY_PAGE_Text_6okumem3_ON_TAP');
-                                                        logFirebaseEvent(
-                                                            'Text_navigate_to');
-
-                                                        context.pushNamed(
-                                                          'singleTicket',
-                                                          queryParameters: {
-                                                            'eventName':
-                                                                serializeParam(
-                                                              getJsonField(
-                                                                singleOrdersItem,
-                                                                r'''$.event.name''',
-                                                              ).toString(),
-                                                              ParamType.String,
+                                                          TextSpan(
+                                                            text: getJsonField(
+                                                              singleOrdersItem,
+                                                              r'''$.orderNumber''',
+                                                            ).toString(),
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
                                                             ),
-                                                            'id':
-                                                                serializeParam(
-                                                              getJsonField(
-                                                                singleOrdersItem,
-                                                                r'''$.id''',
-                                                              ).toString(),
-                                                              ParamType.String,
-                                                            ),
-                                                          }.withoutNulls,
-                                                        );
-                                                      },
-                                                      child: Text(
-                                                        'View Order Tickets',
+                                                          )
+                                                        ],
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .bodyLarge,
+                                                      ),
+                                                    ),
+                                                    RichText(
+                                                      textScaleFactor:
+                                                          MediaQuery.of(context)
+                                                              .textScaleFactor,
+                                                      text: TextSpan(
+                                                        children: [
+                                                          const TextSpan(
+                                                            text: 'Order ID : ',
+                                                            style: TextStyle(),
+                                                          ),
+                                                          TextSpan(
+                                                            text: getJsonField(
+                                                              singleOrdersItem,
+                                                              r'''$.id''',
+                                                            ).toString(),
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                            ),
+                                                          )
+                                                        ],
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
                                                                 .override(
                                                                   fontFamily: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .labelMediumFamily,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
+                                                                      .bodyLargeFamily,
                                                                   fontSize:
-                                                                      18.0,
+                                                                      15.0,
                                                                   useGoogleFonts: GoogleFonts
                                                                           .asMap()
                                                                       .containsKey(
                                                                           FlutterFlowTheme.of(context)
-                                                                              .labelMediumFamily),
+                                                                              .bodyLargeFamily),
                                                                 ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              children: [
-                                                SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0),
-                                                        child: Text(
-                                                          'K${getJsonField(
-                                                            singleOrdersItem,
-                                                            r'''$.total''',
-                                                          ).toString()}',
-                                                          textAlign:
-                                                              TextAlign.end,
-                                                          style: FlutterFlowTheme
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Purchased on : ${valueOrDefault<String>(
+                                                          dateTimeFormat(
+                                                            'yMMMd',
+                                                            functions
+                                                                .convertToDateTime(
+                                                                    getJsonField(
+                                                              singleOrdersItem,
+                                                              r'''$.createdAt''',
+                                                            ).toString()),
+                                                            locale: FFLocalizations
+                                                                    .of(context)
+                                                                .languageCode,
+                                                          ),
+                                                          'null',
+                                                        )}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Event Name : ${getJsonField(
+                                                          singleOrdersItem,
+                                                          r'''$.event.name''',
+                                                        ).toString()}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Purchased by : ${getJsonField(
+                                                          singleOrdersItem,
+                                                          r'''$.user.name''',
+                                                        ).toString()} @${getJsonField(
+                                                          singleOrdersItem,
+                                                          r'''$.user.email''',
+                                                        ).toString()}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  12.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        height: 32.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .headlineSmall,
+                                                              .primaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                          border: Border.all(
+                                                            color: const Color(
+                                                                0xDC89F5D8),
+                                                            width: 2.0,
+                                                          ),
+                                                        ),
+                                                        child: Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        7.0,
+                                                                        0.0,
+                                                                        7.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'processed',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium,
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ],
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'ORDER_HISTORY_PAGE_Text_6okumem3_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'Text_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'singleTicket',
+                                                            queryParameters: {
+                                                              'eventName':
+                                                                  serializeParam(
+                                                                getJsonField(
+                                                                  singleOrdersItem,
+                                                                  r'''$.event.name''',
+                                                                ).toString(),
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'id':
+                                                                  serializeParam(
+                                                                getJsonField(
+                                                                  singleOrdersItem,
+                                                                  r'''$.id''',
+                                                                ).toString(),
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        },
+                                                        child: Text(
+                                                          'View Order Tickets',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 18.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 12.0),
+                                                  child: Text(
+                                                    'K${getJsonField(
+                                                      singleOrdersItem,
+                                                      r'''$.total''',
+                                                    ).toString()}',
+                                                    textAlign: TextAlign.end,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineSmall,
                                                   ),
                                                 ),
                                               ],
