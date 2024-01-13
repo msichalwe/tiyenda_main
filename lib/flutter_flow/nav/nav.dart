@@ -252,15 +252,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const EditAccountWidget(),
             ),
             FFRoute(
-              name: 'singleCategorysPageCopy',
-              path: 'singleCategorysPageCopy',
-              requireAuth: true,
-              builder: (context, params) => SingleCategorysPageCopyWidget(
-                categoryName: params.getParam('categoryName', ParamType.String),
-                catId: params.getParam('catId', ParamType.String),
-              ),
-            ),
-            FFRoute(
               name: 'singleOrg',
               path: 'singleOrg',
               builder: (context, params) => SingleOrgWidget(

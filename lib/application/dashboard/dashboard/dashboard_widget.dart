@@ -284,9 +284,9 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                       focusColor: Colors.transparent,
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
-                                      onTap: () async {
+                                      onLongPress: () async {
                                         logFirebaseEvent(
-                                            'DASHBOARD_PAGE_user_dp_ON_TAP');
+                                            'DASHBOARD_PAGE_user_dp_ON_LONG_PRESS');
                                         logFirebaseEvent('user_dp_navigate_to');
 
                                         context.pushNamed('apiTest');

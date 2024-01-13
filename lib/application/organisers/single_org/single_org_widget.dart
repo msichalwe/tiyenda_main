@@ -11,6 +11,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'single_org_model.dart';
 export 'single_org_model.dart';
 
@@ -114,7 +115,7 @@ class _SingleOrgWidgetState extends State<SingleOrgWidget>
                           flexibleSpace: FlexibleSpaceBar(
                             title: Column(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
@@ -125,7 +126,7 @@ class _SingleOrgWidgetState extends State<SingleOrgWidget>
                                     children: [
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
+                                            12.0, 5.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 30.0,
@@ -173,6 +174,7 @@ class _SingleOrgWidgetState extends State<SingleOrgWidget>
                                                               context)
                                                           .headlineMediumFamily,
                                                   color: Colors.white,
+                                                  fontSize: 17.0,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(FlutterFlowTheme
@@ -417,25 +419,409 @@ class _SingleOrgWidgetState extends State<SingleOrgWidget>
                                   children: [
                                     Align(
                                       alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Builder(
-                                          builder: (context) {
-                                            final events = getJsonField(
-                                              singleOrgGetOneOrganizerResponse
-                                                  .jsonBody,
-                                              r'''$.events''',
-                                            ).toList().take(20).toList();
-                                            return Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.stretch,
-                                              children: List.generate(
-                                                  events.length, (eventsIndex) {
-                                                final eventsItem =
-                                                    events[eventsIndex];
-                                                return InkWell(
+                                      child: Container(
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                1.0,
+                                        decoration: const BoxDecoration(),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 0.0),
+                                          child: Builder(
+                                            builder: (context) {
+                                              final events = getJsonField(
+                                                singleOrgGetOneOrganizerResponse
+                                                    .jsonBody,
+                                                r'''$.events''',
+                                              ).toList().take(20).toList();
+                                              return SingleChildScrollView(
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .stretch,
+                                                  children: List.generate(
+                                                      events.length,
+                                                      (eventsIndex) {
+                                                    final eventsItem =
+                                                        events[eventsIndex];
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'SINGLE_ORG_PAGE_catListItem_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'catListItem_navigate_to');
+
+                                                        context.pushNamed(
+                                                          'eventsingle',
+                                                          queryParameters: {
+                                                            'eventID':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.id''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventName':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.name''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventDate':
+                                                                serializeParam(
+                                                              functions
+                                                                  .convertToDateTime(
+                                                                      getJsonField(
+                                                                    eventsItem,
+                                                                    r'''$.startDate''',
+                                                                  ).toString())
+                                                                  ?.toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                            'eventimage':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                eventsItem,
+                                                                r'''$.image''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        decoration:
+                                                            const BoxDecoration(),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      12.0,
+                                                                      16.0,
+                                                                      12.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Container(
+                                                                width: 100.0,
+                                                                height: 100.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: const Color(
+                                                                      0xFF334D86),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                ),
+                                                                child: Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .all(
+                                                                              2.0),
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10.0),
+                                                                    child:
+                                                                        CachedNetworkImage(
+                                                                      fadeInDuration:
+                                                                          const Duration(
+                                                                              milliseconds: 500),
+                                                                      fadeOutDuration:
+                                                                          const Duration(
+                                                                              milliseconds: 500),
+                                                                      imageUrl:
+                                                                          getCORSProxyUrl(
+                                                                        getJsonField(
+                                                                          eventsItem,
+                                                                          r'''$.image''',
+                                                                        ).toString(),
+                                                                      ),
+                                                                      width:
+                                                                          120.0,
+                                                                      height:
+                                                                          120.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          12.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Text(
+                                                                        getJsonField(
+                                                                          eventsItem,
+                                                                          r'''$.name''',
+                                                                        ).toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyLarge,
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                                                                              child: Icon(
+                                                                                Icons.calendar_month_rounded,
+                                                                                color: FlutterFlowTheme.of(context).secondaryText,
+                                                                                size: 16.0,
+                                                                              ),
+                                                                            ),
+                                                                            Expanded(
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 16.0, 0.0),
+                                                                                child: Text(
+                                                                                  dateTimeFormat(
+                                                                                    'yMMMd',
+                                                                                    functions.convertToDateTime(valueOrDefault<String>(
+                                                                                      getJsonField(
+                                                                                        eventsItem,
+                                                                                        r'''$.startDate''',
+                                                                                      )?.toString(),
+                                                                                      'null',
+                                                                                    )),
+                                                                                    locale: FFLocalizations.of(context).languageCode,
+                                                                                  ),
+                                                                                  style: FlutterFlowTheme.of(context).labelSmall,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            8.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          'BOOK NOW',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelSmall
+                                                                              .override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
+                                                                                color: FlutterFlowTheme.of(context).primary,
+                                                                                fontSize: 15.0,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    ].divide(const SizedBox(
+                                                                        height:
+                                                                            4.0)),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            if (getJsonField(
+                                                  singleOrgGetOneOrganizerResponse
+                                                      .jsonBody,
+                                                  r'''$.imageUrl''',
+                                                ) !=
+                                                null)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 20.0, 0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    getCORSProxyUrl(
+                                                      getJsonField(
+                                                        singleOrgGetOneOrganizerResponse
+                                                            .jsonBody,
+                                                        r'''$.imageUrl''',
+                                                      ).toString(),
+                                                    ),
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.8,
+                                                    height: 150.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            if (getJsonField(
+                                                  singleOrgGetOneOrganizerResponse
+                                                      .jsonBody,
+                                                  r'''$.description''',
+                                                ) !=
+                                                null)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 20.0, 0.0, 0.0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    singleOrgGetOneOrganizerResponse
+                                                        .jsonBody,
+                                                    r'''$.description''',
+                                                  ).toString(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 16.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                                ),
+                                              ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Joind us on : ${dateTimeFormat(
+                                                  'yMMMd',
+                                                  functions.convertToDateTime(
+                                                      getJsonField(
+                                                    singleOrgGetOneOrganizerResponse
+                                                        .jsonBody,
+                                                    r'''$.createdAt''',
+                                                  ).toString()),
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                )}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 16.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Contact information ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 18.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                            if (getJsonField(
+                                                  singleOrgGetOneOrganizerResponse
+                                                      .jsonBody,
+                                                  r'''$.contactPhone''',
+                                                ) !=
+                                                null)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: InkWell(
                                                   splashColor:
                                                       Colors.transparent,
                                                   focusColor:
@@ -446,381 +832,246 @@ class _SingleOrgWidgetState extends State<SingleOrgWidget>
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     logFirebaseEvent(
-                                                        'SINGLE_ORG_PAGE_catListItem_ON_TAP');
+                                                        'SINGLE_ORG_PAGE_RichText_vlyxtv60_ON_TAP');
                                                     logFirebaseEvent(
-                                                        'catListItem_navigate_to');
-
-                                                    context.pushNamed(
-                                                      'eventsingle',
-                                                      queryParameters: {
-                                                        'eventID':
-                                                            serializeParam(
-                                                          getJsonField(
-                                                            eventsItem,
-                                                            r'''$.id''',
-                                                          ).toString(),
-                                                          ParamType.String,
-                                                        ),
-                                                        'eventName':
-                                                            serializeParam(
-                                                          getJsonField(
-                                                            eventsItem,
-                                                            r'''$.name''',
-                                                          ).toString(),
-                                                          ParamType.String,
-                                                        ),
-                                                        'eventDate':
-                                                            serializeParam(
-                                                          functions
-                                                              .convertToDateTime(
-                                                                  getJsonField(
-                                                                eventsItem,
-                                                                r'''$.startDate''',
-                                                              ).toString())
-                                                              ?.toString(),
-                                                          ParamType.String,
-                                                        ),
-                                                        'eventimage':
-                                                            serializeParam(
-                                                          getJsonField(
-                                                            eventsItem,
-                                                            r'''$.image''',
-                                                          ).toString(),
-                                                          ParamType.String,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
+                                                        'RichText_call_number');
+                                                    await launchUrl(Uri(
+                                                      scheme: 'tel',
+                                                      path: getJsonField(
+                                                        singleOrgGetOneOrganizerResponse
+                                                            .jsonBody,
+                                                        r'''$.contactMobile''',
+                                                      ).toString(),
+                                                    ));
                                                   },
-                                                  child: Container(
-                                                    width: 100.0,
-                                                    decoration: const BoxDecoration(),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  12.0,
-                                                                  16.0,
-                                                                  12.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Container(
-                                                            width: 100.0,
-                                                            height: 100.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: const Color(
-                                                                  0xFF334D86),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          12.0),
-                                                              border:
-                                                                  Border.all(
+                                                  child: RichText(
+                                                    textScaleFactor:
+                                                        MediaQuery.of(context)
+                                                            .textScaleFactor,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: 'Mobile Number',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
+                                                                    .primaryBtnText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
                                                               ),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(2.0),
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10.0),
-                                                                child:
-                                                                    CachedNetworkImage(
-                                                                  fadeInDuration:
-                                                                      const Duration(
-                                                                          milliseconds:
-                                                                              500),
-                                                                  fadeOutDuration:
-                                                                      const Duration(
-                                                                          milliseconds:
-                                                                              500),
-                                                                  imageUrl:
-                                                                      getCORSProxyUrl(
-                                                                    getJsonField(
-                                                                      eventsItem,
-                                                                      r'''$.image''',
-                                                                    ).toString(),
-                                                                  ),
-                                                                  width: 120.0,
-                                                                  height: 120.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          12.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    getJsonField(
-                                                                      eventsItem,
-                                                                      r'''$.name''',
-                                                                    ).toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge,
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                              0.0,
-                                                                              0.0,
-                                                                              4.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Icon(
-                                                                            Icons.calendar_month_rounded,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryText,
-                                                                            size:
-                                                                                16.0,
-                                                                          ),
-                                                                        ),
-                                                                        Expanded(
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                0.0,
-                                                                                0.0,
-                                                                                16.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Text(
-                                                                              dateTimeFormat(
-                                                                                'yMMMd',
-                                                                                functions.convertToDateTime(valueOrDefault<String>(
-                                                                                  getJsonField(
-                                                                                    eventsItem,
-                                                                                    r'''$.startDate''',
-                                                                                  )?.toString(),
-                                                                                  'null',
-                                                                                )),
-                                                                                locale: FFLocalizations.of(context).languageCode,
-                                                                              ),
-                                                                              style: FlutterFlowTheme.of(context).labelSmall,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            8.0,
-                                                                            12.0,
-                                                                            0.0),
-                                                                    child: Text(
-                                                                      'BOOK NOW',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelSmall
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                FlutterFlowTheme.of(context).labelSmallFamily,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primary,
-                                                                            fontSize:
-                                                                                15.0,
-                                                                            useGoogleFonts:
-                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ].divide(const SizedBox(
-                                                                    height:
-                                                                        4.0)),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
+                                                        ),
+                                                        const TextSpan(
+                                                          text: ' - ',
+                                                          style: TextStyle(),
+                                                        ),
+                                                        TextSpan(
+                                                          text: getJsonField(
+                                                            singleOrgGetOneOrganizerResponse
+                                                                .jsonBody,
+                                                            r'''$.contactPhone''',
+                                                          ).toString(),
+                                                          style: const TextStyle(),
+                                                        )
+                                                      ],
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
                                                     ),
                                                   ),
-                                                );
-                                              }),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          if (getJsonField(
-                                                singleOrgGetOneOrganizerResponse
-                                                    .jsonBody,
-                                                r'''$.imageUrl''',
-                                              ) !=
-                                              null)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 20.0, 0.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.network(
-                                                  getCORSProxyUrl(
-                                                    getJsonField(
+                                                ),
+                                              ),
+                                            if (getJsonField(
+                                                  singleOrgGetOneOrganizerResponse
+                                                      .jsonBody,
+                                                  r'''$.contactEmail''',
+                                                ) !=
+                                                null)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: RichText(
+                                                  textScaleFactor:
+                                                      MediaQuery.of(context)
+                                                          .textScaleFactor,
+                                                  text: TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text: 'Email',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBtnText,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
+                                                      ),
+                                                      const TextSpan(
+                                                        text: ' - ',
+                                                        style: TextStyle(),
+                                                      ),
+                                                      TextSpan(
+                                                        text: getJsonField(
+                                                          singleOrgGetOneOrganizerResponse
+                                                              .jsonBody,
+                                                          r'''$.contactEmail''',
+                                                        ).toString(),
+                                                        style: const TextStyle(),
+                                                      )
+                                                    ],
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ),
+                                              ),
+                                            if (getJsonField(
+                                                  singleOrgGetOneOrganizerResponse
+                                                      .jsonBody,
+                                                  r'''$.facebook''',
+                                                ) !=
+                                                null)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'SINGLE_ORG_PAGE_RichText_7faxw45y_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'RichText_launch_u_r_l');
+                                                    await launchURL(
+                                                        getJsonField(
                                                       singleOrgGetOneOrganizerResponse
                                                           .jsonBody,
-                                                      r'''$.imageUrl''',
-                                                    ).toString(),
+                                                      r'''$.facebook''',
+                                                    ).toString());
+                                                  },
+                                                  child: RichText(
+                                                    textScaleFactor:
+                                                        MediaQuery.of(context)
+                                                            .textScaleFactor,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: 'Facebook',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBtnText,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                        ),
+                                                        const TextSpan(
+                                                          text: ' - ',
+                                                          style: TextStyle(),
+                                                        ),
+                                                        TextSpan(
+                                                          text: getJsonField(
+                                                            singleOrgGetOneOrganizerResponse
+                                                                .jsonBody,
+                                                            r'''$.facebook''',
+                                                          ).toString(),
+                                                          style: const TextStyle(),
+                                                        )
+                                                      ],
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
                                                   ),
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.8,
-                                                  height: 150.0,
-                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
-                                            ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
-                                            child: Text(
-                                              getJsonField(
-                                                singleOrgGetOneOrganizerResponse
-                                                    .jsonBody,
-                                                r'''$.description''',
-                                              ).toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        fontSize: 16.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Joind us on : ${functions.convertToDateTime(getJsonField(
-                                                    singleOrgGetOneOrganizerResponse
-                                                        .jsonBody,
-                                                    r'''$.createdAt''',
-                                                  ).toString())?.toString()}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        fontSize: 16.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Contact information ',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        fontSize: 18.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                            ),
-                                          ),
-                                          if (getJsonField(
-                                                singleOrgGetOneOrganizerResponse
-                                                    .jsonBody,
-                                                r'''$.contactPhone''',
-                                              ) !=
-                                              null)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 0.0),
-                                              child: RichText(
-                                                textScaleFactor:
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'Mobile Number',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                            if (getJsonField(
+                                                  singleOrgGetOneOrganizerResponse
+                                                      .jsonBody,
+                                                  r'''$.instagram''',
+                                                ) !=
+                                                null)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'SINGLE_ORG_PAGE_RichText_egxp19wi_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'RichText_launch_u_r_l');
+                                                    await launchURL(
+                                                        getJsonField(
+                                                      singleOrgGetOneOrganizerResponse
+                                                          .jsonBody,
+                                                      r'''$.instagram''',
+                                                    ).toString());
+                                                  },
+                                                  child: RichText(
+                                                    textScaleFactor:
+                                                        MediaQuery.of(context)
+                                                            .textScaleFactor,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: 'Instagram',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
@@ -838,47 +1089,69 @@ class _SingleOrgWidgetState extends State<SingleOrgWidget>
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                    ),
-                                                    const TextSpan(
-                                                      text: ' - ',
-                                                      style: TextStyle(),
-                                                    ),
-                                                    TextSpan(
-                                                      text: getJsonField(
-                                                        singleOrgGetOneOrganizerResponse
-                                                            .jsonBody,
-                                                        r'''$.contactPhone''',
-                                                      ).toString(),
-                                                      style: const TextStyle(),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ),
-                                            ),
-                                          if (getJsonField(
-                                                singleOrgGetOneOrganizerResponse
-                                                    .jsonBody,
-                                                r'''$.contactEmail''',
-                                              ) !=
-                                              null)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 0.0),
-                                              child: RichText(
-                                                textScaleFactor:
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'Email',
+                                                        ),
+                                                        const TextSpan(
+                                                          text: ' - ',
+                                                          style: TextStyle(),
+                                                        ),
+                                                        TextSpan(
+                                                          text: getJsonField(
+                                                            singleOrgGetOneOrganizerResponse
+                                                                .jsonBody,
+                                                            r'''$.instagram''',
+                                                          ).toString(),
+                                                          style: const TextStyle(),
+                                                        )
+                                                      ],
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            if (getJsonField(
+                                                  singleOrgGetOneOrganizerResponse
+                                                      .jsonBody,
+                                                  r'''$.x''',
+                                                ) !=
+                                                null)
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'SINGLE_ORG_PAGE_RichText_yjp08m8o_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'RichText_launch_u_r_l');
+                                                    await launchURL(
+                                                        getJsonField(
+                                                      singleOrgGetOneOrganizerResponse
+                                                          .jsonBody,
+                                                      r'''$.x''',
+                                                    ).toString());
+                                                  },
+                                                  child: RichText(
+                                                    textScaleFactor:
+                                                        MediaQuery.of(context)
+                                                            .textScaleFactor,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: 'X',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
@@ -896,201 +1169,30 @@ class _SingleOrgWidgetState extends State<SingleOrgWidget>
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                    ),
-                                                    const TextSpan(
-                                                      text: ' - ',
-                                                      style: TextStyle(),
-                                                    ),
-                                                    TextSpan(
-                                                      text: getJsonField(
-                                                        singleOrgGetOneOrganizerResponse
-                                                            .jsonBody,
-                                                        r'''$.contactEmail''',
-                                                      ).toString(),
-                                                      style: const TextStyle(),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ),
-                                            ),
-                                          if (getJsonField(
-                                                singleOrgGetOneOrganizerResponse
-                                                    .jsonBody,
-                                                r'''$.facebook''',
-                                              ) !=
-                                              null)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 0.0),
-                                              child: RichText(
-                                                textScaleFactor:
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'Facebook',
+                                                        ),
+                                                        const TextSpan(
+                                                          text: ' - ',
+                                                          style: TextStyle(),
+                                                        ),
+                                                        TextSpan(
+                                                          text: getJsonField(
+                                                            singleOrgGetOneOrganizerResponse
+                                                                .jsonBody,
+                                                            r'''$.x''',
+                                                          ).toString(),
+                                                          style: const TextStyle(),
+                                                        )
+                                                      ],
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                              .bodyMedium,
                                                     ),
-                                                    const TextSpan(
-                                                      text: ' - ',
-                                                      style: TextStyle(),
-                                                    ),
-                                                    TextSpan(
-                                                      text: getJsonField(
-                                                        singleOrgGetOneOrganizerResponse
-                                                            .jsonBody,
-                                                        r'''$.facebook''',
-                                                      ).toString(),
-                                                      style: const TextStyle(),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          if (getJsonField(
-                                                singleOrgGetOneOrganizerResponse
-                                                    .jsonBody,
-                                                r'''$.instagram''',
-                                              ) !=
-                                              null)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 0.0),
-                                              child: RichText(
-                                                textScaleFactor:
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'Instagram',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                    ),
-                                                    const TextSpan(
-                                                      text: ' - ',
-                                                      style: TextStyle(),
-                                                    ),
-                                                    TextSpan(
-                                                      text: getJsonField(
-                                                        singleOrgGetOneOrganizerResponse
-                                                            .jsonBody,
-                                                        r'''$.instagram''',
-                                                      ).toString(),
-                                                      style: const TextStyle(),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ),
-                                            ),
-                                          if (getJsonField(
-                                                singleOrgGetOneOrganizerResponse
-                                                    .jsonBody,
-                                                r'''$.x''',
-                                              ) !=
-                                              null)
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 0.0),
-                                              child: RichText(
-                                                textScaleFactor:
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'X',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryBtnText,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                    ),
-                                                    const TextSpan(
-                                                      text: ' - ',
-                                                      style: TextStyle(),
-                                                    ),
-                                                    TextSpan(
-                                                      text: getJsonField(
-                                                        singleOrgGetOneOrganizerResponse
-                                                            .jsonBody,
-                                                        r'''$.x''',
-                                                      ).toString(),
-                                                      style: const TextStyle(),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                              ),
-                                            ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],

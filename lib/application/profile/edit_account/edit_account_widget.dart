@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -67,82 +66,14 @@ class _EditAccountWidgetState extends State<EditAccountWidget> {
             tabletLandscape: false,
             desktop: false,
           )
-              ? PreferredSize(
-                  preferredSize: const Size.fromHeight(100.0),
-                  child: AppBar(
-                    backgroundColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    automaticallyImplyLeading: false,
-                    actions: const [],
-                    flexibleSpace: FlexibleSpaceBar(
-                      title: Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 8.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: Colors.transparent,
-                                      borderRadius: 30.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 50.0,
-                                      icon: Icon(
-                                        Icons.arrow_back_rounded,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 30.0,
-                                      ),
-                                      onPressed: () async {
-                                        logFirebaseEvent(
-                                            'EDIT_ACCOUNT_arrow_back_rounded_ICN_ON_T');
-                                        logFirebaseEvent(
-                                            'IconButton_navigate_back');
-                                        context.pop();
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                'Edit Account',
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .headlineMediumFamily,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      fontSize: 22.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMediumFamily),
-                                    ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      centerTitle: true,
-                      expandedTitleScale: 1.0,
-                    ),
-                    elevation: 0.0,
-                  ),
+              ? AppBar(
+                  backgroundColor:
+                      FlutterFlowTheme.of(context).secondaryBackground,
+                  iconTheme: const IconThemeData(color: Colors.white),
+                  automaticallyImplyLeading: true,
+                  actions: const [],
+                  centerTitle: true,
+                  elevation: 0.0,
                 )
               : null,
           body: SafeArea(
@@ -229,6 +160,20 @@ class _EditAccountWidgetState extends State<EditAccountWidget> {
                             .update(createUsersRecordData(
                           displayName: _model.displayNameController.text,
                         ));
+                        logFirebaseEvent('Button_show_snack_bar');
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Display Name Updated',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
+                            ),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).secondary,
+                          ),
+                        );
                       },
                       text: 'Save Changes',
                       options: FFButtonOptions(

@@ -41,7 +41,5 @@ export '/application/categories/single_categorys_page/single_categorys_page_widg
 export '/api_test/api_test_widget.dart' show ApiTestWidget;
 export '/application/profile/edit_account/edit_account_widget.dart'
     show EditAccountWidget;
-export '/application/categories/single_categorys_page_copy/single_categorys_page_copy_widget.dart'
-    show SingleCategorysPageCopyWidget;
 export '/application/organisers/single_org/single_org_widget.dart'
     show SingleOrgWidget;
