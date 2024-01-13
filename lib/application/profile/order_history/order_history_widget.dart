@@ -389,7 +389,7 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
-                                                                  10.0,
+                                                                  20.0,
                                                                   0.0,
                                                                   0.0),
                                                       child: InkWell(
@@ -444,6 +444,9 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                                                         context)
                                                                     .primary,
                                                                 fontSize: 18.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
                                                                 useGoogleFonts: GoogleFonts
                                                                         .asMap()
                                                                     .containsKey(
