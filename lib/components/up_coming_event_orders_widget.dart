@@ -14,7 +14,7 @@ class UpComingEventOrdersWidget extends StatefulWidget {
   const UpComingEventOrdersWidget({super.key});
 
   @override
-  _UpComingEventOrdersWidgetState createState() =>
+  State<UpComingEventOrdersWidget> createState() =>
       _UpComingEventOrdersWidgetState();
 }
 

@@ -43,3 +43,7 @@ export '/application/profile/edit_account/edit_account_widget.dart'
     show EditAccountWidget;
 export '/application/organisers/single_org/single_org_widget.dart'
     show SingleOrgWidget;
+export '/application/profile/tickets_copy/tickets_copy_widget.dart'
+    show TicketsCopyWidget;
+export '/application/tickets/single_ticket_copy/single_ticket_copy_widget.dart'
+    show SingleTicketCopyWidget;

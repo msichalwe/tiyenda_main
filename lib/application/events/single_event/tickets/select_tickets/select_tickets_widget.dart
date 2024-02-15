@@ -23,7 +23,7 @@ class SelectTicketsWidget extends StatefulWidget {
   final String? eventId;
 
   @override
-  _SelectTicketsWidgetState createState() => _SelectTicketsWidgetState();
+  State<SelectTicketsWidget> createState() => _SelectTicketsWidgetState();
 }
 
 class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
@@ -470,23 +470,24 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                                                                       builder:
                                                                           (alertDialogContext) {
                                                                         return WebViewAware(
-                                                                            child:
-                                                                                AlertDialog(
-                                                                          title:
-                                                                              const Text('Clear Cart'),
-                                                                          content:
-                                                                              const Text('You have tickets from another event, are you sure you want to clear your cart and add tickets from this event.'),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                              child: const Text('Cancel'),
-                                                                            ),
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                              child: const Text('Confirm'),
-                                                                            ),
-                                                                          ],
-                                                                        ));
+                                                                          child:
+                                                                              AlertDialog(
+                                                                            title:
+                                                                                const Text('Clear Cart'),
+                                                                            content:
+                                                                                const Text('You have tickets from another event, are you sure you want to clear your cart and add tickets from this event.'),
+                                                                            actions: [
+                                                                              TextButton(
+                                                                                onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                child: const Text('Cancel'),
+                                                                              ),
+                                                                              TextButton(
+                                                                                onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                child: const Text('Confirm'),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        );
                                                                       },
                                                                     ) ??
                                                                     false;

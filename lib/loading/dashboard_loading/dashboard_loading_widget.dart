@@ -11,7 +11,7 @@ class DashboardLoadingWidget extends StatefulWidget {
   const DashboardLoadingWidget({super.key});
 
   @override
-  _DashboardLoadingWidgetState createState() => _DashboardLoadingWidgetState();
+  State<DashboardLoadingWidget> createState() => _DashboardLoadingWidgetState();
 }
 
 class _DashboardLoadingWidgetState extends State<DashboardLoadingWidget> {

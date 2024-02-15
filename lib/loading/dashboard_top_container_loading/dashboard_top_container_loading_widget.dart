@@ -16,7 +16,7 @@ class DashboardTopContainerLoadingWidget extends StatefulWidget {
   const DashboardTopContainerLoadingWidget({super.key});
 
   @override
-  _DashboardTopContainerLoadingWidgetState createState() =>
+  State<DashboardTopContainerLoadingWidget> createState() =>
       _DashboardTopContainerLoadingWidgetState();
 }
 

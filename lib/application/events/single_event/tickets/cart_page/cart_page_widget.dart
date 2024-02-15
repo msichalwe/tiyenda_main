@@ -17,7 +17,7 @@ class CartPageWidget extends StatefulWidget {
   const CartPageWidget({super.key});
 
   @override
-  _CartPageWidgetState createState() => _CartPageWidgetState();
+  State<CartPageWidget> createState() => _CartPageWidgetState();
 }
 
 class _CartPageWidgetState extends State<CartPageWidget> {
@@ -518,27 +518,28 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                           context: context,
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
-                                                child: AlertDialog(
-                                              title: const Text('Ticket Payment'),
-                                              content: const Text(
-                                                  'You are about to pay for a ticket. A prompt will appear on your mobile device to confirm the order'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          false),
-                                                  child: const Text('Cancel'),
-                                                ),
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext,
-                                                          true),
-                                                  child: const Text('Confirm'),
-                                                ),
-                                              ],
-                                            ));
+                                              child: AlertDialog(
+                                                title: const Text('Ticket Payment'),
+                                                content: const Text(
+                                                    'You are about to pay for a ticket. A prompt will appear on your mobile device to confirm the order'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            false),
+                                                    child: const Text('Cancel'),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext,
+                                                            true),
+                                                    child: const Text('Confirm'),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
                                           },
                                         ) ??
                                         false;
@@ -573,18 +574,19 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return WebViewAware(
-                                            child: AlertDialog(
-                                          title: const Text('Tickets Purchased'),
-                                          content: const Text(
-                                              'Congratualtions tickets purchased'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        ));
+                                          child: AlertDialog(
+                                            title: const Text('Tickets Purchased'),
+                                            content: const Text(
+                                                'Congratualtions tickets purchased'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
                                       },
                                     );
                                     logFirebaseEvent('Button_update_app_state');
@@ -612,20 +614,21 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return WebViewAware(
-                                            child: AlertDialog(
-                                          title: const Text('OOPS'),
-                                          content: Text(
-                                              (_model.apiResultb3o?.jsonBody ??
-                                                      '')
-                                                  .toString()),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
-                                            ),
-                                          ],
-                                        ));
+                                          child: AlertDialog(
+                                            title: const Text('OOPS'),
+                                            content: Text((_model.apiResultb3o
+                                                        ?.jsonBody ??
+                                                    '')
+                                                .toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
                                       },
                                     );
                                     if (shouldSetState) setState(() {});

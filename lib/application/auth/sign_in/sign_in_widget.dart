@@ -19,7 +19,7 @@ class SignInWidget extends StatefulWidget {
   const SignInWidget({super.key});
 
   @override
-  _SignInWidgetState createState() => _SignInWidgetState();
+  State<SignInWidget> createState() => _SignInWidgetState();
 }
 
 class _SignInWidgetState extends State<SignInWidget>
@@ -802,7 +802,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                             0.0),
                                                                     child:
                                                                         AutoSizeText(
-                                                                      'Use a social platform to continue',
+                                                                      'Or use a social platform to continue',
                                                                       textAlign:
                                                                           TextAlign
                                                                               .center,
@@ -908,6 +908,51 @@ class _SignInWidgetState extends State<SignInWidget>
                                                                       },
                                                                     ),
                                                                   ),
+                                                                  if (isiOS)
+                                                                    Padding(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8.0),
+                                                                      child:
+                                                                          FlutterFlowIconButton(
+                                                                        borderColor:
+                                                                            FlutterFlowTheme.of(context).lineColor,
+                                                                        borderRadius:
+                                                                            12.0,
+                                                                        borderWidth:
+                                                                            1.0,
+                                                                        buttonSize:
+                                                                            44.0,
+                                                                        icon:
+                                                                            FaIcon(
+                                                                          FontAwesomeIcons
+                                                                              .apple,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primaryBtnText,
+                                                                          size:
+                                                                              20.0,
+                                                                        ),
+                                                                        onPressed:
+                                                                            () async {
+                                                                          logFirebaseEvent(
+                                                                              'SIGN_IN_PAGE_apple_ICN_ON_TAP');
+                                                                          logFirebaseEvent(
+                                                                              'IconButton_auth');
+                                                                          GoRouter.of(context)
+                                                                              .prepareAuthEvent();
+                                                                          final user =
+                                                                              await authManager.signInWithApple(context);
+                                                                          if (user ==
+                                                                              null) {
+                                                                            return;
+                                                                          }
+
+                                                                          context.goNamedAuth(
+                                                                              'dashboard',
+                                                                              context.mounted);
+                                                                        },
+                                                                      ),
+                                                                    ),
                                                                 ],
                                                               ),
                                                             ).animateOnPageLoad(

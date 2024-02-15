@@ -26,7 +26,7 @@ class SingleOrgWidget extends StatefulWidget {
   final String? organizerId;
 
   @override
-  _SingleOrgWidgetState createState() => _SingleOrgWidgetState();
+  State<SingleOrgWidget> createState() => _SingleOrgWidgetState();
 }
 
 class _SingleOrgWidgetState extends State<SingleOrgWidget>

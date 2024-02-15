@@ -34,7 +34,7 @@ class EventsingleWidget extends StatefulWidget {
   final String? eventimage;
 
   @override
-  _EventsingleWidgetState createState() => _EventsingleWidgetState();
+  State<EventsingleWidget> createState() => _EventsingleWidgetState();
 }
 
 class _EventsingleWidgetState extends State<EventsingleWidget> {

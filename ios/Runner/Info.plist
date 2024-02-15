@@ -53,13 +53,14 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>Tiyenda needs access to your location to show you events happening near you. Discover local events and navigate to event venues easily.</string>
+    <string>In order to search nearby, this app requires access to your current location.</string>
 	<key>PermissionGroupNotification</key>
     <string>Enable notifications to stay in the loop! Tiyenda will send you alerts for event updates, reminders for your saved events, and announcements for new happenings tailored to your interests.</string>
 	<key>NSCalendarsUsageDescription</key>
     <string>Tiyenda requests access to your calendar to add events directly and remind you of upcoming activities you're interested in. Keep track of event dates easily with automatic calendar updates.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Tiyenda needs access to your photolibrary to allow  you to upload photos.</string>
 
 
 	<key>UILaunchStoryboardName</key>

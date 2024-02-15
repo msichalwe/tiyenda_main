@@ -26,7 +26,7 @@ class DashboardWidget extends StatefulWidget {
   const DashboardWidget({super.key});
 
   @override
-  _DashboardWidgetState createState() => _DashboardWidgetState();
+  State<DashboardWidget> createState() => _DashboardWidgetState();
 }
 
 class _DashboardWidgetState extends State<DashboardWidget>
@@ -209,7 +209,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             floatingActionButton: Visibility(
               visible: FFAppState().cartItems.isNotEmpty,
               child: FloatingActionButton.extended(

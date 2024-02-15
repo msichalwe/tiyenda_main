@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 const _kDynamicLinksUrl = 'https://tiyenda.page.link';
 const _kAppBundleId = 'com.chalotech.tiyedaAdmin';
+const _kIosAppId = '6477701500';
 
 Future<String> generateCurrentPageLink(
   BuildContext context, {
@@ -21,6 +22,7 @@ Future<String> generateCurrentPageLink(
     androidParameters: const AndroidParameters(packageName: _kAppBundleId),
     iosParameters: const IOSParameters(
       bundleId: _kAppBundleId,
+      appStoreId: _kIosAppId,
     ),
     socialMetaTagParameters: SocialMetaTagParameters(
       title: title,

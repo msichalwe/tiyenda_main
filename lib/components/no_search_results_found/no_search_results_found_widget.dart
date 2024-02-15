@@ -10,7 +10,7 @@ class NoSearchResultsFoundWidget extends StatefulWidget {
   const NoSearchResultsFoundWidget({super.key});
 
   @override
-  _NoSearchResultsFoundWidgetState createState() =>
+  State<NoSearchResultsFoundWidget> createState() =>
       _NoSearchResultsFoundWidgetState();
 }
 

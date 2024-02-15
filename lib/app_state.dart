@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'flutter_flow/request_manager.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:csv/csv.dart';
@@ -77,6 +78,26 @@ class FFAppState extends ChangeNotifier {
     await _safeInitAsync(() async {
       _currentEventId =
           await secureStorage.getString('ff_currentEventId') ?? _currentEventId;
+    });
+    await _safeInitAsync(() async {
+      _downloadedTickets =
+          (await secureStorage.getStringList('ff_downloadedTickets'))
+                  ?.map((x) {
+                    try {
+                      return EventsStruct.fromSerializableMap(jsonDecode(x));
+                    } catch (e) {
+                      print("Can't decode persisted data type. Error: $e.");
+                      return null;
+                    }
+                  })
+                  .withoutNulls
+                  .toList() ??
+              _downloadedTickets;
+    });
+    await _safeInitAsync(() async {
+      _downloadedOrderList =
+          await secureStorage.getStringList('ff_downloadedOrderList') ??
+              _downloadedOrderList;
     });
   }
 
@@ -329,6 +350,93 @@ class FFAppState extends ChangeNotifier {
     secureStorage.delete(key: 'ff_currentEventId');
   }
 
+  List<EventsStruct> _downloadedTickets = [
+    EventsStruct.fromSerializableMap(jsonDecode(
+        '{"eventName":"Hello World","eventId":"Hello World","eventDate":"1707831505801","eventPic":"https://picsum.photos/seed/806/600","eventDesc":"Hello World","total":"0","orderId":"Hello World","tickets":"Hello World"}'))
+  ];
+  List<EventsStruct> get downloadedTickets => _downloadedTickets;
+  set downloadedTickets(List<EventsStruct> value) {
+    _downloadedTickets = value;
+    secureStorage.setStringList(
+        'ff_downloadedTickets', value.map((x) => x.serialize()).toList());
+  }
+
+  void deleteDownloadedTickets() {
+    secureStorage.delete(key: 'ff_downloadedTickets');
+  }
+
+  void addToDownloadedTickets(EventsStruct value) {
+    _downloadedTickets.add(value);
+    secureStorage.setStringList('ff_downloadedTickets',
+        _downloadedTickets.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromDownloadedTickets(EventsStruct value) {
+    _downloadedTickets.remove(value);
+    secureStorage.setStringList('ff_downloadedTickets',
+        _downloadedTickets.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromDownloadedTickets(int index) {
+    _downloadedTickets.removeAt(index);
+    secureStorage.setStringList('ff_downloadedTickets',
+        _downloadedTickets.map((x) => x.serialize()).toList());
+  }
+
+  void updateDownloadedTicketsAtIndex(
+    int index,
+    EventsStruct Function(EventsStruct) updateFn,
+  ) {
+    _downloadedTickets[index] = updateFn(_downloadedTickets[index]);
+    secureStorage.setStringList('ff_downloadedTickets',
+        _downloadedTickets.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInDownloadedTickets(int index, EventsStruct value) {
+    _downloadedTickets.insert(index, value);
+    secureStorage.setStringList('ff_downloadedTickets',
+        _downloadedTickets.map((x) => x.serialize()).toList());
+  }
+
+  List<String> _downloadedOrderList = [];
+  List<String> get downloadedOrderList => _downloadedOrderList;
+  set downloadedOrderList(List<String> value) {
+    _downloadedOrderList = value;
+    secureStorage.setStringList('ff_downloadedOrderList', value);
+  }
+
+  void deleteDownloadedOrderList() {
+    secureStorage.delete(key: 'ff_downloadedOrderList');
+  }
+
+  void addToDownloadedOrderList(String value) {
+    _downloadedOrderList.add(value);
+    secureStorage.setStringList('ff_downloadedOrderList', _downloadedOrderList);
+  }
+
+  void removeFromDownloadedOrderList(String value) {
+    _downloadedOrderList.remove(value);
+    secureStorage.setStringList('ff_downloadedOrderList', _downloadedOrderList);
+  }
+
+  void removeAtIndexFromDownloadedOrderList(int index) {
+    _downloadedOrderList.removeAt(index);
+    secureStorage.setStringList('ff_downloadedOrderList', _downloadedOrderList);
+  }
+
+  void updateDownloadedOrderListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    _downloadedOrderList[index] = updateFn(_downloadedOrderList[index]);
+    secureStorage.setStringList('ff_downloadedOrderList', _downloadedOrderList);
+  }
+
+  void insertAtIndexInDownloadedOrderList(int index, String value) {
+    _downloadedOrderList.insert(index, value);
+    secureStorage.setStringList('ff_downloadedOrderList', _downloadedOrderList);
+  }
+
   final _allEventsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> allEvents({
     String? uniqueQueryKey,
@@ -373,16 +481,6 @@ class FFAppState extends ChangeNotifier {
   void clearGetSingleEventCache() => _getSingleEventManager.clear();
   void clearGetSingleEventCacheKey(String? uniqueKey) =>
       _getSingleEventManager.clearRequest(uniqueKey);
-}
-
-LatLng? _latLngFromString(String? val) {
-  if (val == null) {
-    return null;
-  }
-  final split = val.split(',');
-  final lat = double.parse(split.first);
-  final lng = double.parse(split.last);
-  return LatLng(lat, lng);
 }
 
 void _safeInit(Function() initializeField) {

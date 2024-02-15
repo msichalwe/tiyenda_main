@@ -17,7 +17,7 @@ class OnBoardingWidget extends StatefulWidget {
   const OnBoardingWidget({super.key});
 
   @override
-  _OnBoardingWidgetState createState() => _OnBoardingWidgetState();
+  State<OnBoardingWidget> createState() => _OnBoardingWidgetState();
 }
 
 class _OnBoardingWidgetState extends State<OnBoardingWidget>

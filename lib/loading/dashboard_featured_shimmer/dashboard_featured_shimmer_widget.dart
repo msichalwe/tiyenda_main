@@ -12,7 +12,7 @@ class DashboardFeaturedShimmerWidget extends StatefulWidget {
   const DashboardFeaturedShimmerWidget({super.key});
 
   @override
-  _DashboardFeaturedShimmerWidgetState createState() =>
+  State<DashboardFeaturedShimmerWidget> createState() =>
       _DashboardFeaturedShimmerWidgetState();
 }
 

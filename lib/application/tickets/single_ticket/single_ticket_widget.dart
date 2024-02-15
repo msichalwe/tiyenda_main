@@ -1,8 +1,10 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/qrcode_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -23,13 +25,13 @@ class SingleTicketWidget extends StatefulWidget {
     super.key,
     this.eventName,
     String? id,
-  })  : id = id ?? 'null';
+  }) : id = id ?? 'null';
 
   final String? eventName;
   final String id;
 
   @override
-  _SingleTicketWidgetState createState() => _SingleTicketWidgetState();
+  State<SingleTicketWidget> createState() => _SingleTicketWidgetState();
 }
 
 class _SingleTicketWidgetState extends State<SingleTicketWidget>
@@ -185,33 +187,33 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                 : null,
             body: SafeArea(
               top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: FutureBuilder<ApiCallResponse>(
-                      future: EventsGroup.getOrderTicketsCall.call(
-                        orderId: widget.id,
+              child: FutureBuilder<ApiCallResponse>(
+                future: EventsGroup.getOrderTicketsCall.call(
+                  orderId: widget.id,
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: SpinKitDoubleBounce(
+                          color: Color(0xFFE14613),
+                          size: 50.0,
+                        ),
                       ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return const Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: SpinKitDoubleBounce(
-                                color: Color(0xFFE14613),
-                                size: 50.0,
-                              ),
-                            ),
-                          );
-                        }
-                        final pageViewGetOrderTicketsResponse = snapshot.data!;
-                        return Builder(
+                    );
+                  }
+                  final columnGetOrderTicketsResponse = snapshot.data!;
+                  return Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: Builder(
                           builder: (context) {
                             final tickets = getJsonField(
-                              pageViewGetOrderTicketsResponse.jsonBody,
+                              columnGetOrderTicketsResponse.jsonBody,
                               r'''$.OrderItem''',
                             ).toList();
                             return SizedBox(
@@ -479,7 +481,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                           dateTimeFormat(
                                                                             'yMMMd',
                                                                             functions.convertToDateTime(getJsonField(
-                                                                              pageViewGetOrderTicketsResponse.jsonBody,
+                                                                              columnGetOrderTicketsResponse.jsonBody,
                                                                               r'''$.createdAt''',
                                                                             ).toString()),
                                                                             locale:
@@ -507,7 +509,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                       child:
                                                                           AutoSizeText(
                                                                         getJsonField(
-                                                                          pageViewGetOrderTicketsResponse
+                                                                          columnGetOrderTicketsResponse
                                                                               .jsonBody,
                                                                           r'''$.event.name''',
                                                                         ).toString(),
@@ -535,7 +537,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                           'yMMMd',
                                                                           functions
                                                                               .convertToDateTime(getJsonField(
-                                                                            pageViewGetOrderTicketsResponse.jsonBody,
+                                                                            columnGetOrderTicketsResponse.jsonBody,
                                                                             r'''$.event.startDate''',
                                                                           ).toString()),
                                                                           locale:
@@ -789,7 +791,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                   children: [
                                                                     Text(
                                                                       getJsonField(
-                                                                        pageViewGetOrderTicketsResponse
+                                                                        columnGetOrderTicketsResponse
                                                                             .jsonBody,
                                                                         r'''$.user.name''',
                                                                       ).toString(),
@@ -806,7 +808,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                       child:
                                                                           Text(
                                                                         getJsonField(
-                                                                          pageViewGetOrderTicketsResponse
+                                                                          columnGetOrderTicketsResponse
                                                                               .jsonBody,
                                                                           r'''$.user.email''',
                                                                         ).toString(),
@@ -913,21 +915,22 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                                           builder:
                                                                               (context) {
                                                                             return WebViewAware(
-                                                                                child: GestureDetector(
-                                                                              onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                              child: Padding(
-                                                                                padding: MediaQuery.viewInsetsOf(context),
-                                                                                child: SizedBox(
-                                                                                  height: MediaQuery.sizeOf(context).height * 0.7,
-                                                                                  child: QrcodeWidget(
-                                                                                    qrcodeId: getJsonField(
-                                                                                      ticketsItem,
-                                                                                      r'''$.id''',
-                                                                                    ).toString(),
+                                                                              child: GestureDetector(
+                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                child: Padding(
+                                                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                                                  child: SizedBox(
+                                                                                    height: MediaQuery.sizeOf(context).height * 0.7,
+                                                                                    child: QrcodeWidget(
+                                                                                      qrcodeId: getJsonField(
+                                                                                        ticketsItem,
+                                                                                        r'''$.id''',
+                                                                                      ).toString(),
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ));
+                                                                            );
                                                                           },
                                                                         ).then((value) =>
                                                                             safeSetState(() {}));
@@ -1025,11 +1028,103 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                               ),
                             );
                           },
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'SINGLE_TICKET_DOWNLOAD_TICKETS_BTN_ON_TA');
+                            logFirebaseEvent('Button_update_app_state');
+                            setState(() {
+                              FFAppState()
+                                  .addToDownloadedOrderList(getJsonField(
+                                columnGetOrderTicketsResponse.jsonBody,
+                                r'''$.id''',
+                              ).toString());
+                            });
+                            logFirebaseEvent('Button_update_app_state');
+                            FFAppState().addToDownloadedTickets(EventsStruct(
+                              tickets: getJsonField(
+                                columnGetOrderTicketsResponse.jsonBody,
+                                r'''$.OrderItem''',
+                              ).toString(),
+                              eventName: getJsonField(
+                                columnGetOrderTicketsResponse.jsonBody,
+                                r'''$.event.name''',
+                              ).toString(),
+                              orderId: widget.id,
+                              eventId: '\$.event.id',
+                              eventDate:
+                                  functions.convertToDateTime(getJsonField(
+                                columnGetOrderTicketsResponse.jsonBody,
+                                r'''$.event.startDate''',
+                              ).toString()),
+                              eventPic: getJsonField(
+                                columnGetOrderTicketsResponse.jsonBody,
+                                r'''$.event.image''',
+                              ).toString(),
+                              total: getJsonField(
+                                columnGetOrderTicketsResponse.jsonBody,
+                                r'''$.total''',
+                              ),
+                              completeJson: columnGetOrderTicketsResponse
+                                  .jsonBody
+                                  .toString(),
+                            ));
+                            logFirebaseEvent('Button_alert_dialog');
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return WebViewAware(
+                                  child: AlertDialog(
+                                    title: const Text('Success'),
+                                    content: const Text(
+                                        'The tickets have been downloaded and can be viewed offline.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: const Text('Ok'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          text: 'Download Tickets ',
+                          options: FFButtonOptions(
+                            height: 40.0,
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .titleSmallFamily,
+                                  color: Colors.white,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .titleSmallFamily),
+                                ),
+                            elevation: 0.0,
+                            borderSide: const BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ),

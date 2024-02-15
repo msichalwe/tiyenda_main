@@ -22,7 +22,7 @@ class SingleCategorysPageWidget extends StatefulWidget {
   final String? catId;
 
   @override
-  _SingleCategorysPageWidgetState createState() =>
+  State<SingleCategorysPageWidget> createState() =>
       _SingleCategorysPageWidgetState();
 }
 

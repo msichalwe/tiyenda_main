@@ -11,7 +11,7 @@ class ApiTestWidget extends StatefulWidget {
   const ApiTestWidget({super.key});
 
   @override
-  _ApiTestWidgetState createState() => _ApiTestWidgetState();
+  State<ApiTestWidget> createState() => _ApiTestWidgetState();
 }
 
 class _ApiTestWidgetState extends State<ApiTestWidget> {

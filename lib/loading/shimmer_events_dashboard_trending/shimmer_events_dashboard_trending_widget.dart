@@ -11,7 +11,7 @@ class ShimmerEventsDashboardTrendingWidget extends StatefulWidget {
   const ShimmerEventsDashboardTrendingWidget({super.key});
 
   @override
-  _ShimmerEventsDashboardTrendingWidgetState createState() =>
+  State<ShimmerEventsDashboardTrendingWidget> createState() =>
       _ShimmerEventsDashboardTrendingWidgetState();
 }
 

@@ -14,7 +14,7 @@ class EditAccountWidget extends StatefulWidget {
   const EditAccountWidget({super.key});
 
   @override
-  _EditAccountWidgetState createState() => _EditAccountWidgetState();
+  State<EditAccountWidget> createState() => _EditAccountWidgetState();
 }
 
 class _EditAccountWidgetState extends State<EditAccountWidget> {

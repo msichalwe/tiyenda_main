@@ -18,7 +18,7 @@ class DynamicpageWidget extends StatefulWidget {
   final String? url;
 
   @override
-  _DynamicpageWidgetState createState() => _DynamicpageWidgetState();
+  State<DynamicpageWidget> createState() => _DynamicpageWidgetState();
 }
 
 class _DynamicpageWidgetState extends State<DynamicpageWidget> {

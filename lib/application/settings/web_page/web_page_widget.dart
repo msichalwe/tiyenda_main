@@ -18,7 +18,7 @@ class WebPageWidget extends StatefulWidget {
   final String? url;
 
   @override
-  _WebPageWidgetState createState() => _WebPageWidgetState();
+  State<WebPageWidget> createState() => _WebPageWidgetState();
 }
 
 class _WebPageWidgetState extends State<WebPageWidget> {

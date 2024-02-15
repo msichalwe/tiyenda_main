@@ -259,6 +259,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     params.getParam('organiserName', ParamType.String),
                 organizerId: params.getParam('organizerId', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'ticketsCopy',
+              path: 'ticketsCopy',
+              requireAuth: true,
+              builder: (context, params) => const TicketsCopyWidget(),
+            ),
+            FFRoute(
+              name: 'singleTicketCopy',
+              path: 'singleTicketCopy',
+              requireAuth: true,
+              builder: (context, params) => SingleTicketCopyWidget(
+                eventName: params.getParam('eventName', ParamType.String),
+                id: params.getParam('id', ParamType.String),
+                completeJson: params.getParam('completeJson', ParamType.JSON),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

@@ -16,7 +16,7 @@ class ProfileWidget extends StatefulWidget {
   const ProfileWidget({super.key});
 
   @override
-  _ProfileWidgetState createState() => _ProfileWidgetState();
+  State<ProfileWidget> createState() => _ProfileWidgetState();
 }
 
 class _ProfileWidgetState extends State<ProfileWidget>
@@ -1251,31 +1251,32 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                           builder:
                                                               (alertDialogContext) {
                                                             return WebViewAware(
-                                                                child:
-                                                                    AlertDialog(
-                                                              title: const Text(
-                                                                  'DELETE USER'),
-                                                              content: const Text(
-                                                                  'Are you sure you want to delete your account? you will loose all your order history. This cannot be Undone'),
-                                                              actions: [
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          false),
-                                                                  child: const Text(
-                                                                      'Cancel'),
-                                                                ),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          alertDialogContext,
-                                                                          true),
-                                                                  child: const Text(
-                                                                      'Confirm'),
-                                                                ),
-                                                              ],
-                                                            ));
+                                                              child:
+                                                                  AlertDialog(
+                                                                title: const Text(
+                                                                    'DELETE USER'),
+                                                                content: const Text(
+                                                                    'Are you sure you want to delete your account? you will loose all your order history. This cannot be Undone'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                    child: const Text(
+                                                                        'Cancel'),
+                                                                  ),
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                    child: const Text(
+                                                                        'Confirm'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
                                                           },
                                                         ) ??
                                                         false;

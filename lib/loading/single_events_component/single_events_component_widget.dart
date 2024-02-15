@@ -11,7 +11,7 @@ class SingleEventsComponentWidget extends StatefulWidget {
   const SingleEventsComponentWidget({super.key});
 
   @override
-  _SingleEventsComponentWidgetState createState() =>
+  State<SingleEventsComponentWidget> createState() =>
       _SingleEventsComponentWidgetState();
 }
 

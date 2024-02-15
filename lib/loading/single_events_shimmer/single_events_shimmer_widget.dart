@@ -14,7 +14,7 @@ class SingleEventsShimmerWidget extends StatefulWidget {
   const SingleEventsShimmerWidget({super.key});
 
   @override
-  _SingleEventsShimmerWidgetState createState() =>
+  State<SingleEventsShimmerWidget> createState() =>
       _SingleEventsShimmerWidgetState();
 }
 

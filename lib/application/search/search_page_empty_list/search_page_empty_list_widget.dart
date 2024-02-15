@@ -10,7 +10,7 @@ class SearchPageEmptyListWidget extends StatefulWidget {
   const SearchPageEmptyListWidget({super.key});
 
   @override
-  _SearchPageEmptyListWidgetState createState() =>
+  State<SearchPageEmptyListWidget> createState() =>
       _SearchPageEmptyListWidgetState();
 }
 

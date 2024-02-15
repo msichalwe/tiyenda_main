@@ -11,7 +11,7 @@ class RecentSearchListWidget extends StatefulWidget {
   const RecentSearchListWidget({super.key});
 
   @override
-  _RecentSearchListWidgetState createState() => _RecentSearchListWidgetState();
+  State<RecentSearchListWidget> createState() => _RecentSearchListWidgetState();
 }
 
 class _RecentSearchListWidgetState extends State<RecentSearchListWidget> {

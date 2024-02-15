@@ -127,3 +127,14 @@ int? countJsonItems(List<dynamic>? jsonList) {
   }
   return jsonList.length;
 }
+
+dynamic convertStringToJson(String? stringValue) {
+  // convert a string to json
+  if (stringValue == null) return null;
+  try {
+    return jsonDecode(stringValue);
+  } catch (e) {
+    print('Error decoding JSON string: $e');
+    return null;
+  }
+}

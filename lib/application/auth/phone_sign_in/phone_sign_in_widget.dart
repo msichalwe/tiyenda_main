@@ -16,7 +16,7 @@ class PhoneSignInWidget extends StatefulWidget {
   const PhoneSignInWidget({super.key});
 
   @override
-  _PhoneSignInWidgetState createState() => _PhoneSignInWidgetState();
+  State<PhoneSignInWidget> createState() => _PhoneSignInWidgetState();
 }
 
 class _PhoneSignInWidgetState extends State<PhoneSignInWidget>

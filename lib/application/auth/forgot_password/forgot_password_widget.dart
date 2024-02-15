@@ -16,7 +16,7 @@ class ForgotPasswordWidget extends StatefulWidget {
   const ForgotPasswordWidget({super.key});
 
   @override
-  _ForgotPasswordWidgetState createState() => _ForgotPasswordWidgetState();
+  State<ForgotPasswordWidget> createState() => _ForgotPasswordWidgetState();
 }
 
 class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>

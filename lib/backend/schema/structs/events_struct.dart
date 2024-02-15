@@ -15,12 +15,20 @@ class EventsStruct extends FFFirebaseStruct {
     DateTime? eventDate,
     String? eventPic,
     String? eventDesc,
+    double? total,
+    String? orderId,
+    String? tickets,
+    String? completeJson,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _eventName = eventName,
         _eventId = eventId,
         _eventDate = eventDate,
         _eventPic = eventPic,
         _eventDesc = eventDesc,
+        _total = total,
+        _orderId = orderId,
+        _tickets = tickets,
+        _completeJson = completeJson,
         super(firestoreUtilData);
 
   // "eventName" field.
@@ -53,12 +61,41 @@ class EventsStruct extends FFFirebaseStruct {
   set eventDesc(String? val) => _eventDesc = val;
   bool hasEventDesc() => _eventDesc != null;
 
+  // "total" field.
+  double? _total;
+  double get total => _total ?? 0.0;
+  set total(double? val) => _total = val;
+  void incrementTotal(double amount) => _total = total + amount;
+  bool hasTotal() => _total != null;
+
+  // "orderId" field.
+  String? _orderId;
+  String get orderId => _orderId ?? '';
+  set orderId(String? val) => _orderId = val;
+  bool hasOrderId() => _orderId != null;
+
+  // "tickets" field.
+  String? _tickets;
+  String get tickets => _tickets ?? '';
+  set tickets(String? val) => _tickets = val;
+  bool hasTickets() => _tickets != null;
+
+  // "completeJson" field.
+  String? _completeJson;
+  String get completeJson => _completeJson ?? '';
+  set completeJson(String? val) => _completeJson = val;
+  bool hasCompleteJson() => _completeJson != null;
+
   static EventsStruct fromMap(Map<String, dynamic> data) => EventsStruct(
         eventName: data['eventName'] as String?,
         eventId: data['eventId'] as String?,
         eventDate: data['eventDate'] as DateTime?,
         eventPic: data['eventPic'] as String?,
         eventDesc: data['eventDesc'] as String?,
+        total: castToType<double>(data['total']),
+        orderId: data['orderId'] as String?,
+        tickets: data['tickets'] as String?,
+        completeJson: data['completeJson'] as String?,
       );
 
   static EventsStruct? maybeFromMap(dynamic data) =>
@@ -70,6 +107,10 @@ class EventsStruct extends FFFirebaseStruct {
         'eventDate': _eventDate,
         'eventPic': _eventPic,
         'eventDesc': _eventDesc,
+        'total': _total,
+        'orderId': _orderId,
+        'tickets': _tickets,
+        'completeJson': _completeJson,
       }.withoutNulls;
 
   @override
@@ -92,6 +133,22 @@ class EventsStruct extends FFFirebaseStruct {
         ),
         'eventDesc': serializeParam(
           _eventDesc,
+          ParamType.String,
+        ),
+        'total': serializeParam(
+          _total,
+          ParamType.double,
+        ),
+        'orderId': serializeParam(
+          _orderId,
+          ParamType.String,
+        ),
+        'tickets': serializeParam(
+          _tickets,
+          ParamType.String,
+        ),
+        'completeJson': serializeParam(
+          _completeJson,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -123,6 +180,26 @@ class EventsStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        total: deserializeParam(
+          data['total'],
+          ParamType.double,
+          false,
+        ),
+        orderId: deserializeParam(
+          data['orderId'],
+          ParamType.String,
+          false,
+        ),
+        tickets: deserializeParam(
+          data['tickets'],
+          ParamType.String,
+          false,
+        ),
+        completeJson: deserializeParam(
+          data['completeJson'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -135,12 +212,25 @@ class EventsStruct extends FFFirebaseStruct {
         eventId == other.eventId &&
         eventDate == other.eventDate &&
         eventPic == other.eventPic &&
-        eventDesc == other.eventDesc;
+        eventDesc == other.eventDesc &&
+        total == other.total &&
+        orderId == other.orderId &&
+        tickets == other.tickets &&
+        completeJson == other.completeJson;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([eventName, eventId, eventDate, eventPic, eventDesc]);
+  int get hashCode => const ListEquality().hash([
+        eventName,
+        eventId,
+        eventDate,
+        eventPic,
+        eventDesc,
+        total,
+        orderId,
+        tickets,
+        completeJson
+      ]);
 }
 
 EventsStruct createEventsStruct({
@@ -149,6 +239,10 @@ EventsStruct createEventsStruct({
   DateTime? eventDate,
   String? eventPic,
   String? eventDesc,
+  double? total,
+  String? orderId,
+  String? tickets,
+  String? completeJson,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -160,6 +254,10 @@ EventsStruct createEventsStruct({
       eventDate: eventDate,
       eventPic: eventPic,
       eventDesc: eventDesc,
+      total: total,
+      orderId: orderId,
+      tickets: tickets,
+      completeJson: completeJson,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -585,6 +585,32 @@ class GetOrderTicketsCall {
 
 /// End Events Group Code
 
+class SendEmailFromObjectCall {
+  static Future<ApiCallResponse> call({
+    dynamic bodyJson,
+  }) async {
+    final body = _serializeJson(bodyJson);
+    final ffApiRequestBody = body;
+    return ApiManager.instance.makeApiCall(
+      callName: 'sendEmail from Object',
+      apiUrl:
+          'https://us-central1-tiyenda-3c24c.cloudfunctions.net/testSendEmail',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

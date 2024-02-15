@@ -9,7 +9,7 @@ class TicketNumberSelectorWidget extends StatefulWidget {
   const TicketNumberSelectorWidget({super.key});
 
   @override
-  _TicketNumberSelectorWidgetState createState() =>
+  State<TicketNumberSelectorWidget> createState() =>
       _TicketNumberSelectorWidgetState();
 }
 

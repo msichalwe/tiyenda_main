@@ -11,7 +11,7 @@ class CategoriesLoadingWidget extends StatefulWidget {
   const CategoriesLoadingWidget({super.key});
 
   @override
-  _CategoriesLoadingWidgetState createState() =>
+  State<CategoriesLoadingWidget> createState() =>
       _CategoriesLoadingWidgetState();
 }
 

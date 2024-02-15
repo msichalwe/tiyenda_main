@@ -16,7 +16,7 @@ class OrderHistoryWidget extends StatefulWidget {
   const OrderHistoryWidget({super.key});
 
   @override
-  _OrderHistoryWidgetState createState() => _OrderHistoryWidgetState();
+  State<OrderHistoryWidget> createState() => _OrderHistoryWidgetState();
 }
 
 class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
@@ -106,7 +106,7 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                       child: Text(
-                        'Order History',
+                        'Recent Orders',
                         style: FlutterFlowTheme.of(context).headlineMedium,
                       ),
                     ),

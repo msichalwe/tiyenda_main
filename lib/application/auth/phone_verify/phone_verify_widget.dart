@@ -15,7 +15,7 @@ class PhoneVerifyWidget extends StatefulWidget {
   const PhoneVerifyWidget({super.key});
 
   @override
-  _PhoneVerifyWidgetState createState() => _PhoneVerifyWidgetState();
+  State<PhoneVerifyWidget> createState() => _PhoneVerifyWidgetState();
 }
 
 class _PhoneVerifyWidgetState extends State<PhoneVerifyWidget> {

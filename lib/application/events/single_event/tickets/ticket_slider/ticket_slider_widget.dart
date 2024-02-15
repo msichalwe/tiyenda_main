@@ -9,7 +9,7 @@ class TicketSliderWidget extends StatefulWidget {
   const TicketSliderWidget({super.key});
 
   @override
-  _TicketSliderWidgetState createState() => _TicketSliderWidgetState();
+  State<TicketSliderWidget> createState() => _TicketSliderWidgetState();
 }
 
 class _TicketSliderWidgetState extends State<TicketSliderWidget> {
