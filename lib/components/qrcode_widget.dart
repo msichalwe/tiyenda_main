@@ -71,7 +71,7 @@ class _QrcodeWidgetState extends State<QrcodeWidget> {
             ),
           ),
           BarcodeWidget(
-            data: widget.qrcodeId!,
+            data: 'Barcode',
             barcode: Barcode.qrCode(),
             width: 300.0,
             height: 300.0,
