@@ -428,12 +428,10 @@ class _DashboardTopContainerLoadingWidgetState
                                                         .primaryBtnText,
                                                 fontSize: 14.0,
                                                 fontWeight: FontWeight.normal,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMediumFamily),
+                                                useGoogleFonts:
+                                                    GoogleFonts.asMap()
+                                                        .containsKey(
+                                                            'Nunito Sans'),
                                               ),
                                           enabledBorder: const UnderlineInputBorder(
                                             borderSide: BorderSide(
@@ -490,12 +488,10 @@ class _DashboardTopContainerLoadingWidgetState
                                                       .primaryBtnText,
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.normal,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          'Nunito Sans'),
                                             ),
                                         validator: _model
                                             .textControllerValidator

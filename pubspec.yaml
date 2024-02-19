@@ -31,9 +31,6 @@ dependencies:
   cloud_firestore: 4.13.1
   cloud_firestore_platform_interface: 6.0.5
   cloud_firestore_web: 3.8.5
-  cloud_functions: 4.5.8
-  cloud_functions_platform_interface: 5.5.11
-  cloud_functions_web: 4.6.11
   collection: 1.17.2
   csv: 5.0.1
   easy_debounce: 2.0.1
