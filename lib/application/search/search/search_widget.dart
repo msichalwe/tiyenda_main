@@ -159,10 +159,13 @@ class _SearchWidgetState extends State<SearchWidget>
                         physics: NeverScrollableScrollPhysics(),
                         controller: _model.tabBarController,
                         children: [
-                          wrapWithModel(
-                            model: _model.mapViewModel,
-                            updateCallback: () => setState(() {}),
-                            child: const MapViewWidget(),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: wrapWithModel(
+                              model: _model.mapViewModel,
+                              updateCallback: () => setState(() {}),
+                              child: const MapViewWidget(),
+                            ),
                           ),
                           Container(
                             height: MediaQuery.sizeOf(context).height * 1.0,

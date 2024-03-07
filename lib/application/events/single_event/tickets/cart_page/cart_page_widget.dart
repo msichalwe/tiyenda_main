@@ -390,12 +390,9 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                                         .secondaryText,
                                                 fontSize: 14.0,
                                                 fontWeight: FontWeight.normal,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily),
+                                                useGoogleFonts:
+                                                    GoogleFonts.asMap()
+                                                        .containsKey('Outfit'),
                                               ),
                                         ),
                                         Text(
@@ -426,12 +423,9 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                                         .secondaryText,
                                                 fontSize: 14.0,
                                                 fontWeight: FontWeight.normal,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodySmallFamily),
+                                                useGoogleFonts:
+                                                    GoogleFonts.asMap()
+                                                        .containsKey('Outfit'),
                                               ),
                                         ),
                                         Text(
@@ -470,12 +464,10 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                                         .secondaryText,
                                                     fontSize: 20.0,
                                                     fontWeight: FontWeight.w500,
-                                                    useGoogleFonts: GoogleFonts
-                                                            .asMap()
-                                                        .containsKey(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMediumFamily),
+                                                    useGoogleFonts:
+                                                        GoogleFonts.asMap()
+                                                            .containsKey(
+                                                                'Outfit'),
                                                   ),
                                             ),
                                             FlutterFlowIconButton(
