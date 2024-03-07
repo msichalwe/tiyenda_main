@@ -1,3 +1,4 @@
+import '../../../components/map_view_model.dart';
 import '/application/search/recent_search_list/recent_search_list_widget.dart';
 import '/components/map_view_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';

@@ -141,10 +141,11 @@ class _SearchWidgetState extends State<SearchWidget>
                             24.0, 0.0, 24.0, 0.0),
                         tabs: const [
                           Tab(
-                            text: 'Discovery Map',
+                            text: 'Events Near you',
+
                           ),
                           Tab(
-                            text: 'Search ',
+                            text: 'Search for event',
                           ),
                         ],
                         controller: _model.tabBarController,
@@ -155,7 +156,7 @@ class _SearchWidgetState extends State<SearchWidget>
                     ),
                     Expanded(
                       child: TabBarView(
-                        physics: ScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                         controller: _model.tabBarController,
                         children: [
                           wrapWithModel(

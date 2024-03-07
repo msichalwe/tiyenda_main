@@ -608,6 +608,24 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "location",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/location-5.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "location_platform_interface",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/location_platform_interface-3.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "location_web",
+      "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/location_web-4.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "logging",
       "rootUri": "file:///Users/msichalwe/.pub-cache/hosted/pub.dev/logging-1.2.0",
       "packageUri": "lib/",
@@ -1106,7 +1124,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-03-04T14:38:44.099371Z",
+  "generated": "2024-03-07T10:37:39.702868Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }
