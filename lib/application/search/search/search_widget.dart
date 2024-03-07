@@ -112,6 +112,7 @@ class _SearchWidgetState extends State<SearchWidget>
                       alignment: const Alignment(0.0, 0),
                       child: FlutterFlowButtonTabBar(
                         useToggleButtonStyle: true,
+                        isScrollable: false,
                         labelStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: FlutterFlowTheme.of(context)
@@ -154,6 +155,7 @@ class _SearchWidgetState extends State<SearchWidget>
                     ),
                     Expanded(
                       child: TabBarView(
+                        physics: ScrollPhysics(),
                         controller: _model.tabBarController,
                         children: [
                           wrapWithModel(

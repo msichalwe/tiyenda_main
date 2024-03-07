@@ -570,6 +570,13 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                   if ((_model.apiResultb3o?.succeeded ??
                                       true)) {
                                     logFirebaseEvent('Button_alert_dialog');
+                                    print("THE TICKETS:::::::::::::::: ${functions.convertJsonListToString(
+                                        functions
+                                            .selectJsonFields(FFAppState()
+                                            .cartItems
+                                            .map((e) => e.toMap())
+                                            .toList())
+                                            ?.toList())}");
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {

@@ -123,10 +123,32 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: _themeMode,
       routerConfig: _router,
-      builder: (_, child) => DynamicLinksHandler(
-        router: _router,
-        child: child!,
+      builder: (_, child) => SwipeBackInterceptor( // Wrap router with SwipeBackInterceptor
+        child: DynamicLinksHandler(
+          router: _router,
+          child: child!,
+        ),
       ),
+    );
+  }
+}
+
+class SwipeBackInterceptor extends StatelessWidget {
+  final Widget child;
+
+  const SwipeBackInterceptor({Key? key, required this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        // Perform custom logic here, such as checking if the user has swiped back
+        // For demonstration purposes, always pop the current route
+        Navigator.of(context).pop();
+        // Return false to prevent default back navigation behavior
+        return false;
+      },
+      child: child,
     );
   }
 }
