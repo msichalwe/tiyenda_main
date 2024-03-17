@@ -93,58 +93,51 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          appBar: responsiveVisibility(
-                    context: context,
-                    tabletLandscape: false,
-                    desktop: false,
-                  ) &&
-                  isWeb
-              ? AppBar(
-                  backgroundColor:
-                      FlutterFlowTheme.of(context).secondaryBackground,
-                  automaticallyImplyLeading: false,
-                  leading: Visibility(
-                    visible: responsiveVisibility(
-                      context: context,
-                      tablet: false,
-                      tabletLandscape: false,
-                      desktop: false,
-                    ),
-                    child: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      borderWidth: 1.0,
-                      buttonSize: 60.0,
-                      icon: Icon(
-                        Icons.arrow_back_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 30.0,
-                      ),
-                      onPressed: () async {
-                        logFirebaseEvent(
-                            'FORGOT_PASSWORD_arrow_back_rounded_ICN_O');
-                        logFirebaseEvent('IconButton_navigate_back');
-                        context.pop();
-                      },
-                    ),
-                  ),
-                  title: Visibility(
-                    visible: responsiveVisibility(
-                      context: context,
-                      tablet: false,
-                      tabletLandscape: false,
-                      desktop: false,
-                    ),
-                    child: Text(
-                      'Forgot Password',
-                      style: FlutterFlowTheme.of(context).headlineSmall,
-                    ),
-                  ),
-                  actions: const [],
-                  centerTitle: false,
-                  elevation: 0.0,
-                )
-              : null,
+          appBar: AppBar(
+            backgroundColor:
+            FlutterFlowTheme.of(context).secondaryBackground,
+            automaticallyImplyLeading: false,
+            leading: Visibility(
+              visible: responsiveVisibility(
+                context: context,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ),
+              child: FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30.0,
+                borderWidth: 1.0,
+                buttonSize: 60.0,
+                icon: Icon(
+                  Icons.arrow_back_rounded,
+                  color: FlutterFlowTheme.of(context).secondaryText,
+                  size: 30.0,
+                ),
+                onPressed: () async {
+                  logFirebaseEvent(
+                      'FORGOT_PASSWORD_arrow_back_rounded_ICN_O');
+                  logFirebaseEvent('IconButton_navigate_back');
+                  context.pop();
+                },
+              ),
+            ),
+            title: Visibility(
+              visible: responsiveVisibility(
+                context: context,
+                tablet: false,
+                tabletLandscape: false,
+                desktop: false,
+              ),
+              child: Text(
+                'Forgot Password',
+                style: FlutterFlowTheme.of(context).headlineSmall,
+              ),
+            ),
+            actions: const [],
+            centerTitle: false,
+            elevation: 0.0,
+          ),
           body: SafeArea(
             top: true,
             child: Align(

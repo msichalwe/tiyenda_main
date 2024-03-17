@@ -223,7 +223,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                 const Duration(milliseconds: 4000),
                                             backgroundColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .secondary,
+                                                    .primaryBackground,
                                           ),
                                         );
                                         logFirebaseEvent(
@@ -342,11 +342,38 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Container(
+                                        Padding(
+                                          padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 8.0, 0.0, 15.0),
+                                          child: Text(
+                                            getJsonField(
+                                              scrollingColumnGetSingleEventsResponse
+                                                  .jsonBody,
+                                              r'''$.name''',
+                                            ).toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                              fontFamily:
+                                              FlutterFlowTheme.of(
+                                                  context)
+                                                  .headlineSmallFamily,
+                                              fontSize: 22.0,
+                                              useGoogleFonts: GoogleFonts
+                                                  .asMap()
+                                                  .containsKey(FlutterFlowTheme
+                                                  .of(context)
+                                                  .headlineSmallFamily),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 0.0, 15.0), child: Container(
                                           decoration: BoxDecoration(
                                             color: const Color(0xFF2D3A5C),
                                             borderRadius:
-                                                BorderRadius.circular(10.0),
+                                            BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(2.0),
@@ -355,7 +382,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                               focusColor: Colors.transparent,
                                               hoverColor: Colors.transparent,
                                               highlightColor:
-                                                  Colors.transparent,
+                                              Colors.transparent,
                                               onTap: () async {
                                                 logFirebaseEvent(
                                                     'EVENTSINGLE_PAGE_event_main_image_ON_TAP');
@@ -365,9 +392,9 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                   context,
                                                   PageTransition(
                                                     type:
-                                                        PageTransitionType.fade,
+                                                    PageTransitionType.fade,
                                                     child:
-                                                        FlutterFlowExpandedImageView(
+                                                    FlutterFlowExpandedImageView(
                                                       image: Image.network(
                                                         getCORSProxyUrl(
                                                           getJsonField(
@@ -398,8 +425,8 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                 transitionOnUserGestures: true,
                                                 child: ClipRRect(
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
+                                                  BorderRadius.circular(
+                                                      10.0),
                                                   child: Image.network(
                                                     getCORSProxyUrl(
                                                       getJsonField(
@@ -416,56 +443,31 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 0.0, 0.0),
-                                          child: Text(
-                                            getJsonField(
-                                              scrollingColumnGetSingleEventsResponse
-                                                  .jsonBody,
-                                              r'''$.name''',
-                                            ).toString(),
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineSmall
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineSmallFamily,
-                                                  fontSize: 22.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(FlutterFlowTheme
-                                                              .of(context)
-                                                          .headlineSmallFamily),
-                                                ),
-                                          ),
-                                        ),
+                                        ),),
                                         Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
+                                                    0.0, 0.0, 10.0, 0.0),
                                                 child: Icon(
                                                   Icons.calendar_month_rounded,
                                                   color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
+                                                      context)
+                                                      .primaryText,
                                                   size: 20.0,
                                                 ),
                                               ),
-                                              Padding(
+                                              Expanded(child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 4.0, 0.0, 0.0),
+                                                    0.0, 4.0, 0.0, 0.0),
                                                 child: Text(
                                                   '${getJsonField(
                                                     scrollingColumnGetSingleEventsResponse
@@ -477,27 +479,27 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                     r'''$.formattedStartTime''',
                                                   ).toString()}',
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        fontSize: 16.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
+                                                    fontFamily:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .bodyMediumFamily,
+                                                    color:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .primaryText,
+                                                    fontSize: 16.0,
+                                                    useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                        .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                            context)
+                                                            .bodyMediumFamily),
+                                                  ),
                                                 ),
-                                              ),
+                                              )),
                                             ],
                                           ),
                                         ),
@@ -507,49 +509,33 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 10.0, 0.0),
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                                                 child: Icon(
                                                   Icons.location_on_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  size: 20.0,
+                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                  size: 20,
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 0.0),
-                                                child: Text(
-                                                  'The Arena Lusaka - Along greateast road',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        fontSize: 16.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                                                  child: Text(
+                                                    '${getJsonField(scrollingColumnGetSingleEventsResponse.jsonBody, r'''$.address''').toString()}',
+                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                      fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                      color: FlutterFlowTheme.of(context).primaryText,
+                                                      fontSize: 16,
+                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
                                             ],
-                                          ),
+                                          )
+                                          ,
                                         ),
                                         Padding(
                                           padding:
@@ -568,7 +554,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                   Icons.attach_money_sharp,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primary,
+                                                      .primaryText,
                                                   size: 20.0,
                                                 ),
                                               ),
@@ -589,7 +575,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .primaryText,
                                                         fontSize: 16.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
@@ -633,98 +619,134 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                               }
                                               final eventOrginizerGetOneOrganizerResponse =
                                                   snapshot.data!;
-                                              return Container(
-                                                decoration: BoxDecoration(
-                                                  color: const Color(0xFF2D3A5C),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
-                                                ),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.all(10.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
+                                              return InkWell(
+                                                onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'DASHBOARD_organizersContainer_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'organizersContainer_navigate_to');
+
+                                                  context
+                                                      .pushNamed(
+                                                    'singleOrg',
+                                                    queryParameters:
+                                                    {
+                                                      'organiserName':
+                                                      serializeParam(
+                                                        getJsonField(
+                                                          eventOrginizerGetOneOrganizerResponse
+                                                              .jsonBody,
+                                                          r'''$.name''',
+                                                        ).toString(),
+                                                        ParamType
+                                                            .String,
+                                                      ),
+                                                      'organizerId':
+                                                      serializeParam(
+                                                        getJsonField(
+                                                          eventOrginizerGetOneOrganizerResponse
+                                                              .jsonBody,
+                                                          r'''$.id''',
+                                                        ).toString(),
+                                                        ParamType
+                                                            .String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0xFF2D3A5C),
+                                                    borderRadius:
+                                                    BorderRadius.circular(
+                                                        10.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(10.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                      MainAxisSize.max,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                10.0,
+                                                                0.0,
+                                                                10.0,
+                                                                0.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                              MainAxisSize
+                                                                  .max,
+                                                              crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                       0.0,
-                                                                      10.0,
-                                                                      0.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            10.0),
-                                                                child: Text(
-                                                                  'Organized By',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        fontWeight:
-                                                                            FontWeight.w800,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                      ),
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                                  child: Text(
+                                                                    'Organized By',
+                                                                    style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                      fontFamily:
+                                                                      FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                      fontWeight:
+                                                                      FontWeight.w800,
+                                                                      useGoogleFonts:
+                                                                      GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            3.0),
-                                                                child: Text(
-                                                                  getJsonField(
-                                                                    eventOrginizerGetOneOrganizerResponse
-                                                                        .jsonBody,
-                                                                    r'''$.name''',
-                                                                  ).toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
+                                                                Padding(
+                                                                  padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      3.0),
+                                                                  child: Text(
+                                                                    getJsonField(
+                                                                      eventOrginizerGetOneOrganizerResponse
+                                                                          .jsonBody,
+                                                                      r'''$.name''',
+                                                                    ).toString(),
+                                                                    style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                        .bodyMedium,
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  '2.2K Followers',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
-                                                                ),
-                                                              ),
-                                                            ],
+                                                                // Padding(
+                                                                //   padding:
+                                                                //       const EdgeInsetsDirectional
+                                                                //           .fromSTEB(
+                                                                //               0.0,
+                                                                //               5.0,
+                                                                //               0.0,
+                                                                //               0.0),
+                                                                //   child: Text(
+                                                                //     '2.2K Followers',
+                                                                //     style: FlutterFlowTheme.of(
+                                                                //             context)
+                                                                //         .bodyMedium,
+                                                                //   ),
+                                                                // ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               );
@@ -1216,9 +1238,9 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                   ),
                   Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: 120.0,
+                    height: 88.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      color: Color(0xFF212C46),
                       boxShadow: const [
                         BoxShadow(
                           blurRadius: 4.0,

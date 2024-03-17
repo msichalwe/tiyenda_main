@@ -409,7 +409,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyLargeFamily,
-                                                          fontSize: 17.0,
+                                                          fontSize: 23.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           useGoogleFonts: GoogleFonts
@@ -737,7 +737,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               FlutterFlowTheme.of(
                                                                       context)
                                                                   .bodyLargeFamily,
-                                                          fontSize: 17.0,
+                                                          fontSize: 23.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           useGoogleFonts: GoogleFonts
@@ -945,23 +945,24 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                             Expanded(
                                               child: Text(
                                                 'Trending',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyLargeFamily,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLargeFamily),
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                    context)
+                                                    .bodyLarge
+                                                    .override(
+                                                  fontFamily:
+                                                  FlutterFlowTheme.of(
+                                                      context)
+                                                      .bodyLargeFamily,
+                                                  fontSize: 23.0,
+                                                  fontWeight:
+                                                  FontWeight.bold,
+                                                  useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                      .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                          context)
+                                                          .bodyLargeFamily),
+                                                ),
                                               ),
                                             ),
                                             if (responsiveVisibility(
@@ -1253,10 +1254,10 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                               padding:
                                                                   const EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          5.0,
+                                                                          15.0,
                                                                           10.0,
                                                                           0.0,
-                                                                          0.0),
+                                                                          5.0),
                                                               child: Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
@@ -1314,7 +1315,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                     padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
-                                                                            8.0,
+                                                                            0.0,
                                                                             0.0,
                                                                             0.0),
                                                                     child: Row(
@@ -1326,6 +1327,29 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                           onPressed:
                                                                               () {
                                                                             print('Button pressed ...');
+                                                                            context.pushNamed(
+                                                                              'singleCategorysPage',
+                                                                              queryParameters: {
+                                                                                'categoryName':
+                                                                                serializeParam(
+                                                                                  getJsonField(
+                                                                                    eventsItem,
+                                                                                    r'''$.Category.name''',
+                                                                                  ).toString(),
+                                                                                  ParamType
+                                                                                      .String,
+                                                                                ),
+                                                                                'catId':
+                                                                                serializeParam(
+                                                                                  getJsonField(
+                                                                                    eventsItem,
+                                                                                    r'''$.Category.id''',
+                                                                                  ).toString(),
+                                                                                  ParamType
+                                                                                      .String,
+                                                                                ),
+                                                                              }.withoutNulls,
+                                                                            );
                                                                           },
                                                                           text:
                                                                               getJsonField(
@@ -1375,55 +1399,6 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                             0.0,
                                                                             20.0,
                                                                             0.0,
-                                                                            0.0),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .max,
-                                                                      children: [
-                                                                        Icon(
-                                                                          Icons
-                                                                              .location_on_rounded,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          size:
-                                                                              20.0,
-                                                                        ),
-                                                                        Expanded(
-                                                                          child:
-                                                                              Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                                5.0,
-                                                                                0.0,
-                                                                                0.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                Text(
-                                                                              getJsonField(
-                                                                                eventsItem,
-                                                                                r'''$.address''',
-                                                                              ).toString().maybeHandleOverflow(
-                                                                                    maxChars: 28,
-                                                                                    replacement: '…',
-                                                                                  ),
-                                                                              maxLines: 2,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                    fontSize: 13.0,
-                                                                                    useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                  ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0,
                                                                             5.0),
                                                                     child: Row(
                                                                       mainAxisSize:
@@ -1467,6 +1442,55 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                                                     fontSize: 13.0,
                                                                                     useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                                   ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                        0.0,
+                                                                        2.0,
+                                                                        5.0,
+                                                                        5.0),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                      children: [
+                                                                        Icon(
+                                                                          Icons
+                                                                              .location_on_rounded,
+                                                                          color:
+                                                                          FlutterFlowTheme.of(context).primary,
+                                                                          size:
+                                                                          20.0,
+                                                                        ),
+                                                                        Expanded(
+                                                                          child:
+                                                                          Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                5.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                            Text(
+                                                                              getJsonField(
+                                                                                eventsItem,
+                                                                                r'''$.address''',
+                                                                              ).toString().maybeHandleOverflow(
+                                                                                maxChars: 20,
+                                                                                replacement: '…',
+                                                                              ),
+                                                                              maxLines: 2,
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                fontSize: 13.0,
+                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -2541,7 +2565,7 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyLargeFamily,
-                                                        fontSize: 17.0,
+                                                        fontSize: 23.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         useGoogleFonts: GoogleFonts
@@ -2865,22 +2889,23 @@ class _DashboardWidgetState extends State<DashboardWidget>
                                                   child: Text(
                                                     'Our Top Organizers',
                                                     style: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .bodyLarge
                                                         .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyLargeFamily,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLargeFamily),
-                                                        ),
+                                                      fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                          context)
+                                                          .bodyLargeFamily,
+                                                      fontSize: 23.0,
+                                                      fontWeight:
+                                                      FontWeight.bold,
+                                                      useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                          .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                              context)
+                                                              .bodyLargeFamily),
+                                                    ),
                                                   ),
                                                 ),
                                               ],

@@ -89,6 +89,8 @@ dependencies:
   easy_debounce: ^2.0.3
   google_maps_flutter: ^2.5.3
   location: ^5.0.3
+  permission_handler: ^8.1.6 # Optional for handling permissions
+  pdf: ^3.6.0
   geolocator: ^11.0.0
   percent_indicator: ^4.2.3
 

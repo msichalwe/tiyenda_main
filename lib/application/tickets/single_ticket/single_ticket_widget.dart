@@ -1,3 +1,5 @@
+import 'package:file_picker/file_picker.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/qrcode_widget.dart';
@@ -19,6 +21,14 @@ import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'single_ticket_model.dart';
 export 'single_ticket_model.dart';
+import 'package:pdf/widgets.dart' as pw;
+
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+
+
 
 class SingleTicketWidget extends StatefulWidget {
   const SingleTicketWidget({
@@ -123,6 +133,66 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
     ),
   };
 
+
+
+  Future<void> downloadAndSaveTicketAsPDF({
+    required String eventName,
+    required String ticketID,
+    required String ticketDescription,
+    required String ticketType,
+    required String purchaseDate,
+    required String eventDate,
+    required String userName,
+    required String userEmail,
+    required String ticketPrice,
+  }) async {
+    final pdf = pw.Document();
+
+    // Add your PDF generation logic here
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) {
+          return pw.Column(
+            children: [
+              pw.Text("Event: $eventName", style: pw.TextStyle(fontSize: 24)),
+              pw.SizedBox(height: 20),
+              pw.Text("Ticket ID: $ticketID", style: pw.TextStyle(fontSize: 18)),
+              pw.Text("Description: $ticketDescription", style: pw.TextStyle(fontSize: 18)),
+              pw.Text("Type: $ticketType", style: pw.TextStyle(fontSize: 18)),
+              pw.Text("Purchased on: $purchaseDate", style: pw.TextStyle(fontSize: 18)),
+              pw.Text("Event Date: $eventDate", style: pw.TextStyle(fontSize: 18)),
+              pw.Text("User Name: $userName", style: pw.TextStyle(fontSize: 18)),
+              pw.Text("User Email: $userEmail", style: pw.TextStyle(fontSize: 18)),
+              pw.Text("Price: $ticketPrice", style: pw.TextStyle(fontSize: 18)),
+              pw.SizedBox(height: 20),
+              pw.BarcodeWidget(
+                barcode: pw.Barcode.qrCode(),
+                data: ticketID,
+                width: 200,
+                height: 200,
+              ),
+            ],
+          );
+        },
+      ),
+    );
+
+    // Let the user pick a directory
+    String? selectedDirectory = await FilePicker.platform.getDirectoryPath();
+
+    // If the user canceled the picker
+    if (selectedDirectory == null) {
+      print("No directory selected");
+      return;
+    }
+
+    final file = File('$selectedDirectory/ticket_$ticketID.pdf');
+    await file.writeAsBytes(await pdf.save());
+    print("Ticket PDF saved to $selectedDirectory");
+  }
+
+
+
   @override
   void initState() {
     super.initState();
@@ -159,7 +229,6 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
     }
 
     context.watch<FFAppState>();
-
     return Title(
         title: 'singleTicket',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -234,10 +303,60 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                       itemBuilder: (context, ticketsIndex) {
                                         final ticketsItem =
                                             tickets[ticketsIndex];
+
                                         return SingleChildScrollView(
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                                                child: FFButtonWidget(
+                                                  onPressed: () async {
+                                                    // logFirebaseEvent('SINGLE_TICKET_DOWNLOAD_TICKETS_BTN_ON_TAP');
+                                                    // logFirebaseEvent('Button_update_app_state');
+
+                                                    // Extract ticket details from ticketsItem
+                                                    final eventName = getJsonField(ticketsItem, r'''$.event.name''').toString();
+                                                    final ticketID = getJsonField(ticketsItem, r'''$.id''').toString();
+                                                    final ticketDescription = getJsonField(ticketsItem, r'''$.ticket.description''').toString();
+                                                    final ticketType = getJsonField(ticketsItem, r'''$.ticket.type''').toString();
+                                                    // Assuming 'ticketsItem' contains a string representation of date in ISO 8601 format for both 'createdAt' and 'event.startDate'.
+
+                                                      final purchaseDate = getJsonField(ticketsItem, r'''$.createdAt''').toString();
+                                                      final eventDate = getJsonField(ticketsItem, r'''$.event.startDate''').toString();
+
+
+                                                    final userName = getJsonField(columnGetOrderTicketsResponse.jsonBody, r'''$.user.name''').toString();
+                                                    final userEmail = getJsonField(columnGetOrderTicketsResponse.jsonBody, r'''$.user.email''').toString();
+                                                    final ticketPrice = getJsonField(ticketsItem, r'''$.ticket.price''').toString();
+
+                                                    await downloadAndSaveTicketAsPDF(
+                                                      eventName: eventName,
+                                                      ticketID: ticketID,
+                                                      ticketDescription: ticketDescription,
+                                                      ticketType: ticketType,
+                                                      purchaseDate: purchaseDate,
+                                                      eventDate: eventDate,
+                                                      userName: userName,
+                                                      userEmail: userEmail,
+                                                      ticketPrice: ticketPrice,
+                                                    );
+
+                                                    logFirebaseEvent('Button_alert_dialog');
+                                                  },
+                                                  text: 'Download Tickets',
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    color: FlutterFlowTheme.of(context).primaryColor,
+                                                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                                                      fontFamily: 'Poppins',
+                                                      color: Colors.white,
+                                                    ),
+                                                    borderSide: BorderSide(color: Colors.transparent, width: 1),
+                                                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                                                  ),
+                                                ),
+                                              ),
                                               Align(
                                                 alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
@@ -978,6 +1097,7 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                                                       'containerOnPageLoadAnimation1']!),
                                                 ),
                                               ),
+
                                             ],
                                           ),
                                         );
@@ -1028,98 +1148,6 @@ class _SingleTicketWidgetState extends State<SingleTicketWidget>
                               ),
                             );
                           },
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            logFirebaseEvent(
-                                'SINGLE_TICKET_DOWNLOAD_TICKETS_BTN_ON_TA');
-                            logFirebaseEvent('Button_update_app_state');
-                            setState(() {
-                              FFAppState()
-                                  .addToDownloadedOrderList(getJsonField(
-                                columnGetOrderTicketsResponse.jsonBody,
-                                r'''$.id''',
-                              ).toString());
-                            });
-                            logFirebaseEvent('Button_update_app_state');
-                            FFAppState().addToDownloadedTickets(EventsStruct(
-                              tickets: getJsonField(
-                                columnGetOrderTicketsResponse.jsonBody,
-                                r'''$.OrderItem''',
-                              ).toString(),
-                              eventName: getJsonField(
-                                columnGetOrderTicketsResponse.jsonBody,
-                                r'''$.event.name''',
-                              ).toString(),
-                              orderId: widget.id,
-                              eventId: '\$.event.id',
-                              eventDate:
-                                  functions.convertToDateTime(getJsonField(
-                                columnGetOrderTicketsResponse.jsonBody,
-                                r'''$.event.startDate''',
-                              ).toString()),
-                              eventPic: getJsonField(
-                                columnGetOrderTicketsResponse.jsonBody,
-                                r'''$.event.image''',
-                              ).toString(),
-                              total: getJsonField(
-                                columnGetOrderTicketsResponse.jsonBody,
-                                r'''$.total''',
-                              ),
-                              completeJson: columnGetOrderTicketsResponse
-                                  .jsonBody
-                                  .toString(),
-                            ));
-                            logFirebaseEvent('Button_alert_dialog');
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return WebViewAware(
-                                  child: AlertDialog(
-                                    title: const Text('Success'),
-                                    content: const Text(
-                                        'The tickets have been downloaded and can be viewed offline.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                          text: 'Download Tickets ',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .titleSmallFamily,
-                                  color: Colors.white,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .titleSmallFamily),
-                                ),
-                            elevation: 0.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
                         ),
                       ),
                     ],

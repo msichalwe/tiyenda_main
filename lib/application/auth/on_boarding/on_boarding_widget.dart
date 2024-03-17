@@ -471,7 +471,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      'Welcome to \nT1Y3NDA',
+                                                      'Welcome to \nTIYENDA',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style:
@@ -506,7 +506,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'EASY QUICK AND ALWAYS WITH YOU',
+                                                        'BUY EVENT TICKETS QUICK AND EASILY',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style:
@@ -544,7 +544,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      'Book tickets ',
+                                                      'MANAGE EVENTS',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style:
@@ -579,7 +579,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'We have all kinds of events for all kinds of people',
+                                                        'EASILY MANAGE YOUR EVENTS WITH US',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style:
@@ -617,7 +617,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      'Easy, quick, convinient',
+                                                      'EVENTS MAP ALL AROUND',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style:
@@ -652,7 +652,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Get a digital ticket quick and easy',
+                                                        'FIND EVENTS ALL AROUND YOU WITH OUR EVENTS MAP',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style:
