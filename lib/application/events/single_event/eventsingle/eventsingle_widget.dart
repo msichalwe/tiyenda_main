@@ -1238,7 +1238,7 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                   ),
                   Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: 88.0,
+                    height: 85.0,
                     decoration: BoxDecoration(
                       color: Color(0xFF212C46),
                       boxShadow: const [
@@ -1252,31 +1252,31 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                     ),
                     alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 0.0, 0.0),
-                              child: Text(
-                                'Order Now',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      fontSize: 25.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
-                                    ),
-                              ),
-                            ),
-                          ),
-                          FFButtonWidget(
+                          // Expanded(
+                          //   child: Padding(
+                          //     padding: const EdgeInsetsDirectional.fromSTEB(
+                          //         10.0, 0.0, 0.0, 0.0),
+                          //     child: Text(
+                          //       ' ',
+                          //       style: FlutterFlowTheme.of(context)
+                          //           .bodyMedium
+                          //           .override(
+                          //             fontFamily: FlutterFlowTheme.of(context)
+                          //                 .bodyMediumFamily,
+                          //             fontSize: 25.0,
+                          //             useGoogleFonts: GoogleFonts.asMap()
+                          //                 .containsKey(
+                          //                     FlutterFlowTheme.of(context)
+                          //                         .bodyMediumFamily),
+                          //           ),
+                          //     ),
+                          //   ),
+                          // ),
+                          Expanded(child: FFButtonWidget(
                             onPressed: () async {
                               logFirebaseEvent(
                                   'EVENTSINGLE_PAGE_GET_TICKETS_BTN_ON_TAP');
@@ -1292,34 +1292,34 @@ class _EventsingleWidgetState extends State<EventsingleWidget> {
                                 }.withoutNulls,
                               );
                             },
-                            text: 'Get tickets',
+                            text: 'Buy tickets',
                             options: FFButtonOptions(
                               height: 40.0,
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
+                                  35.0, 0.0, 35.0, 0.0),
                               iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color: Colors.white,
-                                    fontSize: 20.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
-                                  ),
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
+                                color: Colors.white,
+                                fontSize: 20.0,
+                                useGoogleFonts: GoogleFonts.asMap()
+                                    .containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmallFamily),
+                              ),
                               elevation: 0.0,
                               borderSide: const BorderSide(
                                 color: Colors.transparent,
-                                width: 1.0,
+                                width: 0.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                          ),
+                          )),
                         ],
                       ),
                     ),

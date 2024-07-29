@@ -120,7 +120,7 @@ class _SelectTicketsWidgetState extends State<SelectTicketsWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            'Get Tickets',
+                            'Add Tickets',
                             style: FlutterFlowTheme.of(context).displaySmall,
                           ),
                         ),

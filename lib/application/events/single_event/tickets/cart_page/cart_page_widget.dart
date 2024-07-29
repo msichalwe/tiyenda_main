@@ -511,9 +511,9 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                           builder: (alertDialogContext) {
                                             return WebViewAware(
                                               child: AlertDialog(
-                                                title: const Text('Ticket Payment'),
+                                                title: const Text('Ticket Booking'),
                                                 content: const Text(
-                                                    'You are about to pay for a ticket. A prompt will appear on your mobile device to confirm the order'),
+                                                    'You are about to book a ticket. You will recive an SMS and Email for a link to pay for your tickets.'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -536,29 +536,73 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                                         ) ??
                                         false;
                                 if (confirmDialogResponse) {
+                                  //
+                                  // logFirebaseEvent('Button_backend_call');
+                                  // _model.apiResultb3o =
+                                  //     await EventsGroup.orderTicketsCall.call(
+                                  //   total: functions.newCustomFunction(
+                                  //       FFAppState().cartPriceTotal,
+                                  //       functions.calculateServiceCharge(
+                                  //           FFAppState().cartPriceTotal,
+                                  //           FFAppConstants.serviceCharge)),
+                                  //   eventId:
+                                  //       FFAppState().cartItems.first.eventId,
+                                  //   fireBaseId: currentUserUid,
+                                  //   tickets: valueOrDefault<String>(
+                                  //     functions.convertJsonListToString(
+                                  //         functions
+                                  //             .selectJsonFields(FFAppState()
+                                  //                 .cartItems
+                                  //                 .map((e) => e.toMap())
+                                  //                 .toList())
+                                  //             ?.toList()),
+                                  //     'null',
+                                  //   ),
+                                  // );
+                                  // shouldSetState = true;
+
+                                  //lets test the api
                                   logFirebaseEvent('Button_backend_call');
-                                  _model.apiResultb3o =
-                                      await EventsGroup.orderTicketsCall.call(
-                                    total: functions.newCustomFunction(
+// Calculate the total and service charge first to log them
+                                  var total = functions.newCustomFunction(
+                                      FFAppState().cartPriceTotal,
+                                      functions.calculateServiceCharge(
                                         FFAppState().cartPriceTotal,
-                                        functions.calculateServiceCharge(
-                                            FFAppState().cartPriceTotal,
-                                            FFAppConstants.serviceCharge)),
-                                    eventId:
-                                        FFAppState().cartItems.first.eventId,
-                                    fireBaseId: currentUserUid,
-                                    tickets: valueOrDefault<String>(
-                                      functions.convertJsonListToString(
-                                          functions
-                                              .selectJsonFields(FFAppState()
-                                                  .cartItems
-                                                  .map((e) => e.toMap())
-                                                  .toList())
-                                              ?.toList()),
-                                      'null',
-                                    ),
+                                        FFAppConstants.serviceCharge,
+                                      )
                                   );
+                                  var tickets = valueOrDefault<String>(
+                                    functions.convertJsonListToString(
+                                      functions
+                                          .selectJsonFields(FFAppState().cartItems.map((e) => e.toMap()).toList())
+                                          ?.toList(),
+                                    ),
+                                    'null',
+                                  );
+
+// Log the input values
+                                  print('Starting API call to order tickets');
+                                  print('Total: $total');
+                                  print('Event ID: ${FFAppState().cartItems.first.eventId}');
+                                  print('Firebase ID: $currentUserUid');
+                                  print('Tickets: $tickets');
+
+                                  try {
+                                    _model.apiResultb3o = await EventsGroup.orderTicketsCall.call(
+                                      total: total,
+                                      eventId: FFAppState().cartItems.first.eventId,
+                                      fireBaseId: currentUserUid,
+                                      tickets: tickets,
+                                    );
+
+                                    print('API call to order tickets completed successfully');
+                                  } catch (e) {
+                                    print('Error during API call to order tickets: $e');
+                                  }
+
                                   shouldSetState = true;
+
+
                                   if ((_model.apiResultb3o?.succeeded ??
                                       true)) {
                                     logFirebaseEvent('Button_alert_dialog');
